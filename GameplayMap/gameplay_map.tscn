@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cog643r4m4c1p"]
+[gd_scene load_steps=4 format=3 uid="uid://cog643r4m4c1p"]
 
 [ext_resource type="PackedScene" uid="uid://biamp6v4ql1tg" path="res://Interface/GameplayUI/gameplay_ui.tscn" id="1_1bf4r"]
+[ext_resource type="PackedScene" uid="uid://dm3gka7brbfao" path="res://Unit/unit.tscn" id="2_eknhu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cetnj"]
 size = Vector2(2000, 450)
@@ -20,3 +21,9 @@ position = Vector2(3400, 675)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemySpawnArea"]
 shape = SubResource("RectangleShape2D_cetnj")
+
+[node name="MeleeUnit" parent="." instance=ExtResource("2_eknhu")]
+position = Vector2(148, 718)
+
+[node name="MeleeUnit2" parent="." instance=ExtResource("2_eknhu")]
+position = Vector2(452, 600)

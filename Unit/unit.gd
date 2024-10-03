@@ -4,9 +4,10 @@ class_name Unit
 @onready var health_bar = $HealthBar
 @onready var unit_collider = $UnitCollider
 @onready var unit_detection_area_collider = $EnemyDetectionArea/CollisionShape2D
+@onready var state_machine = $FiniteStateMachine
 
 
-var speed: float = 5.0
+var speed: float = 35.0
 var max_health: int = 10
 var current_health: int = 10
 var damage: int = 3
@@ -17,31 +18,46 @@ var gold_on_death: int = 50
 
 var is_alive: bool = true
 var belongs_to_player: bool = true
+var direction = Vector2.RIGHT
 var current_target: Node2D
 var unit_name: String
 var time_to_death: float = 1.5
 
-var attack_range: float = 15.0
+var attack_range: float = 45.0
 
+func _ready():
+	if name == "MeleeUnit2":
+		belongs_to_player = false
 
 func lock_on_target(target):
 	current_target = target
 	
 func move_forward(delta):
-	pass
+	if belongs_to_player:
+		direction = Vector2.RIGHT
+	else:
+		direction = Vector2.LEFT
+	velocity.x = speed * direction.x
+	move_and_slide()
 	
 func move_towards_target(delta):
-	pass
+	direction = (current_target.global_position - global_position).normalized()
+	velocity = direction * speed
+	move_and_slide()
 	
 func attack_target(delta):
+	print("wykonuje atak")
 	time_to_next_attack-=delta
 	if current_target.current_health<=0:
 		current_target = null
 	elif time_to_next_attack<=0:
 		current_target.receive_damage(damage)
+		update_health_bar()
 		time_to_next_attack=attack_speed
-func _physics_process(delta):
-	pass
+		
+
+func update_health_bar():
+	health_bar.value = current_health
 
 func spawn_unit_from_recipe(recipe, spawn_cords):
 	speed = recipe["speed"]
@@ -61,6 +77,7 @@ func spawn_unit_from_recipe(recipe, spawn_cords):
 	global_position = spawn_cords
 	
 func receive_damage(damage_amount):
+	print("otrzymuje dmg")
 	current_health-=damage
 	health_bar.value = current_health
 	if current_health<=0 and is_alive:
@@ -68,7 +85,9 @@ func receive_damage(damage_amount):
 		die()
 
 func die():
-	unit_collider.disabled()
+	
+	unit_collider.disabled = true
+	$PlaceholderTexture.hide()
 	if belongs_to_player:
 		global_data.player_experience += int(experience_on_death*1.1)
 		global_data.enemy_experience += experience_on_death
@@ -79,11 +98,11 @@ func die():
 		global_data.enemy_experience += int(experience_on_death*1.1)
 		global_data.player_gold += int(gold_on_death*1.3)
 		global_data.enemy_gold += gold_on_death
-	
-	
-
+		
+	state_machine.on_child_transition(state_machine.current_state, "UnitDying")
 	
 
 
 func _on_enemy_detection_area_body_entered(body):
-	pass # Replace with function body.
+	if body is Unit and belongs_to_player != body.belongs_to_player:
+		lock_on_target(body)
