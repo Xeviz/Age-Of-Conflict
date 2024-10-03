@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cog643r4m4c1p"]
+
+[ext_resource type="PackedScene" uid="uid://biamp6v4ql1tg" path="res://Interface/GameplayUI/gameplay_ui.tscn" id="1_1bf4r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cetnj"]
+size = Vector2(2000, 450)
+
+[node name="GameplayMap" type="Node2D"]
+
+[node name="GameplayUI" parent="." instance=ExtResource("1_1bf4r")]
+
+[node name="PlayerSpawnArea" type="Area2D" parent="."]
+position = Vector2(1400, 675)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerSpawnArea"]
+shape = SubResource("RectangleShape2D_cetnj")
+
+[node name="EnemySpawnArea" type="Area2D" parent="."]
+position = Vector2(3400, 675)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemySpawnArea"]
+shape = SubResource("RectangleShape2D_cetnj")
