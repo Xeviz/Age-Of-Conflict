@@ -58,5 +58,8 @@ unit = NodePath("../..")
 script = ExtResource("5_ndgk8")
 unit = NodePath("../..")
 
-[node name="UnitShooting" type="Node" parent="FiniteStateMachine"]
+[node name="UnitShooting" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("unit")]
 script = ExtResource("6_grxnj")
+unit = NodePath("../..")
+
+[connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]

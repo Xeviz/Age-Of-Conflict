@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cog643r4m4c1p"]
+[gd_scene load_steps=6 format=3 uid="uid://cog643r4m4c1p"]
 
 [ext_resource type="PackedScene" uid="uid://biamp6v4ql1tg" path="res://Interface/GameplayUI/gameplay_ui.tscn" id="1_1bf4r"]
 [ext_resource type="Script" path="res://GameplayMap/gameplay_map.gd" id="1_f8w7p"]
 [ext_resource type="PackedScene" uid="uid://dm3gka7brbfao" path="res://Unit/MeleeUnit.tscn" id="2_eknhu"]
+[ext_resource type="PackedScene" uid="uid://bqwn33etfco84" path="res://Unit/ranged_unit.tscn" id="4_bjfs2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cetnj"]
 size = Vector2(2000, 450)
@@ -22,13 +23,13 @@ position = Vector2(3400, 675)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemySpawnArea"]
 shape = SubResource("RectangleShape2D_cetnj")
 
-[node name="MeleeUnit" parent="." instance=ExtResource("2_eknhu")]
-position = Vector2(148, 718)
-
-[node name="MeleeUnit2" parent="." instance=ExtResource("2_eknhu")]
-position = Vector2(452, 600)
-
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 
 [node name="GameplayUI" parent="Camera2D" instance=ExtResource("1_1bf4r")]
+
+[node name="RangedUnit" parent="." instance=ExtResource("4_bjfs2")]
+position = Vector2(141, 805)
+
+[node name="MeleeUnit2" parent="." instance=ExtResource("2_eknhu")]
+position = Vector2(684, 420)

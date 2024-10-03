@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://jo42nt56ldrg"]
+[gd_scene load_steps=7 format=3 uid="uid://jo42nt56ldrg"]
 
 [ext_resource type="Script" path="res://Projectiles/unit_projectile.gd" id="1_fic8m"]
 [ext_resource type="Texture2D" uid="uid://0lr82u4086gu" path="res://Textures/placeholder_projectile.png" id="2_71vnd"]
 [ext_resource type="Script" path="res://States/finite_state_machine.gd" id="3_jm8dt"]
+[ext_resource type="Script" path="res://States/Projectiles/fired_on_target.gd" id="4_gbsn4"]
+[ext_resource type="Script" path="res://States/Projectiles/projectile_stored.gd" id="5_cwjfm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d3cl5"]
 size = Vector2(70, 20)
@@ -18,7 +20,16 @@ shape = SubResource("RectangleShape2D_d3cl5")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_71vnd")
 
-[node name="FiniteStateMachine" type="Node" parent="."]
+[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_jm8dt")
+initial_state = NodePath("FiredOnTarget")
+
+[node name="FiredOnTarget" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("projectile")]
+script = ExtResource("4_gbsn4")
+projectile = NodePath("../..")
+
+[node name="ProjectileStored" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("projectile")]
+script = ExtResource("5_cwjfm")
+projectile = NodePath("../..")
 
 [connection signal="body_entered" from="ProjectileArea" to="." method="_on_projectile_area_body_entered"]
