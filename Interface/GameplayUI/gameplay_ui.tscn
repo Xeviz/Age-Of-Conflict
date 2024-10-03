@@ -1,0 +1,141 @@
+[gd_scene load_steps=2 format=3 uid="uid://biamp6v4ql1tg"]
+
+[ext_resource type="Script" path="res://Interface/GameplayUI/gameplay_ui.gd" id="1_3g285"]
+
+[node name="GameplayUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3g285")
+
+[node name="ResourcesContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GoldLabel" type="Label" parent="ResourcesContainer"]
+layout_mode = 2
+text = "Gold: 0"
+
+[node name="ExperienceLabel" type="Label" parent="ResourcesContainer"]
+layout_mode = 2
+text = "Experience: 0"
+
+[node name="PurchasesContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_constants/h_separation = 10
+columns = 5
+
+[node name="UnitsButton" type="Button" parent="PurchasesContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "UNITS"
+
+[node name="CannonsButton" type="Button" parent="PurchasesContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "Cannon"
+
+[node name="BuyTowerButton" type="Button" parent="PurchasesContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "+Tower"
+
+[node name="SellTowerButton" type="Button" parent="PurchasesContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "-Tower"
+
+[node name="AdvanceAgeButton" type="Button" parent="PurchasesContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "NEXT
+AGE"
+
+[node name="AvailableUnits" type="GridContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_constants/h_separation = 10
+columns = 5
+
+[node name="Unit1" type="Button" parent="AvailableUnits"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "UNIT1"
+
+[node name="Unit2" type="Button" parent="AvailableUnits"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "UNIT2"
+
+[node name="Unit3" type="Button" parent="AvailableUnits"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "UNIT3"
+
+[node name="Unit4" type="Button" parent="AvailableUnits"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "UNIT4"
+
+[node name="GoBackButton" type="Button" parent="AvailableUnits"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "BACK"
+
+[node name="AvailableCannons" type="GridContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_constants/h_separation = 10
+columns = 5
+
+[node name="Cannon1" type="Button" parent="AvailableCannons"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "T1"
+
+[node name="Cannon2" type="Button" parent="AvailableCannons"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "T2"
+
+[node name="Cannon3" type="Button" parent="AvailableCannons"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "T3"
+
+[node name="Cannon4" type="Button" parent="AvailableCannons"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "T4"
+
+[node name="GoBackButton" type="Button" parent="AvailableCannons"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+text = "BACK"
+
+[connection signal="button_down" from="PurchasesContainer/UnitsButton" to="." method="_on_units_button_button_down"]
+[connection signal="button_down" from="PurchasesContainer/CannonsButton" to="." method="_on_cannons_button_button_down"]
+[connection signal="button_down" from="AvailableUnits/GoBackButton" to="." method="_on_go_back_button_button_down"]
+[connection signal="button_down" from="AvailableCannons/GoBackButton" to="." method="_on_go_back_button_button_down"]
