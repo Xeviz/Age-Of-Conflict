@@ -8,7 +8,6 @@ func enter():
 	unit.time_to_next_attack = 0.0
 
 func update(delta):
-	print("czy mam cel? : " + str(unit.current_target))
 	if unit.current_target:
 		unit.attack_target(delta)
 	else:

@@ -46,13 +46,11 @@ func move_towards_target(delta):
 	move_and_slide()
 	
 func attack_target(delta):
-	print("wykonuje atak")
 	time_to_next_attack-=delta
 	if current_target.current_health<=0:
 		current_target = null
 	elif time_to_next_attack<=0:
 		current_target.receive_damage(damage)
-		update_health_bar()
 		time_to_next_attack=attack_speed
 		
 
@@ -77,7 +75,6 @@ func spawn_unit_from_recipe(recipe, spawn_cords):
 	global_position = spawn_cords
 	
 func receive_damage(damage_amount):
-	print("otrzymuje dmg")
 	current_health-=damage
 	health_bar.value = current_health
 	if current_health<=0 and is_alive:
@@ -101,7 +98,6 @@ func die():
 		
 	state_machine.on_child_transition(state_machine.current_state, "UnitDying")
 	
-
 
 func _on_enemy_detection_area_body_entered(body):
 	if body is Unit and belongs_to_player != body.belongs_to_player:

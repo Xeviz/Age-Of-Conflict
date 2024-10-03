@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://biamp6v4ql1tg"]
+[gd_scene load_steps=3 format=3 uid="uid://biamp6v4ql1tg"]
 
 [ext_resource type="Script" path="res://Interface/GameplayUI/gameplay_ui.gd" id="1_3g285"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1pcn6"]
+size = Vector2(30, 800)
 
 [node name="GameplayUI" type="Control"]
 custom_minimum_size = Vector2(1600, 900)
@@ -9,6 +12,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1600.0
 offset_bottom = 900.0
+mouse_filter = 1
 script = ExtResource("1_3g285")
 
 [node name="ResourcesContainer" type="GridContainer" parent="."]
@@ -135,7 +139,23 @@ custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 text = "BACK"
 
+[node name="MoveScreenLeft" type="Area2D" parent="."]
+position = Vector2(15, 500)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MoveScreenLeft"]
+shape = SubResource("RectangleShape2D_1pcn6")
+
+[node name="MoveScreenRight" type="Area2D" parent="."]
+position = Vector2(1585, 500)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MoveScreenRight"]
+shape = SubResource("RectangleShape2D_1pcn6")
+
 [connection signal="button_down" from="PurchasesContainer/UnitsButton" to="." method="_on_units_button_button_down"]
 [connection signal="button_down" from="PurchasesContainer/CannonsButton" to="." method="_on_cannons_button_button_down"]
 [connection signal="button_down" from="AvailableUnits/GoBackButton" to="." method="_on_go_back_button_button_down"]
 [connection signal="button_down" from="AvailableCannons/GoBackButton" to="." method="_on_go_back_button_button_down"]
+[connection signal="mouse_entered" from="MoveScreenLeft" to="." method="_on_move_screen_left_mouse_entered"]
+[connection signal="mouse_exited" from="MoveScreenLeft" to="." method="_on_move_screen_left_mouse_exited"]
+[connection signal="mouse_entered" from="MoveScreenRight" to="." method="_on_move_screen_right_mouse_entered"]
+[connection signal="mouse_exited" from="MoveScreenRight" to="." method="_on_move_screen_right_mouse_exited"]
