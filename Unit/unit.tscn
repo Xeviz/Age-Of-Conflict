@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://dm3gka7brbfao"]
+
+[ext_resource type="Script" path="res://Unit/unit.gd" id="1_dqpgt"]
+[ext_resource type="Texture2D" uid="uid://druk1kswiiwhb" path="res://Textures/placeholder_unit.png" id="1_h3p2r"]
+[ext_resource type="Script" path="res://States/finite_state_machine.gd" id="2_06gnd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7i8nq"]
+size = Vector2(35, 128)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fip4o"]
+radius = 160.0
+
+[node name="MeleeUnit" type="CharacterBody2D"]
+script = ExtResource("1_dqpgt")
+
+[node name="UnitCollider" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7i8nq")
+
+[node name="EnemyDetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
+shape = SubResource("CircleShape2D_fip4o")
+
+[node name="PlaceholderTexture" type="Sprite2D" parent="."]
+texture = ExtResource("1_h3p2r")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -77.0
+offset_right = 20.0
+offset_bottom = -69.0
+grow_horizontal = 2
+step = 1.0
+value = 100.0
+show_percentage = false
+
+[node name="FiniteStateMachine" type="Node" parent="."]
+script = ExtResource("2_06gnd")
