@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://jo42nt56ldrg"]
+
+[ext_resource type="Script" path="res://Projectiles/unit_projectile.gd" id="1_fic8m"]
+[ext_resource type="Texture2D" uid="uid://0lr82u4086gu" path="res://Textures/placeholder_projectile.png" id="2_71vnd"]
+[ext_resource type="Script" path="res://States/finite_state_machine.gd" id="3_jm8dt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d3cl5"]
+size = Vector2(70, 20)
+
+[node name="UnitProjectile" type="Node2D"]
+script = ExtResource("1_fic8m")
+
+[node name="ProjectileArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProjectileArea"]
+shape = SubResource("RectangleShape2D_d3cl5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_71vnd")
+
+[node name="FiniteStateMachine" type="Node" parent="."]
+script = ExtResource("3_jm8dt")
+
+[connection signal="body_entered" from="ProjectileArea" to="." method="_on_projectile_area_body_entered"]
