@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://b01svbciva0rt"]
+
+[ext_resource type="Script" path="res://Castle/castle.gd" id="1_fh0d6"]
+[ext_resource type="Texture2D" uid="uid://c22832tsdsjvf" path="res://Textures/placeholder_castle.png" id="1_u38cq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r2lyy"]
+size = Vector2(400, 400)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gege0"]
+bg_color = Color(0, 0, 0, 0.490196)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6j3xm"]
+bg_color = Color(1, 0.215686, 0.215686, 1)
+
+[node name="Castle" type="StaticBody2D"]
+script = ExtResource("1_fh0d6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_r2lyy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_u38cq")
+
+[node name="Towers" type="Node2D" parent="."]
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -162.0
+offset_top = -94.0
+offset_right = 138.0
+offset_bottom = -74.0
+rotation = 4.71239
+theme_override_styles/background = SubResource("StyleBoxFlat_gege0")
+theme_override_styles/fill = SubResource("StyleBoxFlat_6j3xm")
+min_value = 1.0
+step = 1.0
+value = 50.0
+show_percentage = false

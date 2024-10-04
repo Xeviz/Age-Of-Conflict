@@ -5,6 +5,7 @@ class_name Unit
 @onready var unit_collider = $UnitCollider
 @onready var unit_detection_area_collider = $EnemyDetectionArea/CollisionShape2D
 @onready var state_machine = $FiniteStateMachine
+@onready var attack_range_area = $AttackRangeArea
 
 
 var speed: float = 35.0
@@ -75,7 +76,7 @@ func spawn_unit_from_recipe(recipe, spawn_cords):
 	global_position = spawn_cords
 	
 func receive_damage(damage_amount):
-	current_health-=damage
+	current_health-=damage_amount
 	health_bar.value = current_health
 	if current_health<=0 and is_alive:
 		is_alive = false
@@ -100,5 +101,5 @@ func die():
 	
 
 func _on_enemy_detection_area_body_entered(body):
-	if body is Unit and belongs_to_player != body.belongs_to_player:
+	if (body is Unit or body is Castle) and belongs_to_player != body.belongs_to_player:
 		lock_on_target(body)
