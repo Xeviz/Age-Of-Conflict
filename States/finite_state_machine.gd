@@ -25,8 +25,6 @@ func _physics_process(delta):
 		current_state.physics_update(delta)
 
 func on_child_transition(state, new_state_name):
-	if get_parent().name == "Cannon":
-		print("probuje zmienic [" + str(state) + "] na [" + new_state_name + "]")
 	if state != current_state:
 		return
 		
@@ -39,5 +37,3 @@ func on_child_transition(state, new_state_name):
 		
 	new_state.enter()
 	current_state = new_state
-	if get_parent().name == "Cannon":
-		print("current [" + str(current_state) + "]")

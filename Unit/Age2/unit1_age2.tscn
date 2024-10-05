@@ -1,40 +1,39 @@
-[gd_scene load_steps=10 format=3 uid="uid://dm3gka7brbfao"]
+[gd_scene load_steps=10 format=3 uid="uid://1ma6ksnnudb3"]
 
-[ext_resource type="Script" path="res://Unit/unit.gd" id="1_dqpgt"]
-[ext_resource type="Texture2D" uid="uid://druk1kswiiwhb" path="res://Textures/placeholder_unit.png" id="1_h3p2r"]
-[ext_resource type="Script" path="res://States/finite_state_machine.gd" id="2_06gnd"]
-[ext_resource type="Script" path="res://States/Unit/UnitAttacking.gd" id="4_qarve"]
-[ext_resource type="Script" path="res://States/Unit/UnitMoving.gd" id="5_3fjx8"]
-[ext_resource type="Script" path="res://States/Unit/UnitDying.gd" id="6_ruaie"]
+[ext_resource type="Script" path="res://Unit/unit.gd" id="1_fyr4y"]
+[ext_resource type="Texture2D" uid="uid://druk1kswiiwhb" path="res://Textures/placeholder_unit.png" id="2_r5ytk"]
+[ext_resource type="Script" path="res://States/finite_state_machine.gd" id="3_uqfdg"]
+[ext_resource type="Script" path="res://States/Unit/UnitAttacking.gd" id="4_tesvg"]
+[ext_resource type="Script" path="res://States/Unit/UnitMoving.gd" id="5_56y7v"]
+[ext_resource type="Script" path="res://States/Unit/UnitDying.gd" id="6_oe1as"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_pp4wi"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_thve0"]
 radius = 60.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7i8nq"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xr4tu"]
 size = Vector2(35, 128)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_fip4o"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_vpy2g"]
 radius = 160.0
 
-[node name="MeleeUnit" type="CharacterBody2D"]
-script = ExtResource("1_dqpgt")
+[node name="Unit1Age2" type="CharacterBody2D"]
+script = ExtResource("1_fyr4y")
 
 [node name="AttackRangeArea" type="Area2D" parent="."]
-collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRangeArea"]
-shape = SubResource("CircleShape2D_pp4wi")
+shape = SubResource("CircleShape2D_thve0")
 
 [node name="UnitCollider" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_7i8nq")
+shape = SubResource("RectangleShape2D_xr4tu")
 
 [node name="EnemyDetectionArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
-shape = SubResource("CircleShape2D_fip4o")
+shape = SubResource("CircleShape2D_vpy2g")
 
 [node name="PlaceholderTexture" type="Sprite2D" parent="."]
-texture = ExtResource("1_h3p2r")
+texture = ExtResource("2_r5ytk")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 anchors_preset = 5
@@ -51,19 +50,19 @@ value = 10.0
 show_percentage = false
 
 [node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("2_06gnd")
+script = ExtResource("3_uqfdg")
 initial_state = NodePath("UnitMoving")
 
 [node name="UnitAttacking" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("unit")]
-script = ExtResource("4_qarve")
+script = ExtResource("4_tesvg")
 unit = NodePath("../..")
 
 [node name="UnitMoving" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("unit")]
-script = ExtResource("5_3fjx8")
+script = ExtResource("5_56y7v")
 unit = NodePath("../..")
 
 [node name="UnitDying" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("unit")]
-script = ExtResource("6_ruaie")
+script = ExtResource("6_oe1as")
 unit = NodePath("../..")
 
 [connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]

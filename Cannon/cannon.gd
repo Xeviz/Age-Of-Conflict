@@ -18,6 +18,7 @@ var attack_speed: float = 0.7
 var time_to_next_attack: float = 0.0
 
 var projectile_damage = 5
+var projectile_range = 1600
 var is_ready = false
 
 func _ready() -> void:
@@ -28,13 +29,11 @@ func shoot_projectile():
 	var new_projectile
 	if stored_projectiles.is_empty():
 		new_projectile = projectile_scene.instantiate()
-		new_projectile.bind_to_shooter(self)
 		get_parent().add_child(new_projectile)
+		new_projectile.bind_to_shooter(self)
 	else:
 		new_projectile = stored_projectiles.pop_back()
 		new_projectile.bind_to_shooter(self)
-		
-	new_projectile.global_position = global_position
 	new_projectile.state_machine.on_child_transition(new_projectile.state_machine.current_state, "FiredInDirection")
 	fired_projectiles.append(new_projectile)
 	time_to_next_attack=attack_speed

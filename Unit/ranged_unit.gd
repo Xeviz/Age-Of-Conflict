@@ -19,7 +19,6 @@ func shoot_projectile(delta):
 			new_projectile.bind_to_shooter(self)
 			get_parent().add_child(new_projectile)
 		else:
-			print('strzelam zmagazynowanym')
 			new_projectile = stored_projectiles.pop_back()
 			new_projectile.global_position = global_position
 			

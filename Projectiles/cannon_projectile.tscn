@@ -9,7 +9,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_56035"]
 size = Vector2(70, 20)
 
-[node name="CannonProjectile" type="Node2D"]
+[node name="CannonProjectile" type="CharacterBody2D"]
 script = ExtResource("1_plsk5")
 
 [node name="ProjectileArea" type="Area2D" parent="."]

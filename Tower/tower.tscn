@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cinb3jgmju3ga"]
+[gd_scene load_steps=8 format=3 uid="uid://cinb3jgmju3ga"]
 
 [ext_resource type="Script" path="res://Tower/tower.gd" id="1_dhktn"]
 [ext_resource type="Texture2D" uid="uid://bnmta4uoblac2" path="res://Textures/placeholder_tower.png" id="1_e27pc"]
 [ext_resource type="Script" path="res://States/finite_state_machine.gd" id="3_5l3pl"]
+[ext_resource type="Script" path="res://States/Tower/highlighting_sell.gd" id="4_dwgnm"]
+[ext_resource type="Script" path="res://States/Tower/highlighting_append.gd" id="5_qyd2s"]
+[ext_resource type="Script" path="res://States/Tower/tower_idle.gd" id="6_irwsk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_founh"]
 size = Vector2(60, 60)
@@ -29,3 +32,12 @@ color = Color(1, 0, 0, 0.470588)
 
 [node name="FiniteStateMachine" type="Node" parent="."]
 script = ExtResource("3_5l3pl")
+
+[node name="HighlightingSell" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("4_dwgnm")
+
+[node name="HighlightingAppend" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("5_qyd2s")
+
+[node name="TowerIdle" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("6_irwsk")

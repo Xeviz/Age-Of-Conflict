@@ -19,5 +19,11 @@ func mount_cannon():
 	add_child(mounted_cannon)
 	
 	
-func dismount_cannon():
+func sell_cannon():
 	mounted_cannon.queue_free()
+	
+func go_to_highlighting_append():
+	state_machine.on_child_transition(state_machine.current_state, "HighlightingAppend")
+	
+func go_to_highlighting_sell():
+	state_machine.on_child_transition(state_machine.current_state, "HighlightingSell")

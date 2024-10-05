@@ -7,8 +7,8 @@ class_name ProjectileStored
 
 
 func enter():
-	projectile.projectile_owner.on_projectile_stored(projectile)
 	projectile.hide()
+	projectile.projectile_owner.on_projectile_stored(projectile)
 	projectile.projectile_area.monitoring = false
 	projectile.projectile_area.monitorable = false
 	

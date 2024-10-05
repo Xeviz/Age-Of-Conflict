@@ -1,32 +1,32 @@
-[gd_scene load_steps=10 format=3 uid="uid://bqwn33etfco84"]
+[gd_scene load_steps=10 format=3 uid="uid://cx46w01cscc3n"]
 
-[ext_resource type="Script" path="res://Unit/ranged_unit.gd" id="1_kpw2y"]
-[ext_resource type="Texture2D" uid="uid://druk1kswiiwhb" path="res://Textures/placeholder_unit.png" id="1_ppt8a"]
-[ext_resource type="Script" path="res://States/finite_state_machine.gd" id="2_02uha"]
-[ext_resource type="Script" path="res://States/Unit/UnitAttacking.gd" id="3_iohem"]
-[ext_resource type="Script" path="res://States/Unit/UnitMoving.gd" id="4_c82dq"]
-[ext_resource type="Script" path="res://States/Unit/UnitDying.gd" id="5_ndgk8"]
-[ext_resource type="Script" path="res://States/Unit/UnitShooting.gd" id="6_grxnj"]
+[ext_resource type="Script" path="res://Unit/ranged_unit.gd" id="1_3b08m"]
+[ext_resource type="Texture2D" uid="uid://druk1kswiiwhb" path="res://Textures/placeholder_unit.png" id="2_2sp0m"]
+[ext_resource type="Script" path="res://States/finite_state_machine.gd" id="3_o3jqq"]
+[ext_resource type="Script" path="res://States/Unit/UnitAttacking.gd" id="4_trsyl"]
+[ext_resource type="Script" path="res://States/Unit/UnitMoving.gd" id="5_1q4ia"]
+[ext_resource type="Script" path="res://States/Unit/UnitDying.gd" id="6_2cgfu"]
+[ext_resource type="Script" path="res://States/Unit/UnitShooting.gd" id="7_7fkgf"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sajdm"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1hwb0"]
 size = Vector2(35, 128)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6wurl"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_r7v8q"]
 radius = 600.0
 
-[node name="RangedUnit" type="CharacterBody2D"]
-script = ExtResource("1_kpw2y")
+[node name="Unit2Age2" type="CharacterBody2D"]
+script = ExtResource("1_3b08m")
 
 [node name="UnitCollider" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_sajdm")
+shape = SubResource("RectangleShape2D_1hwb0")
 
 [node name="EnemyDetectionArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
-shape = SubResource("CircleShape2D_6wurl")
+shape = SubResource("CircleShape2D_r7v8q")
 
 [node name="PlaceholderTexture" type="Sprite2D" parent="."]
-texture = ExtResource("1_ppt8a")
+texture = ExtResource("2_2sp0m")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 anchors_preset = 5
@@ -43,23 +43,23 @@ value = 10.0
 show_percentage = false
 
 [node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("2_02uha")
+script = ExtResource("3_o3jqq")
 initial_state = NodePath("UnitMoving")
 
 [node name="UnitAttacking" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("unit")]
-script = ExtResource("3_iohem")
+script = ExtResource("4_trsyl")
 unit = NodePath("../..")
 
 [node name="UnitMoving" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("unit")]
-script = ExtResource("4_c82dq")
+script = ExtResource("5_1q4ia")
 unit = NodePath("../..")
 
 [node name="UnitDying" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("unit")]
-script = ExtResource("5_ndgk8")
+script = ExtResource("6_2cgfu")
 unit = NodePath("../..")
 
 [node name="UnitShooting" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("unit")]
-script = ExtResource("6_grxnj")
+script = ExtResource("7_7fkgf")
 unit = NodePath("../..")
 
 [connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]
