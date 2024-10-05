@@ -4,6 +4,7 @@ class_name Unit
 @onready var health_bar = $HealthBar
 @onready var unit_collider = $UnitCollider
 @onready var unit_detection_area_collider = $EnemyDetectionArea/CollisionShape2D
+@onready var enemy_detection_area = $EnemyDetectionArea
 @onready var state_machine = $FiniteStateMachine
 @onready var attack_range_area = $AttackRangeArea
 
@@ -18,13 +19,14 @@ var experience_on_death: int = 100
 var gold_on_death: int = 50
 
 var is_alive: bool = true
+var is_targetable = false
 var belongs_to_player: bool = true
 var direction = Vector2.RIGHT
 var current_target: Node2D
 var unit_name: String
 var time_to_death: float = 1.5
+var time_to_spawn: float = 1.0
 
-var attack_range: float = 45.0
 
 func _ready():
 	belongs_to_player = false
@@ -82,7 +84,7 @@ func receive_damage(damage_amount):
 		die()
 
 func die():
-	
+	is_targetable = false
 	unit_collider.disabled = true
 	$PlaceholderTexture.hide()
 	if belongs_to_player:
@@ -100,5 +102,5 @@ func die():
 	
 
 func _on_enemy_detection_area_body_entered(body):
-	if (body is Unit or body is Castle) and belongs_to_player != body.belongs_to_player:
+	if (body is Unit or body is Castle) and belongs_to_player != body.belongs_to_player and body.is_targetable:
 		lock_on_target(body)

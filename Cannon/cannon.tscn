@@ -42,7 +42,7 @@ shape = SubResource("CircleShape2D_1bjor")
 script = ExtResource("2_sr6jt")
 initial_state = NodePath("CannonAwaitingTarget")
 
-[node name="CannonSwitchTarget" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("cannon")]
+[node name="CannonPreview" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("cannon")]
 script = ExtResource("4_fg6fa")
 cannon = NodePath("../..")
 

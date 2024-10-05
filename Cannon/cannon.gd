@@ -45,7 +45,7 @@ func on_projectile_stored(projectile):
 func _on_attack_range_area_body_entered(body: Node2D) -> void:
 	if state_machine.current_state is CannonFiring:
 		return
-	elif body is Unit and body.belongs_to_player != belongs_to_player and body.current_health>0:
+	elif body is Unit and body.belongs_to_player != belongs_to_player and body.is_targetable:
 		print("hej")
 		current_target = body
 		state_machine.on_child_transition(state_machine.current_state, "CannonFiring")

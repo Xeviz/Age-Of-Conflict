@@ -10,7 +10,7 @@ var current_health: int = 10
 
 var is_alive: bool = true
 var belongs_to_player: bool = true
-
+var is_targetable: bool = true
 var next_tower_spawn_pos = Vector2(100, -250)
 
 func _ready():

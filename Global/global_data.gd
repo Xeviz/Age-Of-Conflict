@@ -15,3 +15,8 @@ var stages_exp_requirements = {
 	4: 100000,
 	5: 1000000
 }
+
+
+var stages_units_scenes = {
+	1: [load("res://Unit/Age1/unit1_age1.tscn"), load("res://Unit/Age1/unit2_age1.tscn"), load("res://Unit/Age1/unit3_age1.tscn")]
+}
