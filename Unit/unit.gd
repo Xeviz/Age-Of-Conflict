@@ -27,8 +27,7 @@ var time_to_death: float = 1.5
 var attack_range: float = 45.0
 
 func _ready():
-	if name == "MeleeUnit2":
-		belongs_to_player = false
+	belongs_to_player = false
 
 func lock_on_target(target):
 	current_target = target
