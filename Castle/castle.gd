@@ -14,7 +14,6 @@ var is_targetable: bool = true
 var next_tower_spawn_pos = Vector2(100, -250)
 
 func _ready():
-	append_tower()
 	health_bar.max_value = max_health
 	health_bar.value = current_health
 

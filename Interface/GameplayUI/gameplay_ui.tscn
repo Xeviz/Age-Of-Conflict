@@ -47,17 +47,19 @@ text = "UNITS"
 [node name="CannonsButton" type="Button" parent="PurchasesContainer"]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
-text = "Cannon"
+text = "BUY
+Cannon"
 
 [node name="BuyTowerButton" type="Button" parent="PurchasesContainer"]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 text = "+Tower"
 
-[node name="SellTowerButton" type="Button" parent="PurchasesContainer"]
+[node name="SellCannonButton" type="Button" parent="PurchasesContainer"]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
-text = "-Tower"
+text = "SELL
+Cannon"
 
 [node name="AdvanceAgeButton" type="Button" parent="PurchasesContainer"]
 custom_minimum_size = Vector2(75, 75)
@@ -153,6 +155,11 @@ shape = SubResource("RectangleShape2D_1pcn6")
 
 [connection signal="button_down" from="PurchasesContainer/UnitsButton" to="." method="_on_units_button_button_down"]
 [connection signal="button_down" from="PurchasesContainer/CannonsButton" to="." method="_on_cannons_button_button_down"]
+[connection signal="button_down" from="PurchasesContainer/BuyTowerButton" to="." method="_on_buy_tower_button_button_down"]
+[connection signal="button_down" from="AvailableUnits/Unit1" to="." method="_on_unit_1_button_down"]
+[connection signal="button_down" from="AvailableUnits/Unit2" to="." method="_on_unit_2_button_down"]
+[connection signal="button_down" from="AvailableUnits/Unit3" to="." method="_on_unit_3_button_down"]
+[connection signal="button_down" from="AvailableUnits/Unit4" to="." method="_on_unit_4_button_down"]
 [connection signal="button_down" from="AvailableUnits/GoBackButton" to="." method="_on_go_back_button_button_down"]
 [connection signal="button_down" from="AvailableCannons/GoBackButton" to="." method="_on_go_back_button_button_down"]
 [connection signal="mouse_entered" from="MoveScreenLeft" to="." method="_on_move_screen_left_mouse_entered"]

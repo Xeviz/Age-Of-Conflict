@@ -10,8 +10,6 @@ class_name Tower
 var mounted_cannon: Cannon
 
 
-func _ready() -> void:
-	mount_cannon()
 
 func mount_cannon():
 	mounted_cannon = cannon_scene.instantiate()

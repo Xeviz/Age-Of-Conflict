@@ -10,5 +10,6 @@ func update(delta):
 		unit.set_collision_layer_value(1, true)
 		unit.show()
 		unit.is_targetable = true
-		unit.enemy_detection_area.set_collision_layer_value(1, true)
+		unit.enemy_detection_area.monitoring = true
+		unit.enemy_detection_area.monitorable = true
 		state_transition.emit(self, "UnitMoving")

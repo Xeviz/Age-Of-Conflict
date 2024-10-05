@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cog643r4m4c1p"]
+[gd_scene load_steps=5 format=3 uid="uid://cog643r4m4c1p"]
 
 [ext_resource type="PackedScene" uid="uid://biamp6v4ql1tg" path="res://Interface/GameplayUI/gameplay_ui.tscn" id="1_1bf4r"]
 [ext_resource type="Script" path="res://GameplayMap/gameplay_map.gd" id="1_f8w7p"]
 [ext_resource type="PackedScene" uid="uid://b01svbciva0rt" path="res://Castle/castle.tscn" id="4_fru5x"]
-[ext_resource type="PackedScene" uid="uid://bem32eiql184r" path="res://Unit/Age1/unit1_age1.tscn" id="4_qlx78"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cetnj"]
 size = Vector2(2000, 450)
@@ -32,5 +31,3 @@ anchor_mode = 0
 
 [node name="Castle" parent="." instance=ExtResource("4_fru5x")]
 position = Vector2(198, 548)
-
-[node name="Unit1Age1" parent="." instance=ExtResource("4_qlx78")]

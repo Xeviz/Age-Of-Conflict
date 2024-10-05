@@ -19,6 +19,7 @@ size = Vector2(35, 128)
 radius = 160.0
 
 [node name="Unit1Age1" type="CharacterBody2D"]
+collision_mask = 0
 script = ExtResource("1_8pams")
 
 [node name="AttackRangeArea" type="Area2D" parent="."]
@@ -30,7 +31,6 @@ shape = SubResource("CircleShape2D_tst82")
 shape = SubResource("RectangleShape2D_6bigm")
 
 [node name="EnemyDetectionArea" type="Area2D" parent="."]
-collision_layer = 0
 monitoring = false
 monitorable = false
 

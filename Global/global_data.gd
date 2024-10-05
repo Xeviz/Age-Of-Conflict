@@ -20,3 +20,7 @@ var stages_exp_requirements = {
 var stages_units_scenes = {
 	1: [load("res://Unit/Age1/unit1_age1.tscn"), load("res://Unit/Age1/unit2_age1.tscn"), load("res://Unit/Age1/unit3_age1.tscn")]
 }
+
+var stages_cannons_scenes = {
+	1: [load("res://Cannon/cannon.tscn"), load("res://Cannon/cannon.tscn"), load("res://Cannon/cannon.tscn")]
+}
