@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://1ma6ksnnudb3"]
+[gd_scene load_steps=12 format=3 uid="uid://1ma6ksnnudb3"]
 
 [ext_resource type="Script" path="res://Unit/unit.gd" id="1_fyr4y"]
 [ext_resource type="Texture2D" uid="uid://druk1kswiiwhb" path="res://Textures/placeholder_unit.png" id="2_r5ytk"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://States/Unit/UnitAttacking.gd" id="4_tesvg"]
 [ext_resource type="Script" path="res://States/Unit/UnitMoving.gd" id="5_56y7v"]
 [ext_resource type="Script" path="res://States/Unit/UnitDying.gd" id="6_oe1as"]
+[ext_resource type="Script" path="res://States/Unit/UnitPreview.gd" id="7_rqk0a"]
+[ext_resource type="Script" path="res://States/Unit/UnitSpawning.gd" id="8_1q8ie"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_thve0"]
 radius = 60.0
@@ -51,7 +53,7 @@ show_percentage = false
 
 [node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_uqfdg")
-initial_state = NodePath("UnitMoving")
+initial_state = NodePath("UnitPreview")
 
 [node name="UnitAttacking" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("unit")]
 script = ExtResource("4_tesvg")
@@ -63,6 +65,14 @@ unit = NodePath("../..")
 
 [node name="UnitDying" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("unit")]
 script = ExtResource("6_oe1as")
+unit = NodePath("../..")
+
+[node name="UnitPreview" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("unit")]
+script = ExtResource("7_rqk0a")
+unit = NodePath("../..")
+
+[node name="UnitSpawning" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("unit")]
+script = ExtResource("8_1q8ie")
 unit = NodePath("../..")
 
 [connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]

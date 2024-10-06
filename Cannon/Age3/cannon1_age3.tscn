@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://3nr3c4rmd45g"]
+
+[ext_resource type="Script" path="res://Cannon/cannon.gd" id="1_x1jhe"]
+[ext_resource type="Texture2D" uid="uid://5l7bukxy4w8l" path="res://Textures/placeholder_cannon.png" id="2_b2hwh"]
+[ext_resource type="Script" path="res://States/finite_state_machine.gd" id="3_j55mn"]
+[ext_resource type="Script" path="res://States/Cannon/cannon_switch_target.gd" id="4_2cs0w"]
+[ext_resource type="Script" path="res://States/Cannon/cannon_firing.gd" id="5_0snoj"]
+[ext_resource type="Script" path="res://States/Cannon/cannon_awaiting_target.gd" id="6_gx42e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v1nxk"]
+radius = 800.0
+
+[node name="Cannon1Age3" type="Node2D"]
+script = ExtResource("1_x1jhe")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(73, 0)
+texture = ExtResource("2_b2hwh")
+
+[node name="AreaHighlighter" type="ColorRect" parent="."]
+visible = false
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 28.0
+offset_bottom = 30.0
+mouse_filter = 1
+color = Color(1, 0, 0, 0.470588)
+
+[node name="AttackRangeArea" type="Area2D" parent="."]
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRangeArea"]
+shape = SubResource("CircleShape2D_v1nxk")
+
+[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_j55mn")
+initial_state = NodePath("CannonPreview")
+
+[node name="CannonPreview" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("cannon")]
+script = ExtResource("4_2cs0w")
+cannon = NodePath("../..")
+
+[node name="CannonFiring" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("cannon")]
+script = ExtResource("5_0snoj")
+cannon = NodePath("../..")
+
+[node name="CannonAwaitingTarget" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("cannon")]
+script = ExtResource("6_gx42e")
+cannon = NodePath("../..")
+
+[connection signal="body_entered" from="AttackRangeArea" to="." method="_on_attack_range_area_body_entered"]

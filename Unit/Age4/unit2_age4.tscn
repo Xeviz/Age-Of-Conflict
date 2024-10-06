@@ -1,34 +1,35 @@
-[gd_scene load_steps=12 format=3 uid="uid://cx46w01cscc3n"]
+[gd_scene load_steps=12 format=3 uid="uid://6ees7yqga2v3"]
 
-[ext_resource type="Script" path="res://Unit/ranged_unit.gd" id="1_3b08m"]
-[ext_resource type="Texture2D" uid="uid://druk1kswiiwhb" path="res://Textures/placeholder_unit.png" id="2_2sp0m"]
-[ext_resource type="Script" path="res://States/finite_state_machine.gd" id="3_o3jqq"]
-[ext_resource type="Script" path="res://States/Unit/UnitAttacking.gd" id="4_trsyl"]
-[ext_resource type="Script" path="res://States/Unit/UnitMoving.gd" id="5_1q4ia"]
-[ext_resource type="Script" path="res://States/Unit/UnitDying.gd" id="6_2cgfu"]
-[ext_resource type="Script" path="res://States/Unit/UnitShooting.gd" id="7_7fkgf"]
-[ext_resource type="Script" path="res://States/Unit/UnitPreview.gd" id="8_btx7l"]
-[ext_resource type="Script" path="res://States/Unit/UnitSpawning.gd" id="9_celge"]
+[ext_resource type="Script" path="res://Unit/ranged_unit.gd" id="1_1v55i"]
+[ext_resource type="Texture2D" uid="uid://druk1kswiiwhb" path="res://Textures/placeholder_unit.png" id="2_c5eao"]
+[ext_resource type="Script" path="res://States/finite_state_machine.gd" id="3_368ed"]
+[ext_resource type="Script" path="res://States/Unit/UnitAttacking.gd" id="4_efiae"]
+[ext_resource type="Script" path="res://States/Unit/UnitMoving.gd" id="5_u617h"]
+[ext_resource type="Script" path="res://States/Unit/UnitDying.gd" id="6_urog0"]
+[ext_resource type="Script" path="res://States/Unit/UnitShooting.gd" id="7_4i2o6"]
+[ext_resource type="Script" path="res://States/Unit/UnitPreview.gd" id="8_exiwa"]
+[ext_resource type="Script" path="res://States/Unit/UnitSpawning.gd" id="9_kxqvy"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1hwb0"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qeqbq"]
 size = Vector2(35, 128)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_r7v8q"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_p26x8"]
 radius = 600.0
 
-[node name="Unit2Age2" type="CharacterBody2D"]
-script = ExtResource("1_3b08m")
+[node name="Unit2Age4" type="CharacterBody2D"]
+script = ExtResource("1_1v55i")
 
 [node name="UnitCollider" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_1hwb0")
+shape = SubResource("RectangleShape2D_qeqbq")
 
 [node name="EnemyDetectionArea" type="Area2D" parent="."]
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
-shape = SubResource("CircleShape2D_r7v8q")
+shape = SubResource("CircleShape2D_p26x8")
 
 [node name="PlaceholderTexture" type="Sprite2D" parent="."]
-texture = ExtResource("2_2sp0m")
+texture = ExtResource("2_c5eao")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 anchors_preset = 5
@@ -45,31 +46,31 @@ value = 10.0
 show_percentage = false
 
 [node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("3_o3jqq")
+script = ExtResource("3_368ed")
 initial_state = NodePath("UnitPreview")
 
 [node name="UnitAttacking" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("unit")]
-script = ExtResource("4_trsyl")
+script = ExtResource("4_efiae")
 unit = NodePath("../..")
 
 [node name="UnitMoving" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("unit")]
-script = ExtResource("5_1q4ia")
+script = ExtResource("5_u617h")
 unit = NodePath("../..")
 
 [node name="UnitDying" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("unit")]
-script = ExtResource("6_2cgfu")
+script = ExtResource("6_urog0")
 unit = NodePath("../..")
 
 [node name="UnitShooting" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("unit")]
-script = ExtResource("7_7fkgf")
+script = ExtResource("7_4i2o6")
 unit = NodePath("../..")
 
 [node name="UnitPreview" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("unit")]
-script = ExtResource("8_btx7l")
+script = ExtResource("8_exiwa")
 unit = NodePath("../..")
 
 [node name="UnitSpawning" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("unit")]
-script = ExtResource("9_celge")
+script = ExtResource("9_kxqvy")
 unit = NodePath("../..")
 
 [connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]
