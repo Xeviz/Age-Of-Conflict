@@ -102,7 +102,5 @@ func die():
 	
 
 func _on_enemy_detection_area_body_entered(body):
-	print("hej?")
 	if (body is Unit or body is Castle) and belongs_to_player != body.belongs_to_player and body.is_targetable:
-		print("lockuje?")
 		lock_on_target(body)

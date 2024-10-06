@@ -31,16 +31,19 @@ offset_left = -103.0
 offset_top = -30.0
 offset_right = -43.0
 offset_bottom = 30.0
+mouse_filter = 1
 color = Color(1, 0, 0, 0.470588)
 
 [node name="AttackRangeArea" type="Area2D" parent="."]
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRangeArea"]
 shape = SubResource("CircleShape2D_1bjor")
 
 [node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_sr6jt")
-initial_state = NodePath("CannonAwaitingTarget")
+initial_state = NodePath("CannonPreview")
 
 [node name="CannonPreview" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("cannon")]
 script = ExtResource("4_fg6fa")

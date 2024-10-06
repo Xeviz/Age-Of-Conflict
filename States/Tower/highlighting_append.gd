@@ -7,5 +7,6 @@ class_name HighlightingAppend
 func enter():
 	tower.placement_highligher.show()
 
+
 func exit():
 	tower.placement_highligher.hide()

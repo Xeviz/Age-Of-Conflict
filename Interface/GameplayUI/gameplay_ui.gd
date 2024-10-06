@@ -90,3 +90,23 @@ func _on_unit_3_button_down() -> void:
 func _on_unit_4_button_down() -> void:
 	var new_unit = available_units_scenes[3].instantiate()
 	gameplay_map.add_child(new_unit)
+
+
+func _on_cannon_1_button_down() -> void:
+	var new_cannon = available_cannons_scenes[0].instantiate()
+	gameplay_map.add_child(new_cannon)
+
+
+func _on_cannon_2_button_down() -> void:
+	var new_cannon = available_cannons_scenes[0].instantiate()
+	gameplay_map.add_child(new_cannon)
+
+
+func _on_cannon_3_button_down() -> void:
+	var new_cannon = available_cannons_scenes[0].instantiate()
+	gameplay_map.add_child(new_cannon)
+
+
+func _on_cannon_4_button_down() -> void:
+	var new_cannon = available_cannons_scenes[0].instantiate()
+	gameplay_map.add_child(new_cannon)

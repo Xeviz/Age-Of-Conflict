@@ -28,16 +28,23 @@ offset_left = -87.0
 offset_top = -29.0
 offset_right = -27.0
 offset_bottom = 31.0
+mouse_filter = 1
 color = Color(1, 0, 0, 0.470588)
 
 [node name="FiniteStateMachine" type="Node" parent="."]
 script = ExtResource("3_5l3pl")
 
-[node name="HighlightingSell" type="Node" parent="FiniteStateMachine"]
+[node name="HighlightingSell" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("tower")]
 script = ExtResource("4_dwgnm")
+tower = NodePath("../..")
 
-[node name="HighlightingAppend" type="Node" parent="FiniteStateMachine"]
+[node name="HighlightingAppend" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("tower")]
 script = ExtResource("5_qyd2s")
+tower = NodePath("../..")
 
-[node name="TowerIdle" type="Node" parent="FiniteStateMachine"]
+[node name="TowerIdle" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("tower")]
 script = ExtResource("6_irwsk")
+tower = NodePath("../..")
+
+[connection signal="mouse_entered" from="CannonPlacementArea" to="." method="_on_cannon_placement_area_mouse_entered"]
+[connection signal="mouse_exited" from="CannonPlacementArea" to="." method="_on_cannon_placement_area_mouse_exited"]

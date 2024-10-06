@@ -2,18 +2,17 @@ extends Node2D
 class_name Tower
 
 
-@onready var cannon_placement_area = $CannonPlacementArea
-@onready var placement_highligher = $AreaHighlighter
-@onready var state_machine = $FiniteStateMachine
-@onready var cannon_scene = preload("res://Cannon/cannon.tscn")
+@onready var cannon_placement_area: Area2D = $CannonPlacementArea
+@onready var placement_highligher: ColorRect = $AreaHighlighter
+@onready var state_machine: FiniteStateMachine = $FiniteStateMachine
+@onready var gameplay_map = get_parent().get_parent().gameplay_map
 
 var mounted_cannon: Cannon
 
 
 
-func mount_cannon():
-	mounted_cannon = cannon_scene.instantiate()
-	mounted_cannon.position = cannon_placement_area.position
+func mount_cannon(cannon_to_mount):
+	mounted_cannon = cannon_to_mount
 	add_child(mounted_cannon)
 	
 	
@@ -25,3 +24,12 @@ func go_to_highlighting_append():
 	
 func go_to_highlighting_sell():
 	state_machine.on_child_transition(state_machine.current_state, "HighlightingSell")
+
+func go_to_idle():
+	state_machine.on_child_transition(state_machine.current_state, "TowerIdle")
+
+func _on_cannon_placement_area_mouse_entered() -> void:
+	gameplay_map.targeted_tower = self
+
+func _on_cannon_placement_area_mouse_exited() -> void:
+	gameplay_map.targeted_tower = null

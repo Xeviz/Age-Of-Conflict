@@ -4,6 +4,7 @@ class_name Castle
 @onready var health_bar = $HealthBar
 @onready var towers = $Towers
 @onready var tower_scene = preload("res://Tower/tower.tscn")
+@onready var gameplay_map = get_parent()
 
 var max_health: int = 10
 var current_health: int = 10
