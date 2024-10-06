@@ -6,6 +6,7 @@ class_name CannonPreview
 var ignored_button_click = false
 
 func enter():
+	ignored_button_click = false
 	cannon.hide()
 	gameplay_map.enable_tower_highlighters()
 	

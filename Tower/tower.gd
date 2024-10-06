@@ -9,7 +9,8 @@ class_name Tower
 
 var mounted_cannon: Cannon
 
-
+func _ready() -> void:
+	print(gameplay_map)
 
 func mount_cannon(cannon_to_mount):
 	mounted_cannon = cannon_to_mount
@@ -17,6 +18,7 @@ func mount_cannon(cannon_to_mount):
 	
 	
 func sell_cannon():
+	print("sprzedalem canona")
 	mounted_cannon.queue_free()
 	
 func go_to_highlighting_append():

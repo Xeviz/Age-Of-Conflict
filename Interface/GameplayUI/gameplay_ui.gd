@@ -110,3 +110,7 @@ func _on_cannon_3_button_down() -> void:
 func _on_cannon_4_button_down() -> void:
 	var new_cannon = available_cannons_scenes[0].instantiate()
 	gameplay_map.add_child(new_cannon)
+
+
+func _on_sell_cannon_button_button_down() -> void:
+	gameplay_map.enable_cannon_highlighters()

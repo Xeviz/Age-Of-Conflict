@@ -6,6 +6,7 @@ class_name UnitPreview
 var ignored_button_click = false
 
 func enter():
+	ignored_button_click = false
 	spawn_area = unit.get_parent().player_spawn_area
 	unit.hide()
 	

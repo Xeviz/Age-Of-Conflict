@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3uyy84wd61aw"]
+[gd_scene load_steps=8 format=3 uid="uid://b3uyy84wd61aw"]
 
 [ext_resource type="Texture2D" uid="uid://5l7bukxy4w8l" path="res://Textures/placeholder_cannon.png" id="1_rb17f"]
 [ext_resource type="Script" path="res://Cannon/cannon.gd" id="1_u2lvf"]
@@ -6,9 +6,6 @@
 [ext_resource type="Script" path="res://States/Cannon/cannon_switch_target.gd" id="4_fg6fa"]
 [ext_resource type="Script" path="res://States/Cannon/cannon_firing.gd" id="5_ugq5a"]
 [ext_resource type="Script" path="res://States/Cannon/cannon_awaiting_target.gd" id="6_ki376"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yie4x"]
-size = Vector2(60, 60)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1bjor"]
 radius = 800.0
@@ -20,16 +17,11 @@ script = ExtResource("1_u2lvf")
 position = Vector2(73, 0)
 texture = ExtResource("1_rb17f")
 
-[node name="PlacementArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlacementArea"]
-shape = SubResource("RectangleShape2D_yie4x")
-
 [node name="AreaHighlighter" type="ColorRect" parent="."]
 visible = false
-offset_left = -103.0
+offset_left = -30.0
 offset_top = -30.0
-offset_right = -43.0
+offset_right = 28.0
 offset_bottom = 30.0
 mouse_filter = 1
 color = Color(1, 0, 0, 0.470588)

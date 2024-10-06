@@ -31,8 +31,9 @@ offset_bottom = 31.0
 mouse_filter = 1
 color = Color(1, 0, 0, 0.470588)
 
-[node name="FiniteStateMachine" type="Node" parent="."]
+[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_5l3pl")
+initial_state = NodePath("TowerIdle")
 
 [node name="HighlightingSell" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("tower")]
 script = ExtResource("4_dwgnm")
