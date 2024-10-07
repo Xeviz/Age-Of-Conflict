@@ -38,9 +38,17 @@ func advance_age():
 func _process(delta) -> void:
 	gold_info.text = "GOLD: " + str(global_data.player_gold)
 	exp_info.text = "EXP: " + str(global_data.player_experience)
-	if move_screen_left and camera.position.x>0:
+	move_camera(delta)
+
+func move_camera(delta):
+	if move_screen_left and camera.position.x - (screen_move_speed * delta) > 0:
 		camera.position.x -= screen_move_speed * delta
-	elif move_screen_right and camera.position.x<4400:
+	elif move_screen_right and camera.position.x + (screen_move_speed * delta) < 1600:
+		camera.position.x += screen_move_speed * delta
+		
+	if Input.is_action_pressed("ui_left") and camera.position.x - (screen_move_speed * delta) > 0:
+		camera.position.x -= screen_move_speed * delta
+	elif Input.is_action_pressed("ui_right") and camera.position.x + (screen_move_speed * delta) < 1600:
 		camera.position.x += screen_move_speed * delta
 
 func _on_units_button_button_down() -> void:

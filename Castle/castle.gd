@@ -19,6 +19,8 @@ var current_age = 1
 
 
 func _ready():
+	if name == "EnemyCastle":
+		belongs_to_player = false
 	health_bar.max_value = max_health
 	health_bar.value = current_health
 

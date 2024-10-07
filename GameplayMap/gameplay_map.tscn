@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b01svbciva0rt" path="res://Castle/castle.tscn" id="4_fru5x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cetnj"]
-size = Vector2(2000, 300)
+size = Vector2(1200, 300)
 
 [node name="GameplayMap" type="Node2D" node_paths=PackedStringArray("player_castle", "player_spawn_area")]
 script = ExtResource("1_f8w7p")
@@ -13,13 +13,13 @@ player_castle = NodePath("Castle")
 player_spawn_area = NodePath("PlayerSpawnArea")
 
 [node name="PlayerSpawnArea" type="Area2D" parent="."]
-position = Vector2(1400, 750)
+position = Vector2(1000, 750)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerSpawnArea"]
 shape = SubResource("RectangleShape2D_cetnj")
 
 [node name="EnemySpawnArea" type="Area2D" parent="."]
-position = Vector2(3400, 750)
+position = Vector2(2200, 750)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemySpawnArea"]
 shape = SubResource("RectangleShape2D_cetnj")
@@ -33,5 +33,5 @@ anchor_mode = 0
 position = Vector2(200, 700)
 
 [node name="EnemyCastle" parent="." instance=ExtResource("4_fru5x")]
-position = Vector2(4600, 700)
+position = Vector2(3000, 700)
 scale = Vector2(-1, 1)
