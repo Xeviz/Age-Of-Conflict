@@ -9,6 +9,9 @@ var enemy_stage: int = 1
 var player_gold: int = 100
 var enemy_gold: int = 100
 
+var player_spawn_queue: float = 0.0
+var enemy_spawn_queue: float = 0.0
+
 var stages_exp_requirements = {
 	2: 4000,
 	3: 15000,
@@ -65,7 +68,7 @@ var stages_units_stats = {
 		"exp_to_owner": 40,
 		"exp_to_slayer": 50,
 		"gold_on_death": 30,
-		"time_to_spawn": 3.0,
+		"time_to_spawn": 1.5,
 		"speed": 40
 	}, {
 		"cost": 30,
@@ -75,7 +78,7 @@ var stages_units_stats = {
 		"exp_to_owner": 60,
 		"exp_to_slayer": 70,
 		"gold_on_death": 40,
-		"time_to_spawn": 3.5,
+		"time_to_spawn": 2.0,
 		"speed": 45
 	}, {
 		"cost": 100,
@@ -85,7 +88,7 @@ var stages_units_stats = {
 		"exp_to_owner": 125,
 		"exp_to_slayer": 150,
 		"gold_on_death": 150,
-		"time_to_spawn": 6.0,
+		"time_to_spawn": 4.0,
 		"speed": 38
 	}],
 	2: [{

@@ -18,12 +18,10 @@ func update(delta):
 	unit.global_position = mouse_pos
 	if spawn_area.overlaps_body(unit):
 		unit.show()
-		if Input.is_action_just_pressed("left_mouse_click") and ignored_button_click:
+		if Input.is_action_just_pressed("left_mouse_click"):
 			state_transition.emit(self, "UnitSpawning")
 	else:
 		unit.hide()
-		if Input.is_action_just_pressed("left_mouse_click") and ignored_button_click:
-			unit.queue_free()
 	if Input.is_action_just_pressed("ui_cancel"):
 			unit.queue_free()
 	

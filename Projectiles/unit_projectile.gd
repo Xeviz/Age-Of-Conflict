@@ -27,9 +27,9 @@ func _on_projectile_area_body_entered(body):
 	
 		
 func travel_towards_target(delta):
-	if target:
+	if target != null:
 		latest_target_position = target.global_position
-	elif not target and latest_target_position.distance_to(global_position)<5:
+	elif target == null and latest_target_position.distance_to(global_position)<5:
 		projectile_owner.fired_projectiles.erase(self)
 		state_machine.on_child_transition(state_machine.current_state, "ProjectileStored")
 	direction = (latest_target_position - global_position).normalized()

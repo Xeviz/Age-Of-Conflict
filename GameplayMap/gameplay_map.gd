@@ -2,7 +2,20 @@ extends Node2D
 
 @export var player_castle: Castle
 @export var player_spawn_area: Area2D
+@export var enemy_castle: Castle
+@export var enemy_spawn_area: Area2D
+
 var targeted_tower: Tower = null
+
+func _process(delta: float) -> void:
+	if global_data.player_spawn_queue>0:
+		global_data.player_spawn_queue-=delta
+	else:
+		global_data.player_spawn_queue = 0
+	if global_data.enemy_spawn_queue>0:
+		global_data.enemy_spawn_queue-=delta
+	else:
+		global_data.enemy_spawn_queue = 0
 
 func _ready() -> void:
 	print(self)

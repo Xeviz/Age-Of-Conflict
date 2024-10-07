@@ -4,9 +4,9 @@ class_name Unit
 @onready var health_bar = $HealthBar
 @onready var unit_collider = $UnitCollider
 @onready var unit_detection_area_collider = $EnemyDetectionArea/CollisionShape2D
-@onready var enemy_detection_area = $EnemyDetectionArea
-@onready var state_machine = $FiniteStateMachine
-@onready var attack_range_area = $AttackRangeArea
+@onready var enemy_detection_area: Area2D = $EnemyDetectionArea
+@onready var attack_range_area: Area2D = $AttackRangeArea
+@onready var state_machine: FiniteStateMachine = $FiniteStateMachine
 
 
 var speed: float = 35.0
@@ -89,10 +89,12 @@ func die():
 		global_data.player_experience += exp_to_owner
 		global_data.enemy_experience += exp_to_slayer
 		global_data.enemy_gold += gold_on_death
+		global_data.player_gold += cost
 	else:
 		global_data.player_experience += exp_to_slayer
 		global_data.enemy_experience += exp_to_owner
 		global_data.player_gold += gold_on_death
+		global_data.enemy_gold += cost
 		
 	state_machine.on_child_transition(state_machine.current_state, "UnitDying")
 	

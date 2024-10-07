@@ -15,7 +15,6 @@ func _ready():
 		initial_state.enter()
 		current_state = initial_state
 
-
 func _process(delta):
 	if current_state:
 		current_state.update(delta)

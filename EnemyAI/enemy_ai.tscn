@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://ltcn3fhyfxeb"]
+
+[ext_resource type="Script" path="res://EnemyAI/enemy_ai.gd" id="1_ah3or"]
+[ext_resource type="Script" path="res://States/finite_state_machine.gd" id="2_xmmp6"]
+[ext_resource type="Script" path="res://States/EnemyAI/performing_conditionals.gd" id="3_wa1nc"]
+[ext_resource type="Script" path="res://States/EnemyAI/performing_unconditionals.gd" id="4_4j12h"]
+
+[node name="EnemyAI" type="Node"]
+script = ExtResource("1_ah3or")
+
+[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_xmmp6")
+initial_state = NodePath("PerformingConditionals")
+
+[node name="PerformingConditionals" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("enemy_ai")]
+script = ExtResource("3_wa1nc")
+enemy_ai = NodePath("../..")
+
+[node name="PerformingUnconditionals" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("enemy_ai")]
+script = ExtResource("4_4j12h")
+enemy_ai = NodePath("../..")
