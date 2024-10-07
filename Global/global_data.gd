@@ -10,12 +10,19 @@ var player_gold: int = 100
 var enemy_gold: int = 100
 
 var stages_exp_requirements = {
-	2: 10000,
-	3: 25000,
-	4: 100000,
-	5: 1000000
+	2: 4000,
+	3: 15000,
+	4: 75000,
+	5: 500000
 }
 
+var stages_castle_health_bonus = {
+	1: 0,
+	2: 500,
+	3: 1500,
+	4: 2500,
+	5: 4000
+}
 
 var stages_units_scenes = {
 	1: [load("res://Unit/Age1/unit1_age1.tscn"), load("res://Unit/Age1/unit2_age1.tscn"), load("res://Unit/Age1/unit3_age1.tscn")],
@@ -214,5 +221,93 @@ var stages_units_stats = {
 		"gold_on_death": 700,
 		"time_to_spawn": 7.5,
 		"speed": 50
+	}]
+}
+
+var stages_cannons_stats = {
+	1: [{
+		"damage": 3,
+		"attack_speed": 2.0,
+		"cost": 250,
+		"sell_value": 150
+	}, {
+		"damage": 5,
+		"attack_speed": 1.8,
+		"cost": 500,
+		"sell_value": 300
+	}, {
+		"damage": 8,
+		"attack_speed": 1.6,
+		"cost": 1000,
+		"sell_value": 600
+	}],
+	2: [{
+		"damage": 6,
+		"attack_speed": 1.9,
+		"cost": 400,
+		"sell_value": 250
+	}, {
+		"damage": 9,
+		"attack_speed": 1.7,
+		"cost": 800,
+		"sell_value": 500
+	}, {
+		"damage": 12,
+		"attack_speed": 1.5,
+		"cost": 1600,
+		"sell_value": 1000
+	}],
+	3: [{
+		"damage": 9,
+		"attack_speed": 1.8,
+		"cost": 600,
+		"sell_value": 350
+	}, {
+		"damage": 13,
+		"attack_speed": 1.6,
+		"cost": 1200,
+		"sell_value": 700
+	}, {
+		"damage": 18,
+		"attack_speed": 1.4,
+		"cost": 2400,
+		"sell_value": 1400
+	}],
+	4: [{
+		"damage": 12,
+		"attack_speed": 1.7,
+		"cost": 800,
+		"sell_value": 450
+	}, {
+		"damage": 17,
+		"attack_speed": 1.5,
+		"cost": 1600,
+		"sell_value": 900
+	}, {
+		"damage": 24,
+		"attack_speed": 1.3,
+		"cost": 3200,
+		"sell_value": 1800
+	}],
+	5: [{
+		"damage": 15,
+		"attack_speed": 1.6,
+		"cost": 1000,
+		"sell_value": 600
+	}, {
+		"damage": 22,
+		"attack_speed": 1.4,
+		"cost": 2000,
+		"sell_value": 1200
+	}, {
+		"damage": 30,
+		"attack_speed": 1.2,
+		"cost": 4000,
+		"sell_value": 2400
+	}, {
+		"damage": 40,
+		"attack_speed": 1.1,
+		"cost": 8000,
+		"sell_value": 4800
 	}]
 }

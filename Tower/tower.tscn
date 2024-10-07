@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cinb3jgmju3ga"]
 
 [ext_resource type="Script" path="res://Tower/tower.gd" id="1_dhktn"]
-[ext_resource type="Texture2D" uid="uid://bnmta4uoblac2" path="res://Textures/placeholder_tower.png" id="1_e27pc"]
+[ext_resource type="Texture2D" uid="uid://c7jo1im075ar4" path="res://Textures/Tower/Age1Tower.png" id="2_eh0rw"]
 [ext_resource type="Script" path="res://States/finite_state_machine.gd" id="3_5l3pl"]
 [ext_resource type="Script" path="res://States/Tower/highlighting_sell.gd" id="4_dwgnm"]
 [ext_resource type="Script" path="res://States/Tower/highlighting_append.gd" id="5_qyd2s"]
@@ -14,7 +14,7 @@ size = Vector2(60, 60)
 script = ExtResource("1_dhktn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_e27pc")
+texture = ExtResource("2_eh0rw")
 
 [node name="CannonPlacementArea" type="Area2D" parent="."]
 position = Vector2(-57, 1)

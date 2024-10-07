@@ -5,6 +5,7 @@ extends Control
 @onready var available_units_grid = $AvailableUnits
 @onready var available_cannons_grid = $AvailableCannons
 @onready var gameplay_map = get_parent().get_parent()
+@onready var player_castle = get_parent().get_parent().player_castle
 @onready var camera = get_parent()
 @onready var gold_info = $ResourcesContainer/GoldLabel
 @onready var exp_info = $ResourcesContainer/ExperienceLabel
@@ -28,6 +29,11 @@ var current_stage = 1
 
 func _ready() -> void:
 	load_new_units()
+
+func advance_age():
+	current_stage+=1
+	load_new_units()
+	player_castle.advance_age(current_stage)
 
 func _process(delta) -> void:
 	gold_info.text = "GOLD: " + str(global_data.player_gold)
@@ -74,6 +80,7 @@ func load_new_units() -> void:
 	units_costs = global_data.stages_unit_costs[current_stage]
 	cannons_costs = global_data.stages_cannons_costs[current_stage]
 	units_stats = global_data.stages_units_stats[current_stage]
+	cannons_stats = global_data.stages_cannons_stats[current_stage]
 	
 	if available_units_scenes.size() < 4:
 		$AvailableUnits/Unit4.hide()
@@ -98,14 +105,12 @@ func _on_unit_1_button_down() -> void:
 		gameplay_map.add_child(new_unit)
 		new_unit.load_unit_stats(units_stats[0])
 
-
 func _on_unit_2_button_down() -> void:
 	if global_data.player_gold>=units_costs[1]:
 		global_data.player_gold-=units_costs[1]
 		var new_unit = available_units_scenes[1].instantiate()
 		gameplay_map.add_child(new_unit)
 		new_unit.load_unit_stats(units_stats[1])
-
 
 func _on_unit_3_button_down() -> void:
 	if global_data.player_gold>=units_costs[2]:
@@ -114,7 +119,6 @@ func _on_unit_3_button_down() -> void:
 		gameplay_map.add_child(new_unit)
 		new_unit.load_unit_stats(units_stats[2])
 
-
 func _on_unit_4_button_down() -> void:
 	if global_data.player_gold>=units_costs[3]:
 		global_data.player_gold-=units_costs[3]
@@ -122,34 +126,38 @@ func _on_unit_4_button_down() -> void:
 		gameplay_map.add_child(new_unit)
 		new_unit.load_unit_stats(units_stats[3])
 
-
 func _on_cannon_1_button_down() -> void:
 	if global_data.player_gold>=cannons_costs[0]:
 		global_data.player_gold-=cannons_costs[0]
 		var new_cannon = available_cannons_scenes[0].instantiate()
 		gameplay_map.add_child(new_cannon)
-
+		new_cannon.load_cannon_stats(cannons_stats[0])
 
 func _on_cannon_2_button_down() -> void:
 	if global_data.player_gold>=cannons_costs[1]:
 		global_data.player_gold-=cannons_costs[1]
 		var new_cannon = available_cannons_scenes[1].instantiate()
 		gameplay_map.add_child(new_cannon)
-
+		new_cannon.load_cannon_stats(cannons_stats[1])
 
 func _on_cannon_3_button_down() -> void:
 	if global_data.player_gold>=cannons_costs[2]:
 		global_data.player_gold-=cannons_costs[2]
 		var new_cannon = available_cannons_scenes[2].instantiate()
 		gameplay_map.add_child(new_cannon)
-
+		new_cannon.load_cannon_stats(cannons_stats[2])
 
 func _on_cannon_4_button_down() -> void:
 	if global_data.player_gold>=cannons_costs[3]:
 		global_data.player_gold-=cannons_costs[3]
 		var new_cannon = available_cannons_scenes[3].instantiate()
 		gameplay_map.add_child(new_cannon)
-
+		new_cannon.load_cannon_stats(cannons_stats[0])
 
 func _on_sell_cannon_button_button_down() -> void:
 	gameplay_map.enable_cannon_highlighters()
+
+
+func _on_advance_age_button_button_down() -> void:
+	if current_stage<5 and global_data.player_experience>=global_data.stages_exp_requirements[current_stage+1]:
+		advance_age()

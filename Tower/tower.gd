@@ -6,6 +6,7 @@ class_name Tower
 @onready var placement_highligher: ColorRect = $AreaHighlighter
 @onready var state_machine: FiniteStateMachine = $FiniteStateMachine
 @onready var gameplay_map = get_parent().get_parent().gameplay_map
+@onready var tower_sprite = $Sprite2D
 
 var mounted_cannon: Cannon
 
@@ -16,6 +17,9 @@ func mount_cannon(cannon_to_mount):
 	mounted_cannon = cannon_to_mount
 	add_child(mounted_cannon)
 	
+func update_tower_texture(age):
+	var new_texture = load("res://Textures/Tower/Age" + str(age) + "Tower.png")
+	tower_sprite.texture = new_texture
 	
 func sell_cannon():
 	print("sprzedalem canona")
