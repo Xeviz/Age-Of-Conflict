@@ -6,11 +6,16 @@ class_name CannonPreview
 var ignored_button_click = false
 
 func enter():
-	ignored_button_click = false
-	cannon.hide()
-	gameplay_map.enable_tower_highlighters()
+	if cannon.belongs_to_player:
+		ignored_button_click = false
+		cannon.hide()
+		gameplay_map.enable_tower_highlighters()
+	else:
+		state_transition.emit(self, "CannonAwaitingTarget")
 	
 func update(delta):
+	if not cannon.belongs_to_player:
+		return
 	if not ignored_button_click and Input.is_action_just_pressed("left_mouse_click"):
 		ignored_button_click = true
 		return

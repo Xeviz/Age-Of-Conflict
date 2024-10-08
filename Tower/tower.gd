@@ -15,6 +15,8 @@ func _ready() -> void:
 
 func mount_cannon(cannon_to_mount):
 	mounted_cannon = cannon_to_mount
+	if not mounted_cannon.belongs_to_player:
+		mounted_cannon.position = cannon_placement_area.position
 	add_child(mounted_cannon)
 	
 func update_tower_texture(age):
@@ -22,7 +24,6 @@ func update_tower_texture(age):
 	tower_sprite.texture = new_texture
 	
 func sell_cannon():
-	print("sprzedalem canona")
 	mounted_cannon.queue_free()
 	
 func go_to_highlighting_append():

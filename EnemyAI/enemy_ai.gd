@@ -9,6 +9,7 @@ class_name EnemyAI
 var available_units_scenes: Array
 var available_cannons_scenes: Array
 var next_unit_to_spawn: int = 0
+var next_cannon_to_buy: int = 0
 
 var units_costs: Array
 var cannons_costs: Array
@@ -87,3 +88,28 @@ func get_random_spawn_pos():
 	spawn_pos.x = randi_range(x_spawn_border[0], x_spawn_border[1])
 	spawn_pos.y = randi_range(y_spawn_border[0], y_spawn_border[1])
 	return spawn_pos
+
+func chance_to_buy_cannon():
+	if true not in available_cannon_spots:
+		return false
+	for g in range(cannons_costs.size()):
+		if global_data.enemy_gold<cannons_costs[g]:
+			continue
+		var chance_to_perform = (global_data.enemy_gold/cannons_costs[g])*10
+		if randi_range(0, 100) <= chance_to_perform:
+			next_cannon_to_buy = g
+			return true
+	return false
+	
+func buy_cannon():
+	global_data.enemy_gold -= cannons_costs[next_cannon_to_buy]
+	var new_cannon = available_cannons_scenes[next_cannon_to_buy].instantiate()
+	new_cannon.load_cannon_stats(cannons_stats[next_cannon_to_buy])
+	new_cannon.belongs_to_player = false
+	var index = 0
+	for tower in enemy_castle.towers.get_children():
+		if tower.mounted_cannon == null:
+			tower.mount_cannon(new_cannon)
+			available_cannon_spots[index] = false
+			return
+		index+=1

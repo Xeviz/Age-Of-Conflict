@@ -29,7 +29,7 @@ func _ready() -> void:
 
 func load_cannon_stats(recipe):
 	cost = recipe["cost"]
-	sell_value = recipe["gold_on_death"]
+	sell_value = recipe["sell_value"]
 	attack_speed = recipe["attack_speed"]
 	projectile_damage = recipe["damage"]
 	
