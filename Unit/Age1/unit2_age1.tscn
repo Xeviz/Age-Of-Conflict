@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://dscqjf32hvyqp"]
+[gd_scene load_steps=11 format=3 uid="uid://dscqjf32hvyqp"]
 
 [ext_resource type="Script" path="res://Unit/ranged_unit.gd" id="1_git8d"]
-[ext_resource type="Texture2D" uid="uid://druk1kswiiwhb" path="res://Textures/placeholder_unit.png" id="2_qh8g4"]
+[ext_resource type="Texture2D" uid="uid://chs0y767xurpy" path="res://Textures/Unit/Unit2Age1.png" id="2_gaamw"]
 [ext_resource type="Script" path="res://States/finite_state_machine.gd" id="3_h285r"]
-[ext_resource type="Script" path="res://States/Unit/UnitAttacking.gd" id="4_hu53p"]
 [ext_resource type="Script" path="res://States/Unit/UnitMoving.gd" id="5_vet65"]
 [ext_resource type="Script" path="res://States/Unit/UnitDying.gd" id="6_b1cf3"]
 [ext_resource type="Script" path="res://States/Unit/UnitShooting.gd" id="7_hkxxm"]
@@ -30,7 +29,7 @@ collision_mask = 0
 shape = SubResource("CircleShape2D_lxjs4")
 
 [node name="PlaceholderTexture" type="Sprite2D" parent="."]
-texture = ExtResource("2_qh8g4")
+texture = ExtResource("2_gaamw")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 anchors_preset = 5
@@ -49,10 +48,6 @@ show_percentage = false
 [node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_h285r")
 initial_state = NodePath("UnitPreview")
-
-[node name="UnitAttacking" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("unit")]
-script = ExtResource("4_hu53p")
-unit = NodePath("../..")
 
 [node name="UnitMoving" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("unit")]
 script = ExtResource("5_vet65")

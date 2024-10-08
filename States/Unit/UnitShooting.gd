@@ -6,7 +6,7 @@ class_name UnitShooting
 
 
 func update(delta):
-	if unit.current_target:
+	if unit.current_target != null:
 		unit.shoot_projectile(delta)
 	else:
 		state_transition.emit(self, "UnitMoving")

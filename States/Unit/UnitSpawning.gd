@@ -23,6 +23,7 @@ func update(delta):
 		state_transition.emit(self, "UnitMoving")
 		
 func exit():
+	unit.is_targetable=true
 	if unit.belongs_to_player:
 		unit.set_collision_layer_value(1, true)
 		unit.set_collision_layer_value(2, false)

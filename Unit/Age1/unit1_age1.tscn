@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://bem32eiql184r"]
 
 [ext_resource type="Script" path="res://Unit/unit.gd" id="1_8pams"]
-[ext_resource type="Texture2D" uid="uid://druk1kswiiwhb" path="res://Textures/placeholder_unit.png" id="2_0mhws"]
+[ext_resource type="Texture2D" uid="uid://bu40o0y36r0l7" path="res://Textures/Unit/Unit1Age1.png" id="2_8o3i7"]
 [ext_resource type="Script" path="res://States/finite_state_machine.gd" id="3_bhpj2"]
 [ext_resource type="Script" path="res://States/Unit/UnitAttacking.gd" id="4_4ykxl"]
 [ext_resource type="Script" path="res://States/Unit/UnitMoving.gd" id="5_kppkq"]
@@ -42,7 +42,7 @@ monitorable = false
 shape = SubResource("CircleShape2D_qboq0")
 
 [node name="PlaceholderTexture" type="Sprite2D" parent="."]
-texture = ExtResource("2_0mhws")
+texture = ExtResource("2_8o3i7")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 anchors_preset = 5

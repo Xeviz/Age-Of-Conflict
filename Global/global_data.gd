@@ -79,7 +79,7 @@ var stages_units_stats = {
 		"exp_to_slayer": 70,
 		"gold_on_death": 40,
 		"time_to_spawn": 2.0,
-		"speed": 45
+		"speed": 35
 	}, {
 		"cost": 100,
 		"health": 35,

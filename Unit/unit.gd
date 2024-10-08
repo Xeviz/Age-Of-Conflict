@@ -47,13 +47,15 @@ func move_towards_target(delta):
 	velocity = direction * speed
 	move_and_slide()
 	
-func attack_target(delta):
-	time_to_next_attack-=delta
+func attack_target():
 	if current_target.current_health<=0:
 		current_target = null
-	elif time_to_next_attack<=0:
+		time_to_next_attack=attack_speed
+	else:
 		current_target.receive_damage(damage)
 		time_to_next_attack=attack_speed
+		if current_target.current_health<=0:
+			current_target = null
 		
 
 func update_health_bar():
@@ -79,26 +81,46 @@ func receive_damage(damage_amount):
 	health_bar.value = current_health
 	if current_health<=0 and is_alive:
 		is_alive = false
+		is_targetable = false
 		die()
 
 func die():
-	is_targetable = false
-	unit_collider.disabled = true
-	$PlaceholderTexture.hide()
+	self.set_collision_layer_value(1, false)
+	self.set_collision_layer_value(2, false)
+	self.set_collision_mask_value(1, false)
+	self.set_collision_mask_value(2, false)
+	enemy_detection_area.set_collision_layer_value(1, false)
+	enemy_detection_area.set_collision_layer_value(2, false)
+	enemy_detection_area.set_collision_mask_value(1, false)
+	enemy_detection_area.set_collision_mask_value(2, false)
 	if belongs_to_player:
 		global_data.player_experience += exp_to_owner
 		global_data.enemy_experience += exp_to_slayer
 		global_data.enemy_gold += gold_on_death
-		global_data.player_gold += cost
+		global_data.player_gold += int(cost/2)
 	else:
 		global_data.player_experience += exp_to_slayer
 		global_data.enemy_experience += exp_to_owner
 		global_data.player_gold += gold_on_death
-		global_data.enemy_gold += cost
+		global_data.enemy_gold += int(cost/2)
 		
 	state_machine.on_child_transition(state_machine.current_state, "UnitDying")
 	
 
 func _on_enemy_detection_area_body_entered(body):
-	if (body is Unit or body is Castle) and belongs_to_player != body.belongs_to_player and body.is_targetable:
+	if current_target != null:
+		return
+	if is_alive and (body is Unit or body is Castle) and belongs_to_player != body.belongs_to_player and body.is_targetable:
 		lock_on_target(body)
+
+
+func find_nearest_target():
+	var potential_targets = attack_range_area.get_overlapping_bodies()
+	var closest_distance = INF
+	for target in potential_targets:
+		if is_alive and (target is Unit or target is Castle) and belongs_to_player != target.belongs_to_player and target.is_targetable:
+			if target.global_position.distance_to(self.global_position)<closest_distance:
+				print("retargecik zrobiony")
+				lock_on_target(target) 
+	state_machine.on_child_transition(state_machine.current_state, "UnitMoving")
+	
