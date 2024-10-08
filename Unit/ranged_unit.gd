@@ -11,7 +11,6 @@ func shoot_projectile(delta):
 	if current_target.current_health<=0:
 		current_target = null
 	elif time_to_next_attack<=0:
-		print("strzleam w typa z hp: " + str(current_target.current_health))
 		var new_projectile
 		new_projectile = projectile_scene.instantiate()
 		new_projectile.bind_to_shooter(self)
@@ -30,13 +29,13 @@ func _on_enemy_detection_area_body_entered(body):
 
 
 func find_nearest_target():
-	var potential_targets = attack_range_area.get_overlapping_bodies()
+	var potential_targets = enemy_detection_area.get_overlapping_bodies()
 	var closest_distance = INF
 	for target in potential_targets:
 		if is_alive and (target is Unit or target is Castle) and belongs_to_player != target.belongs_to_player and target.is_targetable:
 			if target.global_position.distance_to(self.global_position)<closest_distance:
 				lock_on_target(target)
-	if closest_distance == INF:
-		current_target = null
-		state_machine.on_child_transition(state_machine.current_state, "UnitMoving")
+				closest_distance = target.global_position.distance_to(self.global_position)
+	state_machine.on_child_transition(state_machine.current_state, "UnitMoving")
+		
 	

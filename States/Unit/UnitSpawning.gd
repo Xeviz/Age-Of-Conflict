@@ -31,7 +31,7 @@ func exit():
 		unit.set_collision_mask_value(1, false)
 		unit.enemy_detection_area.set_collision_layer_value(2, true)
 		unit.enemy_detection_area.set_collision_mask_value(2, true)
-		if unit.attack_range_area:
+		if unit is not RangedUnit:
 			unit.attack_range_area.set_collision_layer_value(2, true)
 			unit.attack_range_area.set_collision_mask_value(2, true)
 		
@@ -42,6 +42,6 @@ func exit():
 		unit.set_collision_mask_value(1, true)
 		unit.enemy_detection_area.set_collision_layer_value(1, true)
 		unit.enemy_detection_area.set_collision_mask_value(1, true)
-		if unit.attack_range_area:
+		if unit is not RangedUnit:
 			unit.attack_range_area.set_collision_layer_value(1, true)
 			unit.attack_range_area.set_collision_mask_value(1, true)

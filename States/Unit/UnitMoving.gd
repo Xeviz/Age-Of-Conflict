@@ -12,4 +12,6 @@ func physics_update(delta):
 		unit.move_towards_target(delta)
 		if unit.attack_range_area.overlaps_body(unit.current_target):
 			state_transition.emit(self, "UnitAttacking")
+	elif unit is RangedUnit and unit.current_target != null:
+		state_transition.emit(self, "UnitShooting")
 	

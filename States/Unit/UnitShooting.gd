@@ -6,7 +6,7 @@ class_name UnitShooting
 
 
 func update(delta):
-	if unit.current_target != null:
+	if unit.current_target != null and unit.current_target.is_targetable:
 		unit.shoot_projectile(delta)
 	else:
-		state_transition.emit(self, "UnitMoving")
+		unit.find_nearest_target()

@@ -97,12 +97,12 @@ func die():
 		global_data.player_experience += exp_to_owner
 		global_data.enemy_experience += exp_to_slayer
 		global_data.enemy_gold += gold_on_death
-		global_data.player_gold += int(cost/2)
+		global_data.player_gold += cost
 	else:
 		global_data.player_experience += exp_to_slayer
 		global_data.enemy_experience += exp_to_owner
 		global_data.player_gold += gold_on_death
-		global_data.enemy_gold += int(cost/2)
+		global_data.enemy_gold += cost
 		
 	state_machine.on_child_transition(state_machine.current_state, "UnitDying")
 	
@@ -115,12 +115,12 @@ func _on_enemy_detection_area_body_entered(body):
 
 
 func find_nearest_target():
-	var potential_targets = attack_range_area.get_overlapping_bodies()
+	var potential_targets = enemy_detection_area.get_overlapping_bodies()
 	var closest_distance = INF
 	for target in potential_targets:
 		if is_alive and (target is Unit or target is Castle) and belongs_to_player != target.belongs_to_player and target.is_targetable:
 			if target.global_position.distance_to(self.global_position)<closest_distance:
-				print("retargecik zrobiony")
-				lock_on_target(target) 
+				lock_on_target(target)
+				closest_distance = target.global_position.distance_to(self.global_position)
 	state_machine.on_child_transition(state_machine.current_state, "UnitMoving")
 	
