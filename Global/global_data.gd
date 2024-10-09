@@ -15,8 +15,8 @@ var enemy_spawn_queue: float = 0.0
 
 var stages_exp_requirements = {
 	2: 4000,
-	3: 15000,
-	4: 75000,
+	3: 20000,
+	4: 100000,
 	5: 500000
 }
 
@@ -46,36 +46,36 @@ var stages_cannons_scenes = {
 
 var stages_unit_costs = {
 	1: [25, 30, 100],
-	2: [40, 60, 120],
-	3: [80, 120, 200],
-	4: [150, 200, 350],
-	5: [200, 300, 500, 700]
+	2: [125, 150, 500],
+	3: [625, 750, 2500],
+	4: [3125, 3750, 12500],
+	5: [15000, 19000, 65000, 150000]
 }
 
 var stages_cannons_costs = {
-	1: [250, 500, 1000],
-	2: [400, 800, 1600],
-	3: [600, 1200, 2400],
-	4: [900, 1800, 3600],
-	5: [1200, 2400, 4800, 6000]
+	1: [250, 750, 1500],
+	2: [1250, 3750, 7500],
+	3: [6250, 18750, 37500],
+	4: [31250, 95000, 190000],
+	5: [155000, 450000, 900000, 2500000]
 }
 
 var stages_units_stats = {
 	1: [{
 		"cost": 25,
 		"health": 12,
-		"attack_speed": 1.2,
+		"attack_speed": 1.5,
 		"damage": 4,
 		"exp_to_owner": 40,
 		"exp_to_slayer": 50,
 		"gold_on_death": 30,
 		"time_to_spawn": 1.5,
-		"speed": 40
+		"speed": 45
 	}, {
 		"cost": 30,
-		"health": 8,
-		"attack_speed": 2.0,
-		"damage": 6,
+		"health": 6,
+		"attack_speed": 2.5,
+		"damage": 2,
 		"exp_to_owner": 60,
 		"exp_to_slayer": 70,
 		"gold_on_death": 35,
@@ -84,148 +84,150 @@ var stages_units_stats = {
 	}, {
 		"cost": 100,
 		"health": 35,
-		"attack_speed": 1.0,
+		"attack_speed": 1.5,
 		"damage": 6,
 		"exp_to_owner": 125,
 		"exp_to_slayer": 150,
 		"gold_on_death": 150,
-		"time_to_spawn": 0.2,
-		"speed": 738
+		"time_to_spawn": 5.0,
+		"speed": 50
 	}],
 	2: [{
-		"cost": 40,
-		"health": 20,
-		"attack_speed": 1.3,
-		"damage": 6,
-		"exp_to_owner": 60,
-		"exp_to_slayer": 70,
-		"gold_on_death": 45,
-		"time_to_spawn": 3.2,
-		"speed": 42
-	}, {
-		"cost": 60,
-		"health": 14,
-		"attack_speed": 1.8,
-		"damage": 5,
-		"exp_to_owner": 80,
-		"exp_to_slayer": 90,
-		"gold_on_death": 60,
-		"time_to_spawn": 3.7,
-		"speed": 47
-	}, {
-		"cost": 120,
-		"health": 50,
-		"attack_speed": 1.1,
-		"damage": 8,
-		"exp_to_owner": 150,
-		"exp_to_slayer": 170,
-		"gold_on_death": 200,
-		"time_to_spawn": 6.5,
-		"speed": 36
-	}],
-	3: [{
-		"cost": 80,
-		"health": 35,
-		"attack_speed": 1.4,
-		"damage": 8,
-		"exp_to_owner": 100,
-		"exp_to_slayer": 110,
-		"gold_on_death": 90,
-		"time_to_spawn": 3.4,
-		"speed": 44
-	}, {
-		"cost": 120,
-		"health": 28,
-		"attack_speed": 1.7,
-		"damage": 7,
-		"exp_to_owner": 120,
-		"exp_to_slayer": 130,
-		"gold_on_death": 120,
-		"time_to_spawn": 4.0,
-		"speed": 48
-	}, {
-		"cost": 200,
-		"health": 70,
-		"attack_speed": 1.2,
-		"damage": 10,
-		"exp_to_owner": 180,
-		"exp_to_slayer": 200,
-		"gold_on_death": 300,
-		"time_to_spawn": 6.8,
-		"speed": 37
-	}],
-	4: [{
-		"cost": 150,
-		"health": 50,
-		"attack_speed": 1.5,
-		"damage": 10,
-		"exp_to_owner": 150,
-		"exp_to_slayer": 160,
-		"gold_on_death": 130,
-		"time_to_spawn": 3.5,
-		"speed": 41
-	}, {
-		"cost": 200,
-		"health": 40,
-		"attack_speed": 1.8,
-		"damage": 9,
-		"exp_to_owner": 170,
-		"exp_to_slayer": 180,
-		"gold_on_death": 150,
-		"time_to_spawn": 4.5,
-		"speed": 46
-	}, {
-		"cost": 350,
-		"health": 100,
-		"attack_speed": 1.3,
-		"damage": 14,
-		"exp_to_owner": 220,
-		"exp_to_slayer": 240,
-		"gold_on_death": 400,
-		"time_to_spawn": 7.0,
-		"speed": 35
-	}],
-	5: [{
-		"cost": 200,
+		"cost": 125,
 		"health": 60,
-		"attack_speed": 1.6,
-		"damage": 12,
+		"attack_speed": 1.5,
+		"damage": 20,
 		"exp_to_owner": 200,
-		"exp_to_slayer": 220,
-		"gold_on_death": 180,
-		"time_to_spawn": 3.6,
-		"speed": 43
+		"exp_to_slayer": 250,
+		"gold_on_death": 150,
+		"time_to_spawn": 1.5,
+		"speed": 45
 	}, {
-		"cost": 300,
-		"health": 55,
-		"attack_speed": 1.9,
-		"damage": 10,
-		"exp_to_owner": 240,
-		"exp_to_slayer": 260,
-		"gold_on_death": 220,
-		"time_to_spawn": 4.6,
-		"speed": 49
+		"cost": 150,
+		"health": 30,
+		"attack_speed": 2.5,
+		"damage": 8,
+		"exp_to_owner": 300,
+		"exp_to_slayer": 350,
+		"gold_on_death": 175,
+		"time_to_spawn": 2.0,
+		"speed": 35
 	}, {
 		"cost": 500,
-		"health": 120,
-		"attack_speed": 1.4,
-		"damage": 16,
-		"exp_to_owner": 300,
-		"exp_to_slayer": 320,
-		"gold_on_death": 500,
-		"time_to_spawn": 7.2,
-		"speed": 37
-	}, {
-		"cost": 700,
-		"health": 150,
-		"attack_speed": 1.3,
-		"damage": 20,
-		"exp_to_owner": 350,
-		"exp_to_slayer": 380,
-		"gold_on_death": 700,
-		"time_to_spawn": 7.5,
+		"health": 175,
+		"attack_speed": 1.5,
+		"damage": 30,
+		"exp_to_owner": 625,
+		"exp_to_slayer": 750,
+		"gold_on_death": 750,
+		"time_to_spawn": 5.0,
 		"speed": 50
-	}]
+	}],
+	3: [{
+		"cost": 625,
+		"health": 300,
+		"attack_speed": 1.5,
+		"damage": 90,
+		"exp_to_owner": 1000,
+		"exp_to_slayer": 1250,
+		"gold_on_death": 750,
+		"time_to_spawn": 1.5,
+		"speed": 45
+	}, {
+		"cost": 750,
+		"health": 180,
+		"attack_speed": 2.5,
+		"damage": 40,
+		"exp_to_owner": 1500,
+		"exp_to_slayer": 1750,
+		"gold_on_death": 875,
+		"time_to_spawn": 2.0,
+		"speed": 35
+	}, {
+		"cost": 2500,
+		"health": 875,
+		"attack_speed": 1.5,
+		"damage": 150,
+		"exp_to_owner": 3125,
+		"exp_to_slayer": 3750,
+		"gold_on_death": 3750,
+		"time_to_spawn": 5.0,
+		"speed": 50
+	}],
+	4: [{
+		"cost": 3125,
+		"health": 1500,
+		"attack_speed": 1.5,
+		"damage": 450,
+		"exp_to_owner": 5000,
+		"exp_to_slayer": 6250,
+		"gold_on_death": 3750,
+		"time_to_spawn": 1.5,
+		"speed": 45
+	}, {
+		"cost": 3750,
+		"health": 900,
+		"attack_speed": 2.5,
+		"damage": 200,
+		"exp_to_owner": 7500,
+		"exp_to_slayer": 8750,
+		"gold_on_death": 4375,
+		"time_to_spawn": 2.0,
+		"speed": 35
+	}, {
+		"cost": 12500,
+		"health": 4375,
+		"attack_speed": 1.5,
+		"damage": 750,
+		"exp_to_owner": 15625,
+		"exp_to_slayer": 18750,
+		"gold_on_death": 18750,
+		"time_to_spawn": 5.0,
+		"speed": 50
+	}],
+	5: [{
+		"cost": 15000,
+		"health": 7500,
+		"attack_speed": 1.5,
+		"damage": 225,
+		"exp_to_owner": 25000,
+		"exp_to_slayer": 31250,
+		"gold_on_death": 18750,
+		"time_to_spawn": 1.5,
+		"speed": 45
+	}, {
+		"cost": 19000,
+		"health": 4500,
+		"attack_speed": 2.5,
+		"damage": 800,
+		"exp_to_owner": 37500,
+		"exp_to_slayer": 43750,
+		"gold_on_death": 22000,
+		"time_to_spawn": 2.0,
+		"speed": 35
+	}, {
+		"cost": 65000,
+		"health": 22500,
+		"attack_speed": 1.5,
+		"damage": 3900,
+		"exp_to_owner": 60000,
+		"exp_to_slayer": 65000,
+		"gold_on_death": 75000,
+		"time_to_spawn": 5.0,
+		"speed": 50
+	},
+	{
+		"cost": 150000,
+		"health": 45000,
+		"attack_speed": 1.5,
+		"damage": 6700,
+		"exp_to_owner": 60000,
+		"exp_to_slayer": 65000,
+		"gold_on_death": 75000,
+		"time_to_spawn": 8.0,
+		"speed": 65
+	}
+	],
 }
 
 var stages_cannons_stats = {
@@ -233,85 +235,87 @@ var stages_cannons_stats = {
 		"damage": 3,
 		"attack_speed": 2.0,
 		"cost": 250,
-		"sell_value": 150
+		"sell_value": 100
 	}, {
-		"damage": 5,
-		"attack_speed": 1.8,
-		"cost": 500,
+		"damage": 3,
+		"attack_speed": 1.5,
+		"cost": 750,
 		"sell_value": 300
 	}, {
-		"damage": 8,
-		"attack_speed": 1.6,
-		"cost": 1000,
+		"damage": 4,
+		"attack_speed": 1.3,
+		"cost": 1500,
 		"sell_value": 600
 	}],
 	2: [{
-		"damage": 6,
-		"attack_speed": 1.9,
-		"cost": 400,
-		"sell_value": 250
-	}, {
-		"damage": 9,
-		"attack_speed": 1.7,
-		"cost": 800,
+		"damage": 12,
+		"attack_speed": 2.0,
+		"cost": 1250,
 		"sell_value": 500
 	}, {
 		"damage": 12,
 		"attack_speed": 1.5,
-		"cost": 1600,
-		"sell_value": 1000
+		"cost": 3750,
+		"sell_value": 1500
+	}, {
+		"damage": 16,
+		"attack_speed": 1.3,
+		"cost": 7500,
+		"sell_value": 3000
 	}],
 	3: [{
-		"damage": 9,
+		"damage": 48,
 		"attack_speed": 1.8,
-		"cost": 600,
-		"sell_value": 350
+		"cost": 6250,
+		"sell_value": 2500
 	}, {
-		"damage": 13,
+		"damage": 48,
 		"attack_speed": 1.6,
-		"cost": 1200,
-		"sell_value": 700
+		"cost": 18750,
+		"sell_value": 7500
 	}, {
-		"damage": 18,
+		"damage": 64,
 		"attack_speed": 1.4,
-		"cost": 2400,
-		"sell_value": 1400
+		"cost": 37500,
+		"sell_value": 15000
 	}],
 	4: [{
-		"damage": 12,
-		"attack_speed": 1.7,
-		"cost": 800,
-		"sell_value": 450
+		"damage": 192,
+		"attack_speed": 1.8,
+		"cost": 31250,
+		"sell_value": 12500
 	}, {
-		"damage": 17,
-		"attack_speed": 1.5,
-		"cost": 1600,
-		"sell_value": 900
+		"damage": 192,
+		"attack_speed": 1.6,
+		"cost": 95000,
+		"sell_value": 37500
 	}, {
-		"damage": 24,
-		"attack_speed": 1.3,
-		"cost": 3200,
-		"sell_value": 1800
+		"damage": 256,
+		"attack_speed": 1.4,
+		"cost": 190000,
+		"sell_value": 75000
 	}],
 	5: [{
-		"damage": 15,
+		"damage": 768,
+		"attack_speed": 1.8,
+		"cost": 150000,
+		"sell_value": 60000
+	}, {
+		"damage": 768,
 		"attack_speed": 1.6,
-		"cost": 1000,
-		"sell_value": 600
+		"cost": 450000,
+		"sell_value": 180000
 	}, {
-		"damage": 22,
+		"damage": 1024,
 		"attack_speed": 1.4,
-		"cost": 2000,
-		"sell_value": 1200
-	}, {
-		"damage": 30,
-		"attack_speed": 1.2,
-		"cost": 4000,
-		"sell_value": 2400
-	}, {
-		"damage": 40,
+		"cost": 900000,
+		"sell_value": 360000
+	},
+	{
+		"damage": 1200,
 		"attack_speed": 1.1,
-		"cost": 8000,
-		"sell_value": 4800
-	}]
+		"cost": 2500000,
+		"sell_value": 1000000
+	}
+	]
 }

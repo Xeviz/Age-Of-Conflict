@@ -28,6 +28,7 @@ func travel_towards_target(delta):
 	if target != null and target.is_targetable:
 		latest_target_position = target.global_position
 		latest_target_position.y -= 64
+		look_at(latest_target_position)
 
 	direction = (latest_target_position - global_position).normalized()
 	velocity = direction * speed

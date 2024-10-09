@@ -9,6 +9,7 @@ extends Control
 @onready var camera = get_parent()
 @onready var gold_info = $ResourcesContainer/GoldLabel
 @onready var exp_info = $ResourcesContainer/ExperienceLabel
+@onready var cost_info = $CostInfo
 
 var move_screen_left = false
 var move_screen_right = false
@@ -90,14 +91,24 @@ func load_new_units() -> void:
 	units_stats = global_data.stages_units_stats[current_stage]
 	cannons_stats = global_data.stages_cannons_stats[current_stage]
 	
+	$AvailableUnits/Unit1/TextureRect.texture = load("res://Interface/Icons/Units/Unit1Age" + str(current_stage) + ".png")
+	$AvailableUnits/Unit2/TextureRect.texture = load("res://Interface/Icons/Units/Unit2Age" + str(current_stage) + ".png")
+	$AvailableUnits/Unit3/TextureRect.texture = load("res://Interface/Icons/Units/Unit3Age" + str(current_stage) + ".png")
+	
+	$AvailableCannons/Cannon1/TextureRect.texture = load("res://Interface/Icons/Cannons/Cannon1Age" + str(current_stage) + ".png")
+	$AvailableCannons/Cannon2/TextureRect.texture = load("res://Interface/Icons/Cannons/Cannon2Age" + str(current_stage) + ".png")
+	$AvailableCannons/Cannon3/TextureRect.texture = load("res://Interface/Icons/Cannons/Cannon3Age" + str(current_stage) + ".png")
+	
 	if available_units_scenes.size() < 4:
 		$AvailableUnits/Unit4.hide()
 	else:
+		$AvailableUnits/Unit4/TextureRect.texture = load("res://Interface/Icons/Units/Unit41Age" + str(current_stage) + ".png")
 		$AvailableUnits/Unit4.show()
 		
 	if available_cannons_scenes.size() < 4:
 		$AvailableCannons/Cannon4.hide()
 	else:
+		$AvailableCannons/Cannon4/TextureRect.texture = load("res://Interface/Icons/Cannons/Cannon4Age" + str(current_stage) + ".png")
 		$AvailableCannons/Cannon4.show()
 
 func _on_buy_tower_button_button_down() -> void:
@@ -169,3 +180,128 @@ func _on_sell_cannon_button_button_down() -> void:
 func _on_advance_age_button_button_down() -> void:
 	if current_stage<5 and global_data.player_experience>=global_data.stages_exp_requirements[current_stage+1]:
 		advance_age()
+
+
+func _on_unit_1_mouse_entered() -> void:
+	$AvailableUnits/Unit1.modulate.a = 0.75
+	cost_info.text = "COST: " + str(units_costs[0])
+	cost_info.show()
+	
+
+func _on_unit_1_mouse_exited() -> void:
+	$AvailableUnits/Unit1.modulate.a = 1.0
+	cost_info.hide()
+	
+func _on_unit_2_mouse_entered() -> void:
+	$AvailableUnits/Unit2.modulate.a = 0.75
+	cost_info.text = "COST: " + str(units_costs[1])
+	cost_info.show()
+	
+func _on_unit_2_mouse_exited() -> void:
+	$AvailableUnits/Unit2.modulate.a = 1.0
+	cost_info.hide()
+	
+func _on_unit_3_mouse_entered() -> void:
+	$AvailableUnits/Unit3.modulate.a = 0.75
+	cost_info.text = "COST: " + str(units_costs[2])
+	cost_info.show()
+	
+func _on_unit_3_mouse_exited() -> void:
+	$AvailableUnits/Unit3.modulate.a = 1.0
+	cost_info.hide()
+	
+func _on_unit_4_mouse_entered() -> void:
+	$AvailableUnits/Unit4.modulate.a = 0.75
+	cost_info.text = "COST: " + str(units_costs[3])
+	cost_info.show()
+	
+func _on_unit_4_mouse_exited() -> void:
+	$AvailableUnits/Unit4.modulate.a = 1.0
+	cost_info.hide()
+
+
+func _on_units_button_mouse_entered() -> void:
+	$PurchasesContainer/UnitsButton.modulate.a = 0.75
+	cost_info.text = "BUY UNITS"
+	cost_info.show()
+
+func _on_units_button_mouse_exited() -> void:
+	$PurchasesContainer/UnitsButton.modulate.a = 1.0
+	cost_info.hide()
+	
+func _on_cannons_button_mouse_entered() -> void:
+	$PurchasesContainer/CannonsButton.modulate.a = 0.75
+	cost_info.text = "BUY CANNONS"
+	cost_info.show()
+
+func _on_cannons_button_mouse_exited() -> void:
+	$PurchasesContainer/CannonsButton.modulate.a = 1.0
+	cost_info.hide()
+
+func _on_buy_tower_button_mouse_entered() -> void:
+	$PurchasesContainer/BuyTowerButton.modulate.a = 0.75
+	cost_info.text = "BUY TOWER"
+	cost_info.show()
+
+func _on_buy_tower_button_mouse_exited() -> void:
+	$PurchasesContainer/BuyTowerButton.modulate.a = 1.0
+	cost_info.hide()
+	
+func _on_sell_cannon_button_mouse_entered() -> void:
+	$PurchasesContainer/SellCannonButton.modulate.a = 0.75
+	cost_info.text = "SELL CANNON"
+	cost_info.show()
+
+func _on_sell_cannon_button_mouse_exited() -> void:
+	$PurchasesContainer/SellCannonButton.modulate.a = 1.0
+	cost_info.hide()
+	
+func _on_advance_age_button_mouse_entered() -> void:
+	$PurchasesContainer/AdvanceAgeButton.modulate.a = 0.75
+	cost_info.text = "ADVANCE AGE"
+	cost_info.show()
+
+func _on_advance_age_button_mouse_exited() -> void:
+	$PurchasesContainer/AdvanceAgeButton.modulate.a = 1.0
+	cost_info.hide()
+
+
+func _on_cannon_1_mouse_entered() -> void:
+	$AvailableCannons/Cannon1.modulate.a = 0.75
+	cost_info.text = "COST: " + str(cannons_costs[0])
+	cost_info.show()
+
+
+func _on_cannon_1_mouse_exited() -> void:
+	$AvailableCannons/Cannon1.modulate.a = 1.0
+	cost_info.hide()
+	
+func _on_cannon_2_mouse_entered() -> void:
+	$AvailableCannons/Cannon2.modulate.a = 0.75
+	cost_info.text = "COST: " + str(cannons_costs[1])
+	cost_info.show()
+
+
+func _on_cannon_2_mouse_exited() -> void:
+	$AvailableCannons/Cannon2.modulate.a = 1.0
+	cost_info.hide()
+
+func _on_cannon_3_mouse_entered() -> void:
+	$AvailableCannons/Cannon3.modulate.a = 0.75
+	cost_info.text = "COST: " + str(cannons_costs[2])
+	cost_info.show()
+
+
+func _on_cannon_3_mouse_exited() -> void:
+	$AvailableCannons/Cannon3.modulate.a = 1.0
+	cost_info.hide()
+	
+func _on_cannon_4_mouse_entered() -> void:
+	$AvailableCannons/Cannon4.modulate.a = 0.75
+	cost_info.text = "COST: " + str(cannons_costs[3])
+	cost_info.show()
+
+
+func _on_cannon_4_mouse_exited() -> void:
+	$AvailableCannons/Cannon4.modulate.a = 1.0
+	cost_info.hide()
