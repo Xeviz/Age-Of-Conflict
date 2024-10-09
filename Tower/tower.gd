@@ -10,14 +10,14 @@ class_name Tower
 
 var mounted_cannon: Cannon
 
-func _ready() -> void:
-	print(gameplay_map)
-
 func mount_cannon(cannon_to_mount):
 	mounted_cannon = cannon_to_mount
-	if not mounted_cannon.belongs_to_player:
-		mounted_cannon.position = cannon_placement_area.position
 	add_child(mounted_cannon)
+	mounted_cannon.global_position = cannon_placement_area.global_position
+	
+	
+	mounted_cannon.state_machine.on_child_transition(mounted_cannon.state_machine.current_state, "CannonAwaitingTarget")
+	
 	
 func update_tower_texture(age):
 	var new_texture = load("res://Textures/Tower/Age" + str(age) + "Tower.png")

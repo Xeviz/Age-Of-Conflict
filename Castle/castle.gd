@@ -15,8 +15,14 @@ var belongs_to_player: bool = true
 var is_targetable: bool = true
 var next_tower_spawn_pos = Vector2(100, -250)
 var current_age = 1
+var was_recently_attacked = false
+var time_to_lose_aggro: float = 1.0
 
-
+func _process(delta: float) -> void:
+	if time_to_lose_aggro>0:
+		time_to_lose_aggro-=delta
+	else:
+		was_recently_attacked = false
 
 func _ready():
 	if name == "EnemyCastle":
@@ -25,8 +31,12 @@ func _ready():
 	health_bar.value = current_health
 
 func receive_damage(damage_amount):
+	was_recently_attacked = true
+	time_to_lose_aggro=1.0
 	current_health-=damage_amount
 	health_bar.value = current_health
+	if current_health<=0:
+		gameplay_map.end_game(!belongs_to_player)
 
 func append_tower():
 	var new_tower = tower_scene.instantiate()

@@ -11,6 +11,8 @@
 radius = 800.0
 
 [node name="Cannon" type="Node2D"]
+process_priority = 1
+process_physics_priority = 1
 script = ExtResource("1_u2lvf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

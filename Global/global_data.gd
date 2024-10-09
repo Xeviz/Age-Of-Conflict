@@ -67,17 +67,17 @@ var stages_units_stats = {
 		"damage": 4,
 		"exp_to_owner": 40,
 		"exp_to_slayer": 50,
-		"gold_on_death": 5,
+		"gold_on_death": 30,
 		"time_to_spawn": 1.5,
 		"speed": 40
 	}, {
 		"cost": 30,
 		"health": 8,
 		"attack_speed": 2.0,
-		"damage": 3,
+		"damage": 6,
 		"exp_to_owner": 60,
 		"exp_to_slayer": 70,
-		"gold_on_death": 6,
+		"gold_on_death": 35,
 		"time_to_spawn": 2.0,
 		"speed": 35
 	}, {
@@ -87,9 +87,9 @@ var stages_units_stats = {
 		"damage": 6,
 		"exp_to_owner": 125,
 		"exp_to_slayer": 150,
-		"gold_on_death": 10,
-		"time_to_spawn": 4.0,
-		"speed": 38
+		"gold_on_death": 150,
+		"time_to_spawn": 0.2,
+		"speed": 738
 	}],
 	2: [{
 		"cost": 40,

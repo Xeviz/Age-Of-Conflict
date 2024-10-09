@@ -25,7 +25,6 @@ var current_stage = 1
 var x_spawn_border = [1600, 2800]
 var y_spawn_border = [600, 900]
 
-var was_castle_recently_attacked = false
 var coords_of_latest_attacker: Vector2
 
 
@@ -81,7 +80,10 @@ func buy_unit():
 	gameplay_map.add_child(new_unit)
 	new_unit.load_unit_stats(units_stats[next_unit_to_spawn])
 	new_unit.state_machine.on_child_transition(new_unit.state_machine.current_state, "UnitSpawning")
-	new_unit.global_position = get_random_spawn_pos()
+	if enemy_castle.was_recently_attacked:
+		new_unit.global_position = Vector2(2800, 750)
+	else:
+		new_unit.global_position = get_random_spawn_pos()
 	
 func get_random_spawn_pos():
 	var spawn_pos = Vector2.ZERO
@@ -104,8 +106,8 @@ func chance_to_buy_cannon():
 func buy_cannon():
 	global_data.enemy_gold -= cannons_costs[next_cannon_to_buy]
 	var new_cannon = available_cannons_scenes[next_cannon_to_buy].instantiate()
-	new_cannon.load_cannon_stats(cannons_stats[next_cannon_to_buy])
 	new_cannon.belongs_to_player = false
+	new_cannon.load_cannon_stats(cannons_stats[next_cannon_to_buy])
 	var index = 0
 	for tower in enemy_castle.towers.get_children():
 		if tower.mounted_cannon == null:

@@ -3,6 +3,9 @@ class_name UnitMoving
 
 @export var unit: Unit
 
+func enter():
+	unit.unit_sprite.play("walk")
+
 func physics_update(delta):
 	if unit == null:
 		return

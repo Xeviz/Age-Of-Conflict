@@ -8,22 +8,22 @@ var current_action = "NONE"
 
 
 func update(delta):
-	if current_action == "NONE":
-		pick_action_to_perform()
-	elif current_action == "BUY_TOWER":
+	pick_action_to_perform()
+	if current_action == "BUY_TOWER":
 		buy_tower()
 	elif current_action == "BUY_UNIT":
 		buy_unit()
 	elif current_action == "BUY_CANNON":
 		buy_cannon()
+	state_transition.emit(self, "PerformingUnconditionals")
 		
 func pick_action_to_perform():
 	if enemy_ai.chance_to_buy_tower() == true:
 		current_action = "BUY_TOWER"
-	elif enemy_ai.chance_to_buy_unit() == true:
-		current_action = "BUY_UNIT"
 	elif enemy_ai.chance_to_buy_cannon() == true:
 		current_action = "BUY_CANNON"
+	elif enemy_ai.chance_to_buy_unit() == true:
+		current_action = "BUY_UNIT"
 	
 func buy_tower():
 	current_action = "NONE"

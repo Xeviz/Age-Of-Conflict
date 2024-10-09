@@ -7,6 +7,7 @@ class_name Unit
 @onready var enemy_detection_area: Area2D = $EnemyDetectionArea
 @onready var attack_range_area: Area2D = $AttackRangeArea
 @onready var state_machine: FiniteStateMachine = $FiniteStateMachine
+@onready var unit_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 
 var speed: float = 35.0
@@ -31,6 +32,7 @@ var unit_name: String
 var time_to_death: float = 1.5
 
 
+
 func lock_on_target(target):
 	current_target = target
 	
@@ -52,6 +54,7 @@ func attack_target():
 		current_target = null
 		time_to_next_attack=attack_speed
 	else:
+		unit_sprite.play("hit")
 		current_target.receive_damage(damage)
 		time_to_next_attack=attack_speed
 		if current_target.current_health<=0:
@@ -75,6 +78,8 @@ func load_unit_stats(recipe):
 	
 	health_bar.max_value = max_health
 	health_bar.value = max_health
+	if not belongs_to_player:
+		scale.x *= -1
 	
 func receive_damage(damage_amount):
 	current_health-=damage_amount
@@ -97,12 +102,12 @@ func die():
 		global_data.player_experience += exp_to_owner
 		global_data.enemy_experience += exp_to_slayer
 		global_data.enemy_gold += gold_on_death
-		global_data.player_gold += cost
+		global_data.player_gold += int(cost/2)
 	else:
 		global_data.player_experience += exp_to_slayer
 		global_data.enemy_experience += exp_to_owner
 		global_data.player_gold += gold_on_death
-		global_data.enemy_gold += cost
+		global_data.enemy_gold += int(cost/2)
 		
 	state_machine.on_child_transition(state_machine.current_state, "UnitDying")
 	
@@ -124,3 +129,9 @@ func find_nearest_target():
 				closest_distance = target.global_position.distance_to(self.global_position)
 	state_machine.on_child_transition(state_machine.current_state, "UnitMoving")
 	
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	print("skonczylem "  + str(unit_sprite.animation))
+	if unit_sprite.animation == "hit":
+		unit_sprite.play("idle")

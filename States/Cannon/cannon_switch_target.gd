@@ -37,4 +37,5 @@ func update(delta):
 func exit():
 	cannon.attack_range_area.monitorable = true
 	cannon.attack_range_area.monitoring = true
-	gameplay_map.disable_tower_highlighters()
+	if cannon.belongs_to_player:
+		gameplay_map.disable_tower_highlighters()

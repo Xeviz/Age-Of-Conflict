@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cd37eligrm8mq"]
+[gd_scene load_steps=25 format=3 uid="uid://cd37eligrm8mq"]
 
 [ext_resource type="Script" path="res://Unit/unit.gd" id="1_u8kwy"]
 [ext_resource type="Texture2D" uid="uid://druk1kswiiwhb" path="res://Textures/placeholder_unit.png" id="1_uluih"]
@@ -8,6 +8,9 @@
 [ext_resource type="Script" path="res://States/Unit/UnitDying.gd" id="5_jm5bq"]
 [ext_resource type="Script" path="res://States/Unit/UnitPreview.gd" id="7_npqx6"]
 [ext_resource type="Script" path="res://States/Unit/UnitSpawning.gd" id="8_yff13"]
+[ext_resource type="Texture2D" uid="uid://co5hq5ejctnwo" path="res://Textures/Unit/Unit1Age1/hit.png" id="9_12x4u"]
+[ext_resource type="Texture2D" uid="uid://o88w1ep7ipr3" path="res://Textures/Unit/Unit1Age1/idle.png" id="10_cddkm"]
+[ext_resource type="Texture2D" uid="uid://da40tw3m1noe6" path="res://Textures/Unit/Unit1Age1/walk.png" id="11_hr4f0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c8alm"]
 radius = 60.0
@@ -18,11 +21,93 @@ size = Vector2(35, 128)
 [sub_resource type="CircleShape2D" id="CircleShape2D_i4kxk"]
 radius = 160.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_1uws0"]
+atlas = ExtResource("9_12x4u")
+region = Rect2(0, 0, 40, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7ljn"]
+atlas = ExtResource("9_12x4u")
+region = Rect2(41, 0, 40, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_05bjc"]
+atlas = ExtResource("9_12x4u")
+region = Rect2(82, 0, 40, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jcpb0"]
+atlas = ExtResource("9_12x4u")
+region = Rect2(123, 0, 40, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ityns"]
+atlas = ExtResource("10_cddkm")
+region = Rect2(0, 0, 40, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7j7w"]
+atlas = ExtResource("11_hr4f0")
+region = Rect2(0, 0, 40, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cha07"]
+atlas = ExtResource("11_hr4f0")
+region = Rect2(41, 0, 40, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wp10"]
+atlas = ExtResource("11_hr4f0")
+region = Rect2(82, 0, 40, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4c4h6"]
+atlas = ExtResource("11_hr4f0")
+region = Rect2(123, 0, 40, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dusdw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1uws0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7ljn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_05bjc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jcpb0")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ityns")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v7j7w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cha07")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7wp10")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4c4h6")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 6.0
+}]
+
 [node name="Unit3Age1" type="CharacterBody2D"]
 collision_mask = 0
 script = ExtResource("1_u8kwy")
 
 [node name="AttackRangeArea" type="Area2D" parent="."]
+position = Vector2(0, -64)
 collision_layer = 0
 collision_mask = 0
 
@@ -30,9 +115,11 @@ collision_mask = 0
 shape = SubResource("CircleShape2D_c8alm")
 
 [node name="UnitCollider" type="CollisionShape2D" parent="."]
+position = Vector2(0, -64)
 shape = SubResource("RectangleShape2D_xalja")
 
 [node name="EnemyDetectionArea" type="Area2D" parent="."]
+position = Vector2(0, -64)
 collision_layer = 0
 collision_mask = 0
 
@@ -40,6 +127,8 @@ collision_mask = 0
 shape = SubResource("CircleShape2D_i4kxk")
 
 [node name="PlaceholderTexture" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -64)
 texture = ExtResource("1_uluih")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
@@ -47,9 +136,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -20.0
-offset_top = -77.0
+offset_top = -144.0
 offset_right = 20.0
-offset_bottom = -69.0
+offset_bottom = -136.0
 grow_horizontal = 2
 max_value = 10.0
 step = 1.0
@@ -80,4 +169,10 @@ unit = NodePath("../..")
 script = ExtResource("8_yff13")
 unit = NodePath("../..")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -64)
+sprite_frames = SubResource("SpriteFrames_dusdw")
+animation = &"hit"
+
 [connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

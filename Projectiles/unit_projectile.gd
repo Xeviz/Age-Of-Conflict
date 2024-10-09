@@ -14,7 +14,7 @@ var is_fired = true
 var latest_target_position: Vector2
 
 func bind_to_shooter(shooter):
-	damage = shooter.projectile_damage
+	damage = shooter.damage
 	target = shooter.current_target
 
 func _on_projectile_area_body_entered(body):
@@ -27,6 +27,7 @@ func _on_projectile_area_body_entered(body):
 func travel_towards_target(delta):
 	if target != null and target.is_targetable:
 		latest_target_position = target.global_position
+		latest_target_position.y -= 64
 
 	direction = (latest_target_position - global_position).normalized()
 	velocity = direction * speed
