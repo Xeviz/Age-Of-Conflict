@@ -73,7 +73,6 @@ func chance_to_buy_unit():
 	return false
 
 func buy_unit():
-	print("kupuje o koszcie: " + str(units_costs[next_unit_to_spawn]))
 	global_data.enemy_gold -= units_costs[next_unit_to_spawn]
 	var new_unit = available_units_scenes[next_unit_to_spawn].instantiate()
 	new_unit.belongs_to_player = false

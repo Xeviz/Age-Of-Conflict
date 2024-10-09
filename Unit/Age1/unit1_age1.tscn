@@ -1,16 +1,18 @@
-[gd_scene load_steps=25 format=3 uid="uid://bem32eiql184r"]
+[gd_scene load_steps=31 format=3 uid="uid://bem32eiql184r"]
 
 [ext_resource type="Script" path="res://Unit/unit.gd" id="1_8pams"]
-[ext_resource type="Texture2D" uid="uid://bu40o0y36r0l7" path="res://Textures/Unit/Unit1Age1.png" id="2_8o3i7"]
+[ext_resource type="Texture2D" path="res://Textures/Unit/Unit1Age1.png" id="2_8o3i7"]
 [ext_resource type="Script" path="res://States/finite_state_machine.gd" id="3_bhpj2"]
 [ext_resource type="Script" path="res://States/Unit/UnitAttacking.gd" id="4_4ykxl"]
 [ext_resource type="Script" path="res://States/Unit/UnitMoving.gd" id="5_kppkq"]
 [ext_resource type="Script" path="res://States/Unit/UnitDying.gd" id="6_qr2wu"]
 [ext_resource type="Script" path="res://States/Unit/UnitPreview.gd" id="7_maqie"]
 [ext_resource type="Script" path="res://States/Unit/UnitSpawning.gd" id="8_t4nxt"]
+[ext_resource type="Texture2D" uid="uid://c7556wn3iean1" path="res://Textures/Unit/Unit1Age1/die.png" id="9_5m5tl"]
 [ext_resource type="Texture2D" uid="uid://co5hq5ejctnwo" path="res://Textures/Unit/Unit1Age1/hit.png" id="9_62bba"]
 [ext_resource type="Texture2D" uid="uid://o88w1ep7ipr3" path="res://Textures/Unit/Unit1Age1/idle.png" id="10_esuy2"]
 [ext_resource type="Texture2D" uid="uid://da40tw3m1noe6" path="res://Textures/Unit/Unit1Age1/walk.png" id="11_yjygc"]
+[ext_resource type="AudioStream" uid="uid://dlybdk5ikaoh6" path="res://Audio/Units/Unit1Age1.mp3" id="13_ik32n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tst82"]
 radius = 60.0
@@ -20,6 +22,22 @@ size = Vector2(35, 128)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qboq0"]
 radius = 160.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdugq"]
+atlas = ExtResource("9_5m5tl")
+region = Rect2(0, 0, 40, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfi0h"]
+atlas = ExtResource("9_5m5tl")
+region = Rect2(41, 0, 40, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6u3i"]
+atlas = ExtResource("9_5m5tl")
+region = Rect2(82, 0, 40, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mn1uc"]
+atlas = ExtResource("9_5m5tl")
+region = Rect2(123, 0, 40, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1uws0"]
 atlas = ExtResource("9_62bba")
@@ -59,6 +77,23 @@ region = Rect2(123, 0, 40, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1aerp"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdugq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfi0h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6u3i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mn1uc")
+}],
+"loop": false,
+"name": &"die",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1uws0")
@@ -174,8 +209,13 @@ unit = NodePath("../..")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -64)
 sprite_frames = SubResource("SpriteFrames_1aerp")
-animation = &"hit"
+animation = &"die"
 autoplay = "idle"
+frame = 3
+frame_progress = 1.0
+
+[node name="MeleeHitPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_ik32n")
 
 [connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

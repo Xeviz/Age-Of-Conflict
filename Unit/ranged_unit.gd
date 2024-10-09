@@ -3,7 +3,7 @@ class_name RangedUnit
 
 var projectile_scene = preload("res://Projectiles/unit_projectile.tscn")
 @onready var projectile_spawner: Node2D = $ProjectileSpawner
-
+@onready var shoot_projectile_player: AudioStreamPlayer2D = $ShootProjectilePlayer
 
 
 func shoot_projectile(delta):
@@ -12,6 +12,7 @@ func shoot_projectile(delta):
 		current_target = null
 	elif time_to_next_attack<=0:
 		unit_sprite.play("hit")
+		shoot_projectile_player.play()
 		var new_projectile
 		new_projectile = projectile_scene.instantiate()
 		new_projectile.bind_to_shooter(self)
@@ -40,6 +41,7 @@ func find_nearest_target():
 		
 	
 func _on_animated_sprite_2d_animation_finished() -> void:
-	print("koniec?")
 	if unit_sprite.animation == "hit":
 		unit_sprite.play("idle")
+	if unit_sprite.animation == "die":
+		queue_free()

@@ -8,6 +8,7 @@ extends Node2D
 
 var targeted_tower: Tower = null
 
+
 func _process(delta: float) -> void:
 	if global_data.player_spawn_queue>0:
 		global_data.player_spawn_queue-=delta
@@ -18,8 +19,6 @@ func _process(delta: float) -> void:
 	else:
 		global_data.enemy_spawn_queue = 0
 
-func _ready() -> void:
-	print("jestem gotowy?")
 
 
 	

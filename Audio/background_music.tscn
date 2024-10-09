@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2gqin3jjgkbm"]
+
+[ext_resource type="AudioStream" uid="uid://cqaosdr0hou3c" path="res://Audio/Waterflame - Glorious Morning Extended.mp3" id="1_yeh6m"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_yeh6m")
+autoplay = true

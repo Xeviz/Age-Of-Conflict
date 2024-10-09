@@ -8,6 +8,7 @@ class_name Unit
 @onready var attack_range_area: Area2D = $AttackRangeArea
 @onready var state_machine: FiniteStateMachine = $FiniteStateMachine
 @onready var unit_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var melee_hit_player: AudioStreamPlayer2D = $MeleeHitPlayer
 
 
 var speed: float = 35.0
@@ -55,6 +56,7 @@ func attack_target():
 		time_to_next_attack=attack_speed
 	else:
 		unit_sprite.play("hit")
+		melee_hit_player.play()
 		current_target.receive_damage(damage)
 		time_to_next_attack=attack_speed
 		if current_target.current_health<=0:
@@ -90,6 +92,7 @@ func receive_damage(damage_amount):
 		die()
 
 func die():
+	unit_sprite.play("die")
 	self.set_collision_layer_value(1, false)
 	self.set_collision_layer_value(2, false)
 	self.set_collision_mask_value(1, false)
@@ -132,6 +135,7 @@ func find_nearest_target():
 
 
 func _on_animated_sprite_2d_animation_finished() -> void:
-	print("skonczylem "  + str(unit_sprite.animation))
 	if unit_sprite.animation == "hit":
 		unit_sprite.play("idle")
+	if unit_sprite.animation == "die":
+		queue_free()
