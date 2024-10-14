@@ -18,6 +18,7 @@ func _process(delta: float) -> void:
 		global_data.enemy_spawn_queue-=delta
 	else:
 		global_data.enemy_spawn_queue = 0
+		
 
 
 

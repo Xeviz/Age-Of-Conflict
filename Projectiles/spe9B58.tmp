@@ -1,0 +1,105 @@
+[gd_scene load_steps=16 format=3 uid="uid://c4730ywl76e81"]
+
+[ext_resource type="Texture2D" uid="uid://dk1h4vphs6hrf" path="res://Textures/Spell/SpellAge1/explosion.png" id="1_jbj0b"]
+[ext_resource type="Script" path="res://Projectiles/spell_projectile.gd" id="1_kv2op"]
+[ext_resource type="Texture2D" uid="uid://pv2m8my5686t" path="res://Textures/Spell/SpellAge1/falling.png" id="2_qtchw"]
+[ext_resource type="Script" path="res://States/finite_state_machine.gd" id="4_6xrbe"]
+[ext_resource type="Script" path="res://States/Projectiles/falling_down.gd" id="5_oygm4"]
+[ext_resource type="Script" path="res://States/Projectiles/projectile_idle.gd" id="6_n4dds"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dvo7c"]
+radius = 100.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1fus"]
+atlas = ExtResource("1_jbj0b")
+region = Rect2(0, 0, 320, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_thxcw"]
+atlas = ExtResource("1_jbj0b")
+region = Rect2(321, 0, 320, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umi7i"]
+atlas = ExtResource("1_jbj0b")
+region = Rect2(642, 0, 320, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hf81"]
+atlas = ExtResource("1_jbj0b")
+region = Rect2(963, 0, 320, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48l3b"]
+atlas = ExtResource("2_qtchw")
+region = Rect2(0, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwe1w"]
+atlas = ExtResource("2_qtchw")
+region = Rect2(61, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mm285"]
+atlas = ExtResource("2_qtchw")
+region = Rect2(122, 0, 60, 60)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kltgs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1fus")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_thxcw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umi7i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hf81")
+}],
+"loop": false,
+"name": &"explosion",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48l3b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hwe1w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mm285")
+}],
+"loop": true,
+"name": &"falling",
+"speed": 5.0
+}]
+
+[node name="SpellProjectile" type="CharacterBody2D" node_paths=PackedStringArray("explosion_area", "displayed_animation", "state_machine")]
+script = ExtResource("1_kv2op")
+explosion_area = NodePath("ExplosionArea")
+displayed_animation = NodePath("AnimatedSprite2D")
+state_machine = NodePath("FiniteStateMachine")
+
+[node name="ExplosionArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionArea"]
+scale = Vector2(1.6, 1)
+shape = SubResource("CircleShape2D_dvo7c")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kltgs")
+animation = &"falling"
+
+[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("4_6xrbe")
+initial_state = NodePath("ProjectileIdle")
+
+[node name="FallingDown" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("projectile")]
+script = ExtResource("5_oygm4")
+projectile = NodePath("../..")
+
+[node name="ProjectileIdle" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("projectile")]
+script = ExtResource("6_n4dds")
+projectile = NodePath("../..")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

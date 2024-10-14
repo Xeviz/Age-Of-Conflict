@@ -1,7 +1,7 @@
 extends Node
 
 
-var player_experience: int = 0
+var player_experience: int = 5000000
 var enemy_experience: int = 0
 
 var player_stage: int = 1

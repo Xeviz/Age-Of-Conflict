@@ -1,5 +1,6 @@
 extends Control
 
+var projectile_spell_scene = load("res://Projectiles/spell_projectile.tscn")
 @onready var resources_container = $ResourcesContainer
 @onready var purchases_container = $PurchasesContainer
 @onready var available_units_grid = $AvailableUnits
@@ -10,6 +11,8 @@ extends Control
 @onready var gold_info = $ResourcesContainer/GoldLabel
 @onready var exp_info = $ResourcesContainer/ExperienceLabel
 @onready var cost_info = $CostInfo
+@onready var cooldown_bar: ProgressBar = $SpellButton/CooldownBar
+var speell_cooldown: float = 0
 
 var move_screen_left = false
 var move_screen_right = false
@@ -28,8 +31,16 @@ var cannons_stats: Array
 var amount_of_towers = 0
 var current_stage = 1
 
+var spell_projectiles: Array[CharacterBody2D]
+
+
 func _ready() -> void:
 	load_new_units()
+	for i in range(10):
+		var spell_projectile = projectile_spell_scene.instantiate()
+		spell_projectiles.append(spell_projectile)
+		gameplay_map.add_child(spell_projectile)
+	
 
 func advance_age():
 	current_stage+=1
@@ -40,6 +51,9 @@ func _process(delta) -> void:
 	gold_info.text = "GOLD: " + str(global_data.player_gold)
 	exp_info.text = "EXP: " + str(global_data.player_experience)
 	move_camera(delta)
+	if speell_cooldown>0:
+		speell_cooldown-=delta
+		update_cooldown_bar()
 
 func move_camera(delta):
 	if move_screen_left and camera.position.x - (screen_move_speed * delta) > 0:
@@ -90,6 +104,8 @@ func load_new_units() -> void:
 	cannons_costs = global_data.stages_cannons_costs[current_stage]
 	units_stats = global_data.stages_units_stats[current_stage]
 	cannons_stats = global_data.stages_cannons_stats[current_stage]
+	
+	$SpellButton/TextureRect.texture = load("res://Interface/Icons/Spells/SpellAge" + str(current_stage) + ".png")
 	
 	$AvailableUnits/Unit1/TextureRect.texture = load("res://Interface/Icons/Units/Unit1Age" + str(current_stage) + ".png")
 	$AvailableUnits/Unit2/TextureRect.texture = load("res://Interface/Icons/Units/Unit2Age" + str(current_stage) + ".png")
@@ -240,7 +256,7 @@ func _on_cannons_button_mouse_exited() -> void:
 
 func _on_buy_tower_button_mouse_entered() -> void:
 	$PurchasesContainer/BuyTowerButton.modulate.a = 0.75
-	cost_info.text = "BUY TOWER"
+	cost_info.text = "BUY TOWER: " + str(tower_costs[amount_of_towers])
 	cost_info.show()
 
 func _on_buy_tower_button_mouse_exited() -> void:
@@ -305,3 +321,26 @@ func _on_cannon_4_mouse_entered() -> void:
 func _on_cannon_4_mouse_exited() -> void:
 	$AvailableCannons/Cannon4.modulate.a = 1.0
 	cost_info.hide()
+
+
+func _on_spell_button_button_down() -> void:
+	if speell_cooldown<=0:
+		fire_spell_projectiles()
+		speell_cooldown = 10.0
+		update_cooldown_bar()
+	
+func update_cooldown_bar():
+	cooldown_bar.value=speell_cooldown
+
+
+func _on_spell_button_mouse_entered() -> void:
+	if speell_cooldown<=0:
+		$SpellButton.modulate.a = 0.75
+
+
+func _on_spell_button_mouse_exited() -> void:
+	$SpellButton.modulate.a = 1.0
+	
+func fire_spell_projectiles() -> void:
+	for projectile in spell_projectiles:
+		projectile.start_falling()

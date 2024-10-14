@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://br5m4allilmy8"
-path="res://.godot/imported/_Run.png-ac415c3ab0538a735b0bee365c6da89a.ctex"
+uid="uid://bad6iadx5k0qc"
+path="res://.godot/imported/SpellAge2.png-7664d205f3e37c6c7ae087ece0de84e3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Projectiles/_Run.png"
-dest_files=["res://.godot/imported/_Run.png-ac415c3ab0538a735b0bee365c6da89a.ctex"]
+source_file="res://Interface/Icons/Spells/SpellAge2.png"
+dest_files=["res://.godot/imported/SpellAge2.png-7664d205f3e37c6c7ae087ece0de84e3.ctex"]
 
 [params]
 
