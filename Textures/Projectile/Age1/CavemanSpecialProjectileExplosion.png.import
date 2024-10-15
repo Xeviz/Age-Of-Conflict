@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgt17djnfrhpp"
-path="res://.godot/imported/die.png-6a20c178cb9b8553f044eb55f51870b2.ctex"
+uid="uid://b8nk7acsqe3ou"
+path="res://.godot/imported/CavemanSpecialProjectileExplosion.png-2748585f4040a27cd2a72af46d2f7de5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Unit/Unit1Age1/die.png"
-dest_files=["res://.godot/imported/die.png-6a20c178cb9b8553f044eb55f51870b2.ctex"]
+source_file="res://Textures/Projectile/Age1/CavemanSpecialProjectileExplosion.png"
+dest_files=["res://.godot/imported/CavemanSpecialProjectileExplosion.png-2748585f4040a27cd2a72af46d2f7de5.ctex"]
 
 [params]
 

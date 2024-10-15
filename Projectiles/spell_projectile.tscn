@@ -1,8 +1,7 @@
-[gd_scene load_steps=51 format=3 uid="uid://c4730ywl76e81"]
+[gd_scene load_steps=48 format=3 uid="uid://c4730ywl76e81"]
 
-[ext_resource type="Texture2D" uid="uid://dh75bwwpqn6x6" path="res://Textures/Spell/SpellAge1/explosion.png" id="1_jbj0b"]
 [ext_resource type="Script" path="res://Projectiles/spell_projectile.gd" id="1_kv2op"]
-[ext_resource type="Texture2D" uid="uid://ptpa2jg5vqqj" path="res://Textures/Spell/SpellAge1/falling.png" id="2_qtchw"]
+[ext_resource type="Texture2D" uid="uid://b8nk7acsqe3ou" path="res://Textures/Projectile/Age1/CavemanSpecialProjectileExplosion.png" id="2_fuva5"]
 [ext_resource type="Texture2D" uid="uid://d1ffkldbx7748" path="res://Textures/Spell/SpellAge2/explosion.png" id="3_xhtl6"]
 [ext_resource type="Script" path="res://States/finite_state_machine.gd" id="4_6xrbe"]
 [ext_resource type="Texture2D" uid="uid://jnqvwekfxnjn" path="res://Textures/Spell/SpellAge3/explosion.png" id="4_52rr0"]
@@ -10,6 +9,7 @@
 [ext_resource type="Script" path="res://States/Projectiles/falling_down.gd" id="5_oygm4"]
 [ext_resource type="Script" path="res://States/Projectiles/projectile_idle.gd" id="6_n4dds"]
 [ext_resource type="Texture2D" uid="uid://dl6q787xxibaf" path="res://Textures/Spell/SpellAge5/explosion.png" id="6_xkfcs"]
+[ext_resource type="Texture2D" uid="uid://bc1icb0oyy01p" path="res://Textures/Projectile/Age1/CavemanSpecialProjectile.png" id="7_kd52v"]
 [ext_resource type="Texture2D" uid="uid://ctch0em5hjxw7" path="res://Textures/Spell/SpellAge2/falling.png" id="8_kdngc"]
 [ext_resource type="Texture2D" uid="uid://5em4qj1w2hgq" path="res://Textures/Spell/SpellAge3/falling.png" id="9_tuso8"]
 [ext_resource type="Texture2D" uid="uid://i08sd614kydy" path="res://Textures/Spell/SpellAge4/falling.png" id="10_owb4r"]
@@ -17,21 +17,17 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_dvo7c"]
 radius = 105.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p1fus"]
-atlas = ExtResource("1_jbj0b")
-region = Rect2(0, 0, 320, 200)
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqq6j"]
+atlas = ExtResource("2_fuva5")
+region = Rect2(0, 0, 192, 256)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_thxcw"]
-atlas = ExtResource("1_jbj0b")
-region = Rect2(321, 0, 320, 200)
+[sub_resource type="AtlasTexture" id="AtlasTexture_66m07"]
+atlas = ExtResource("2_fuva5")
+region = Rect2(192, 0, 192, 256)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_umi7i"]
-atlas = ExtResource("1_jbj0b")
-region = Rect2(642, 0, 320, 200)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3hf81"]
-atlas = ExtResource("1_jbj0b")
-region = Rect2(963, 0, 320, 200)
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1024"]
+atlas = ExtResource("2_fuva5")
+region = Rect2(0, 256, 192, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ujwvm"]
 atlas = ExtResource("3_xhtl6")
@@ -97,17 +93,9 @@ region = Rect2(642, 0, 320, 200)
 atlas = ExtResource("6_xkfcs")
 region = Rect2(963, 0, 320, 200)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_48l3b"]
-atlas = ExtResource("2_qtchw")
-region = Rect2(0, 0, 60, 60)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hwe1w"]
-atlas = ExtResource("2_qtchw")
-region = Rect2(61, 0, 60, 60)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mm285"]
-atlas = ExtResource("2_qtchw")
-region = Rect2(122, 0, 60, 60)
+[sub_resource type="AtlasTexture" id="AtlasTexture_qircq"]
+atlas = ExtResource("7_kd52v")
+region = Rect2(0, 0, 192, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gxie7"]
 atlas = ExtResource("8_kdngc")
@@ -161,16 +149,13 @@ region = Rect2(122, 0, 60, 60)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_p1fus")
+"texture": SubResource("AtlasTexture_jqq6j")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_thxcw")
+"texture": SubResource("AtlasTexture_66m07")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_umi7i")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3hf81")
+"texture": SubResource("AtlasTexture_d1024")
 }],
 "loop": false,
 "name": &"ExplosionAge1",
@@ -246,13 +231,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_48l3b")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hwe1w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mm285")
+"texture": SubResource("AtlasTexture_qircq")
 }],
 "loop": true,
 "name": &"FallingAge1",
@@ -331,7 +310,7 @@ shape = SubResource("CircleShape2D_dvo7c")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kltgs")
-animation = &"ExplosionAge3"
+animation = &"FallingAge1"
 
 [node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_6xrbe")
