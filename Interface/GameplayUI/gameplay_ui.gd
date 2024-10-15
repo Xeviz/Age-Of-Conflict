@@ -39,13 +39,15 @@ func _ready() -> void:
 	for i in range(10):
 		var spell_projectile = projectile_spell_scene.instantiate()
 		spell_projectiles.append(spell_projectile)
-		gameplay_map.add_child(spell_projectile)
+		get_tree().root.add_child(spell_projectile)
 	
 
 func advance_age():
 	current_stage+=1
 	load_new_units()
 	player_castle.advance_age(current_stage)
+	for projectile in spell_projectiles:
+		projectile.advance_age()
 
 func _process(delta) -> void:
 	gold_info.text = "GOLD: " + str(global_data.player_gold)

@@ -7,7 +7,7 @@ var enemy_experience: int = 0
 var player_stage: int = 1
 var enemy_stage: int = 1
 
-var player_gold: int = 100
+var player_gold: int = 500000000
 var enemy_gold: int = 100
 
 var player_spawn_queue: float = 0.0
@@ -22,10 +22,10 @@ var stages_exp_requirements = {
 
 var stages_castle_health_bonus = {
 	1: 0,
-	2: 500,
-	3: 1500,
-	4: 2500,
-	5: 4000
+	2: 1000,
+	3: 2500,
+	4: 5000,
+	5: 9000
 }
 
 var stages_units_scenes = {
@@ -37,11 +37,11 @@ var stages_units_scenes = {
 }
 
 var stages_cannons_scenes = {
-	1: [load("res://Cannon/cannon.tscn"), load("res://Cannon/cannon.tscn"), load("res://Cannon/cannon.tscn")],
-	2: [load("res://Cannon/cannon2.tscn"), load("res://Cannon/cannon2.tscn"), load("res://Cannon/cannon2.tscn")],
-	3: [load("res://Cannon/cannon3.tscn"), load("res://Cannon/cannon3.tscn"), load("res://Cannon/cannon3.tscn")],
-	4: [load("res://Cannon/cannon4.tscn"), load("res://Cannon/cannon4.tscn"), load("res://Cannon/cannon4.tscn")],
-	5: [load("res://Cannon/cannon5.tscn"), load("res://Cannon/cannon5.tscn"), load("res://Cannon/cannon5.tscn"), load("res://Cannon/cannon5_extra.tscn")]
+	1: [load("res://Cannon/Age1/cannon1_age1.tscn"), load("res://Cannon/Age1/cannon2_age1.tscn"), load("res://Cannon/Age1/cannon3_age1.tscn")],
+	2: [load("res://Cannon/Age2/cannon1_age2.tscn"), load("res://Cannon/Age2/cannon2_age2.tscn"), load("res://Cannon/Age2/cannon3_age2.tscn")],
+	3: [load("res://Cannon/Age3/cannon1_age3.tscn"), load("res://Cannon/Age3/cannon2_age3.tscn"), load("res://Cannon/Age3/cannon3_age3.tscn")],
+	4: [load("res://Cannon/Age4/cannon1_age4.tscn"), load("res://Cannon/Age4/cannon2_age4.tscn"), load("res://Cannon/Age4/cannon3_age4.tscn")],
+	5: [load("res://Cannon/Age5/cannon1_age5.tscn"), load("res://Cannon/Age5/cannon2_age5.tscn"), load("res://Cannon/Age5/cannon3_age5.tscn"), load("res://Cannon/Age5/cannon4_age5.tscn")]
 }
 
 var stages_unit_costs = {

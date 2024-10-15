@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ptpa2jg5vqqj"
-path="res://.godot/imported/falling.png-7851a9964c635ebd447cbc170e6758aa.ctex"
+uid="uid://d1ffkldbx7748"
+path="res://.godot/imported/explosion.png-9f64c5d7bdd24b4280344487969c3145.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Spell/SpellAge1/falling.png"
-dest_files=["res://.godot/imported/falling.png-7851a9964c635ebd447cbc170e6758aa.ctex"]
+source_file="res://Textures/Spell/SpellAge2/explosion.png"
+dest_files=["res://.godot/imported/explosion.png-9f64c5d7bdd24b4280344487969c3145.ctex"]
 
 [params]
 

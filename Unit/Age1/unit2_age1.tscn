@@ -1,7 +1,6 @@
-[gd_scene load_steps=30 format=3 uid="uid://dscqjf32hvyqp"]
+[gd_scene load_steps=29 format=3 uid="uid://dscqjf32hvyqp"]
 
 [ext_resource type="Script" path="res://Unit/ranged_unit.gd" id="1_git8d"]
-[ext_resource type="Texture2D" path="res://Textures/Unit/Unit2Age1.png" id="2_gaamw"]
 [ext_resource type="Script" path="res://States/finite_state_machine.gd" id="3_h285r"]
 [ext_resource type="Script" path="res://States/Unit/UnitMoving.gd" id="5_vet65"]
 [ext_resource type="Script" path="res://States/Unit/UnitDying.gd" id="6_b1cf3"]
@@ -150,11 +149,6 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
 shape = SubResource("CircleShape2D_lxjs4")
 
-[node name="PlaceholderTexture" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(0, -64)
-texture = ExtResource("2_gaamw")
-
 [node name="HealthBar" type="ProgressBar" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
@@ -199,7 +193,7 @@ position = Vector2(21, -95)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -64)
 sprite_frames = SubResource("SpriteFrames_q8ktx")
-animation = &"die"
+animation = &"idle"
 
 [node name="ShootProjectilePlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_1wwrt")

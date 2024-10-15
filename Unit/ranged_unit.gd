@@ -1,11 +1,14 @@
 extends Unit
 class_name RangedUnit
 
-var projectile_scene = preload("res://Projectiles/unit_projectile.tscn")
+var projectile_scene = load("res://Projectiles/unit_projectile.tscn")
 @onready var projectile_spawner: Node2D = $ProjectileSpawner
 @onready var shoot_projectile_player: AudioStreamPlayer2D = $ShootProjectilePlayer
 
-
+func _ready() -> void:
+	print("hej, jestem gotow")
+	projectile_scene = load("res://Projectiles/unit_projectile.tscn")
+	
 func shoot_projectile(delta):
 	time_to_next_attack-=delta
 	if current_target.current_health<=0:
@@ -15,6 +18,7 @@ func shoot_projectile(delta):
 		shoot_projectile_player.play()
 		var new_projectile
 		new_projectile = projectile_scene.instantiate()
+		print("tworze projectile " + str(new_projectile) + str(projectile_spawner))
 		new_projectile.bind_to_shooter(self)
 		get_parent().add_child(new_projectile)
 		new_projectile.global_position = projectile_spawner.global_position

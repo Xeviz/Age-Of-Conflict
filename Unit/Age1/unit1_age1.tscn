@@ -1,7 +1,6 @@
-[gd_scene load_steps=31 format=3 uid="uid://bem32eiql184r"]
+[gd_scene load_steps=30 format=3 uid="uid://bem32eiql184r"]
 
 [ext_resource type="Script" path="res://Unit/unit.gd" id="1_8pams"]
-[ext_resource type="Texture2D" path="res://Textures/Unit/Unit1Age1.png" id="2_8o3i7"]
 [ext_resource type="Script" path="res://States/finite_state_machine.gd" id="3_bhpj2"]
 [ext_resource type="Script" path="res://States/Unit/UnitAttacking.gd" id="4_4ykxl"]
 [ext_resource type="Script" path="res://States/Unit/UnitMoving.gd" id="5_kppkq"]
@@ -162,11 +161,6 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
 shape = SubResource("CircleShape2D_qboq0")
-
-[node name="PlaceholderTexture" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(0, -64)
-texture = ExtResource("2_8o3i7")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 anchors_preset = 5

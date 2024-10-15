@@ -24,6 +24,10 @@ func update_tower_texture(age):
 	tower_sprite.texture = new_texture
 	
 func sell_cannon():
+	for projectile in mounted_cannon.fired_projectiles:
+		projectile.queue_free()
+	for projectile in mounted_cannon.stored_projectiles:
+		projectile.queue_free()
 	mounted_cannon.queue_free()
 	
 func go_to_highlighting_append():
