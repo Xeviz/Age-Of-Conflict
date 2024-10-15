@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://co5hq5ejctnwo" path="res://Textures/Unit/Unit1Age1/hit.png" id="9_omwv7"]
 [ext_resource type="Texture2D" uid="uid://o88w1ep7ipr3" path="res://Textures/Unit/Unit1Age1/idle.png" id="10_6ifml"]
 [ext_resource type="Texture2D" uid="uid://da40tw3m1noe6" path="res://Textures/Unit/Unit1Age1/walk.png" id="11_mfh06"]
-[ext_resource type="AudioStream" uid="uid://utb0dpbbddo3" path="res://Audio/Units/Unit3Age1.mp3" id="12_6uffb"]
+[ext_resource type="AudioStream" uid="uid://dhgw8la2tkvep" path="res://Audio/Units/Unit3Age3.mp3" id="12_8c61l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ylp34"]
 radius = 60.0
@@ -159,9 +159,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -20.0
-offset_top = -77.0
+offset_top = -141.0
 offset_right = 20.0
-offset_bottom = -69.0
+offset_bottom = -133.0
 grow_horizontal = 2
 max_value = 10.0
 step = 1.0
@@ -198,7 +198,7 @@ sprite_frames = SubResource("SpriteFrames_jeeft")
 animation = &"die"
 
 [node name="MeleeHitPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("12_6uffb")
+stream = ExtResource("12_8c61l")
 
 [connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

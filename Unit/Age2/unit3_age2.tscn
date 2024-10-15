@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://co5hq5ejctnwo" path="res://Textures/Unit/Unit1Age1/hit.png" id="9_0jfb5"]
 [ext_resource type="Texture2D" uid="uid://o88w1ep7ipr3" path="res://Textures/Unit/Unit1Age1/idle.png" id="10_hjfco"]
 [ext_resource type="Texture2D" uid="uid://da40tw3m1noe6" path="res://Textures/Unit/Unit1Age1/walk.png" id="11_gdyfo"]
-[ext_resource type="AudioStream" uid="uid://utb0dpbbddo3" path="res://Audio/Units/Unit3Age1.mp3" id="12_raori"]
+[ext_resource type="AudioStream" uid="uid://b4td06x1bnf7p" path="res://Audio/Units/Unit3Age2.wav" id="12_3000f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ks21n"]
 radius = 60.0
@@ -196,7 +196,7 @@ sprite_frames = SubResource("SpriteFrames_vqi14")
 animation = &"die"
 
 [node name="MeleeHitPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("12_raori")
+stream = ExtResource("12_3000f")
 
 [node name="ProjectileSpawner" type="Node2D" parent="."]
 position = Vector2(21, -95)
