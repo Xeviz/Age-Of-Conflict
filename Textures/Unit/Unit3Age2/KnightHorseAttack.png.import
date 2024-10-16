@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dayivjuky0vjr"
-path="res://.godot/imported/Age2Castle.png-ff5e01b2bfcf46bded035efe4c764592.ctex"
+uid="uid://cbdpwart8g24m"
+path="res://.godot/imported/KnightHorseAttack.png-1b83bd2ebfd434c586368b60b62699b5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Castle/Age2Castle.png"
-dest_files=["res://.godot/imported/Age2Castle.png-ff5e01b2bfcf46bded035efe4c764592.ctex"]
+source_file="res://Textures/Unit/Unit3Age2/KnightHorseAttack.png"
+dest_files=["res://.godot/imported/KnightHorseAttack.png-1b83bd2ebfd434c586368b60b62699b5.ctex"]
 
 [params]
 

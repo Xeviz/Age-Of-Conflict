@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dayivjuky0vjr"
-path="res://.godot/imported/Age2Castle.png-ff5e01b2bfcf46bded035efe4c764592.ctex"
+uid="uid://dxvkodt16bwlh"
+path="res://.godot/imported/KnightCrosbowIdle.png-bd1c3bbdff9202ac5c89140957b5f65e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Castle/Age2Castle.png"
-dest_files=["res://.godot/imported/Age2Castle.png-ff5e01b2bfcf46bded035efe4c764592.ctex"]
+source_file="res://Textures/Unit/Unit2Age2/KnightCrosbowIdle.png"
+dest_files=["res://.godot/imported/KnightCrosbowIdle.png-bd1c3bbdff9202ac5c89140957b5f65e.ctex"]
 
 [params]
 
