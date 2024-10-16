@@ -416,6 +416,7 @@ size = Vector2(41, 176)
 [node name="Unit2Age1" type="CharacterBody2D"]
 collision_mask = 0
 script = ExtResource("1_git8d")
+metadata/_edit_horizontal_guides_ = [-316.0]
 
 [node name="EnemyDetectionArea" type="Area2D" parent="."]
 position = Vector2(0, -64)

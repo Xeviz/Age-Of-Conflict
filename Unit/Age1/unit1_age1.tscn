@@ -13,8 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://b5l3ys5u7dn7j" path="res://Textures/Unit/Unit1Age1/walk.png" id="11_yjygc"]
 [ext_resource type="AudioStream" uid="uid://dlybdk5ikaoh6" path="res://Audio/Units/Unit1Age1.mp3" id="13_ik32n"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_tst82"]
-radius = 80.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_prpl3"]
+size = Vector2(82, 182)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qboq0"]
 radius = 180.0
@@ -384,7 +384,8 @@ collision_layer = 0
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRangeArea"]
-shape = SubResource("CircleShape2D_tst82")
+position = Vector2(3, -28)
+shape = SubResource("RectangleShape2D_prpl3")
 
 [node name="EnemyDetectionArea" type="Area2D" parent="."]
 position = Vector2(0, -64)

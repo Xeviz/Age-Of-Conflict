@@ -1,24 +1,72 @@
-[gd_scene load_steps=10 format=3 uid="uid://boauwnlr12j0r"]
+[gd_scene load_steps=17 format=3 uid="uid://boauwnlr12j0r"]
 
 [ext_resource type="Script" path="res://Cannon/cannon.gd" id="1_a4571"]
-[ext_resource type="Texture2D" uid="uid://5l7bukxy4w8l" path="res://Textures/placeholder_cannon.png" id="2_1nbrp"]
 [ext_resource type="Script" path="res://States/finite_state_machine.gd" id="3_ffs20"]
 [ext_resource type="Script" path="res://States/Cannon/cannon_switch_target.gd" id="4_i4gln"]
 [ext_resource type="Script" path="res://States/Cannon/cannon_firing.gd" id="5_7gngh"]
 [ext_resource type="Script" path="res://States/Cannon/cannon_awaiting_target.gd" id="6_pexc6"]
+[ext_resource type="Texture2D" uid="uid://bm11irmow1smm" path="res://Textures/Canon/Age1Canon1Attack.png" id="6_sxhw8"]
+[ext_resource type="Texture2D" uid="uid://biol5er7txvg8" path="res://Textures/Canon/Age1Canon1.png" id="7_ricfq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p2xy4"]
 radius = 800.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_y57jr"]
-atlas = ExtResource("2_1nbrp")
-region = Rect2(0, 0, 205, 60)
+[sub_resource type="AtlasTexture" id="AtlasTexture_6jim6"]
+atlas = ExtResource("6_sxhw8")
+region = Rect2(0, 0, 192, 256)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_nm8ed"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qq1jc"]
+atlas = ExtResource("6_sxhw8")
+region = Rect2(192, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ly2u"]
+atlas = ExtResource("6_sxhw8")
+region = Rect2(384, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kda3b"]
+atlas = ExtResource("6_sxhw8")
+region = Rect2(0, 256, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ng2g"]
+atlas = ExtResource("6_sxhw8")
+region = Rect2(192, 256, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0ohv"]
+atlas = ExtResource("6_sxhw8")
+region = Rect2(384, 256, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k40k6"]
+atlas = ExtResource("7_ricfq")
+region = Rect2(0, 0, 192, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1t3g1"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_y57jr")
+"texture": SubResource("AtlasTexture_6jim6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qq1jc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ly2u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kda3b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ng2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0ohv")
+}],
+"loop": false,
+"name": &"fire",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k40k6")
 }],
 "loop": true,
 "name": &"idle",
@@ -63,8 +111,10 @@ script = ExtResource("6_pexc6")
 cannon = NodePath("../..")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(74, 1)
-sprite_frames = SubResource("SpriteFrames_nm8ed")
+position = Vector2(-70, 0)
+sprite_frames = SubResource("SpriteFrames_1t3g1")
 animation = &"idle"
+autoplay = "idle"
 
 [connection signal="body_entered" from="AttackRangeArea" to="." method="_on_attack_range_area_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

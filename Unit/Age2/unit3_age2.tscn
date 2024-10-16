@@ -13,14 +13,11 @@
 [ext_resource type="Texture2D" uid="uid://djebbp1mt2xst" path="res://Textures/Unit/Unit3Age2/KnightHorseWalk.png" id="11_2itq5"]
 [ext_resource type="AudioStream" uid="uid://b4td06x1bnf7p" path="res://Audio/Units/Unit3Age2.wav" id="12_3000f"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ks21n"]
-radius = 60.0
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kvqkj"]
-size = Vector2(35, 128)
+size = Vector2(158, 122)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t4ufg"]
-radius = 160.0
+radius = 200.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x64h2"]
 atlas = ExtResource("8_5mc8c")
@@ -409,35 +406,20 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vnecj"]
+size = Vector2(205, 220)
+
 [node name="Unit3Age2" type="CharacterBody2D"]
 script = ExtResource("1_wpigb")
 
-[node name="AttackRangeArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRangeArea"]
-shape = SubResource("CircleShape2D_ks21n")
-
 [node name="UnitCollider" type="CollisionShape2D" parent="."]
+position = Vector2(1, -3)
 shape = SubResource("RectangleShape2D_kvqkj")
 
 [node name="EnemyDetectionArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
 shape = SubResource("CircleShape2D_t4ufg")
-
-[node name="HealthBar" type="ProgressBar" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_top = -144.0
-offset_right = 20.0
-offset_bottom = -136.0
-grow_horizontal = 2
-max_value = 10.0
-step = 1.0
-value = 10.0
-show_percentage = false
 
 [node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_d35hw")
@@ -473,6 +455,26 @@ stream = ExtResource("12_3000f")
 
 [node name="ProjectileSpawner" type="Node2D" parent="."]
 position = Vector2(21, -95)
+
+[node name="AttackRangeArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRangeArea"]
+position = Vector2(0.5, -40)
+shape = SubResource("RectangleShape2D_vnecj")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -19.0
+offset_top = -191.0
+offset_right = 21.0
+offset_bottom = -183.0
+grow_horizontal = 2
+max_value = 10.0
+step = 1.0
+value = 10.0
+show_percentage = false
 
 [connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

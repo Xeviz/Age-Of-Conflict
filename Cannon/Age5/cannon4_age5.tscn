@@ -1,21 +1,80 @@
-[gd_scene load_steps=8 format=3 uid="uid://bnb6xvu8dhhgh"]
+[gd_scene load_steps=17 format=3 uid="uid://bnb6xvu8dhhgh"]
 
 [ext_resource type="Script" path="res://Cannon/cannon.gd" id="1_6gd5o"]
-[ext_resource type="Texture2D" uid="uid://5l7bukxy4w8l" path="res://Textures/placeholder_cannon.png" id="2_osdqo"]
 [ext_resource type="Script" path="res://States/finite_state_machine.gd" id="3_t7ure"]
 [ext_resource type="Script" path="res://States/Cannon/cannon_switch_target.gd" id="4_1qnw5"]
 [ext_resource type="Script" path="res://States/Cannon/cannon_firing.gd" id="5_0dpk0"]
 [ext_resource type="Script" path="res://States/Cannon/cannon_awaiting_target.gd" id="6_5p57j"]
+[ext_resource type="Texture2D" uid="uid://bm11irmow1smm" path="res://Textures/Canon/Age1Canon1Attack.png" id="6_h7q31"]
+[ext_resource type="Texture2D" uid="uid://biol5er7txvg8" path="res://Textures/Canon/Age1Canon1.png" id="7_7qcbj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bendb"]
 radius = 800.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_6jim6"]
+atlas = ExtResource("6_h7q31")
+region = Rect2(0, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qq1jc"]
+atlas = ExtResource("6_h7q31")
+region = Rect2(192, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ly2u"]
+atlas = ExtResource("6_h7q31")
+region = Rect2(384, 0, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kda3b"]
+atlas = ExtResource("6_h7q31")
+region = Rect2(0, 256, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ng2g"]
+atlas = ExtResource("6_h7q31")
+region = Rect2(192, 256, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0ohv"]
+atlas = ExtResource("6_h7q31")
+region = Rect2(384, 256, 192, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k40k6"]
+atlas = ExtResource("7_7qcbj")
+region = Rect2(0, 0, 192, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3piao"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6jim6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qq1jc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ly2u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kda3b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ng2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0ohv")
+}],
+"loop": false,
+"name": &"fire",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k40k6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
 [node name="Cannon4Age5" type="Node2D"]
 script = ExtResource("1_6gd5o")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(73, 0)
-texture = ExtResource("2_osdqo")
 
 [node name="AreaHighlighter" type="ColorRect" parent="."]
 visible = false
@@ -51,4 +110,11 @@ cannon = NodePath("../..")
 script = ExtResource("6_5p57j")
 cannon = NodePath("../..")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-70, 0)
+sprite_frames = SubResource("SpriteFrames_3piao")
+animation = &"idle"
+autoplay = "idle"
+
 [connection signal="body_entered" from="AttackRangeArea" to="." method="_on_attack_range_area_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
