@@ -13,9 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://d3wajytm38f80" path="res://Textures/Unit/Unit2Age1/CavemanRTangeWalk.png" id="11_5h50i"]
 [ext_resource type="AudioStream" uid="uid://dfvx2fgb6qiao" path="res://Audio/Units/Unit2Age1.mp3" id="12_1wwrt"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_28tog"]
-size = Vector2(35, 128)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_lxjs4"]
 radius = 600.0
 
@@ -266,7 +263,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"die",
-"speed": 5.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -310,7 +307,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"hit",
-"speed": 3.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -410,16 +407,15 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 6.0
+"speed": 20.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_28tog"]
+size = Vector2(41, 176)
 
 [node name="Unit2Age1" type="CharacterBody2D"]
 collision_mask = 0
 script = ExtResource("1_git8d")
-
-[node name="UnitCollider" type="CollisionShape2D" parent="."]
-position = Vector2(0, -64)
-shape = SubResource("RectangleShape2D_28tog")
 
 [node name="EnemyDetectionArea" type="Area2D" parent="."]
 position = Vector2(0, -64)
@@ -427,7 +423,6 @@ collision_layer = 0
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
-position = Vector2(191, 170)
 shape = SubResource("CircleShape2D_lxjs4")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
@@ -435,9 +430,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -20.0
-offset_top = -144.0
+offset_top = -190.0
 offset_right = 20.0
-offset_bottom = -136.0
+offset_bottom = -182.0
 grow_horizontal = 2
 max_value = 10.0
 step = 1.0
@@ -468,16 +463,21 @@ unit = NodePath("../..")
 script = ExtResource("9_ed483")
 unit = NodePath("../..")
 
-[node name="ProjectileSpawner" type="Node2D" parent="."]
-position = Vector2(21, -95)
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -64)
+position = Vector2(3, -118)
 sprite_frames = SubResource("SpriteFrames_q8ktx")
-animation = &"walk"
+animation = &"idle"
+autoplay = "idle"
 
 [node name="ShootProjectilePlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_1wwrt")
+
+[node name="ProjectileSpawner" type="Node2D" parent="."]
+position = Vector2(49, -82)
+
+[node name="UnitCollider" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -88)
+shape = SubResource("RectangleShape2D_28tog")
 
 [connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

@@ -14,13 +14,10 @@
 [ext_resource type="AudioStream" uid="uid://dlybdk5ikaoh6" path="res://Audio/Units/Unit1Age1.mp3" id="13_ik32n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tst82"]
-radius = 60.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6bigm"]
-size = Vector2(35, 128)
+radius = 80.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qboq0"]
-radius = 160.0
+radius = 180.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_py4oc"]
 atlas = ExtResource("9_5m5tl")
@@ -271,7 +268,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"hit",
-"speed": 7.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -306,7 +303,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -371,8 +368,11 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 6.0
+"speed": 19.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6bigm"]
+size = Vector2(47, 179)
 
 [node name="Unit1Age1" type="CharacterBody2D"]
 collision_mask = 0
@@ -385,10 +385,6 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRangeArea"]
 shape = SubResource("CircleShape2D_tst82")
-
-[node name="UnitCollider" type="CollisionShape2D" parent="."]
-position = Vector2(0, -64)
-shape = SubResource("RectangleShape2D_6bigm")
 
 [node name="EnemyDetectionArea" type="Area2D" parent="."]
 position = Vector2(0, -64)
@@ -405,9 +401,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -20.0
-offset_top = -144.0
+offset_top = -190.0
 offset_right = 20.0
-offset_bottom = -136.0
+offset_bottom = -182.0
 grow_horizontal = 2
 max_value = 10.0
 step = 1.0
@@ -439,13 +435,17 @@ script = ExtResource("8_t4nxt")
 unit = NodePath("../..")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -64)
+position = Vector2(0, -117)
 sprite_frames = SubResource("SpriteFrames_1aerp")
-animation = &"walk"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="MeleeHitPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_ik32n")
+
+[node name="UnitCollider" type="CollisionShape2D" parent="."]
+position = Vector2(1, -90)
+shape = SubResource("RectangleShape2D_6bigm")
 
 [connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
