@@ -36,6 +36,7 @@ func load_cannon_stats(recipe):
 	
 
 func shoot_projectile():
+	canon_sprite.play("fire")
 	var new_projectile
 	if stored_projectiles.is_empty():
 		new_projectile = projectile_scene.instantiate()
@@ -81,4 +82,5 @@ func find_nearest_target():
 		state_machine.on_child_transition(state_machine.current_state, "CannonAwaitingTarget")
 	
 func _on_animated_sprite_2d_animation_finished() -> void:
-	canon_sprite.play("idle")
+	if canon_sprite.animation == "fire":
+		canon_sprite.play("idle")

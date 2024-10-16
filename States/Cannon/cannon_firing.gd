@@ -4,9 +4,6 @@ class_name CannonFiring
 @export var cannon: Cannon
 var rotation_speed: float = 8.0
 
-func enter():
-	print("strzelam.")
-
 func update(delta):
 	cannon.time_to_next_attack-=delta
 	if cannon.current_target:

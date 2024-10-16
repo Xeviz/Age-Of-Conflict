@@ -13,14 +13,14 @@
 [ext_resource type="Texture2D" uid="uid://canrdu8glured" path="res://Textures/Unit/Unit3Age1/CavemanMountWalk.png" id="11_oullx"]
 [ext_resource type="AudioStream" uid="uid://utb0dpbbddo3" path="res://Audio/Units/Unit3Age1.mp3" id="12_2mb5e"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_i4kxk"]
+radius = 180.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_c8alm"]
-radius = 60.0
+radius = 140.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xalja"]
-size = Vector2(35, 128)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_i4kxk"]
-radius = 160.0
+size = Vector2(184, 130)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kbt0v"]
 atlas = ExtResource("8_rvuem")
@@ -324,7 +324,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ajto5")
 }],
-"loop": false,
+"loop": true,
 "name": &"hit",
 "speed": 6.0
 }, {
@@ -427,6 +427,14 @@ animations = [{
 collision_mask = 0
 script = ExtResource("1_u8kwy")
 
+[node name="EnemyDetectionArea" type="Area2D" parent="."]
+position = Vector2(0, -64)
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
+shape = SubResource("CircleShape2D_i4kxk")
+
 [node name="AttackRangeArea" type="Area2D" parent="."]
 position = Vector2(0, -64)
 collision_layer = 0
@@ -436,25 +444,17 @@ collision_mask = 0
 shape = SubResource("CircleShape2D_c8alm")
 
 [node name="UnitCollider" type="CollisionShape2D" parent="."]
-position = Vector2(0, -64)
+position = Vector2(-2, -64)
 shape = SubResource("RectangleShape2D_xalja")
-
-[node name="EnemyDetectionArea" type="Area2D" parent="."]
-position = Vector2(0, -64)
-collision_layer = 0
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
-shape = SubResource("CircleShape2D_i4kxk")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_top = -144.0
-offset_right = 20.0
-offset_bottom = -136.0
+offset_left = -23.0
+offset_top = -250.0
+offset_right = 17.0
+offset_bottom = -242.0
 grow_horizontal = 2
 max_value = 10.0
 step = 1.0
@@ -486,9 +486,10 @@ script = ExtResource("8_yff13")
 unit = NodePath("../..")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -64)
+position = Vector2(-1, -120)
 sprite_frames = SubResource("SpriteFrames_dusdw")
-animation = &"walk"
+animation = &"idle"
+autoplay = "idle"
 
 [node name="MeleeHitPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_2mb5e")
