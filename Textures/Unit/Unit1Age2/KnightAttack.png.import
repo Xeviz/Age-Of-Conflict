@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hxrgwvdbn7ju"
-path="res://.godot/imported/falling.png-7851a9964c635ebd447cbc170e6758aa.ctex"
+uid="uid://cmotkuwkddnyt"
+path="res://.godot/imported/KnightAttack.png-dec53f60ab629227f8e27dc633c8ea85.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Spell/SpellAge1/falling.png"
-dest_files=["res://.godot/imported/falling.png-7851a9964c635ebd447cbc170e6758aa.ctex"]
+source_file="res://Textures/Unit/Unit1Age2/KnightAttack.png"
+dest_files=["res://.godot/imported/KnightAttack.png-dec53f60ab629227f8e27dc633c8ea85.ctex"]
 
 [params]
 

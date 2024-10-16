@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bw8gprhbolryr"
-path="res://.godot/imported/CavemanRTangeDeath.png-3e5d2fe296533baa65e51a6ef92cae1c.ctex"
+path="res://.godot/imported/CavemanRTangeDeath.png-f0950347ddfb106a0b24fbc076beeec1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Unit/Unit2Age2/CavemanRTangeDeath.png"
-dest_files=["res://.godot/imported/CavemanRTangeDeath.png-3e5d2fe296533baa65e51a6ef92cae1c.ctex"]
+source_file="res://Textures/Unit/Unit2Age1/CavemanRTangeDeath.png"
+dest_files=["res://.godot/imported/CavemanRTangeDeath.png-f0950347ddfb106a0b24fbc076beeec1.ctex"]
 
 [params]
 

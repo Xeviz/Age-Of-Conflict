@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hxrgwvdbn7ju"
-path="res://.godot/imported/falling.png-7851a9964c635ebd447cbc170e6758aa.ctex"
+uid="uid://d3wajytm38f80"
+path="res://.godot/imported/CavemanRTangeWalk.png-cb5be9562d9a2eae930edb733fa020ba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Spell/SpellAge1/falling.png"
-dest_files=["res://.godot/imported/falling.png-7851a9964c635ebd447cbc170e6758aa.ctex"]
+source_file="res://Textures/Unit/Unit2Age1/CavemanRTangeWalk.png"
+dest_files=["res://.godot/imported/CavemanRTangeWalk.png-cb5be9562d9a2eae930edb733fa020ba.ctex"]
 
 [params]
 

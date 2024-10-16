@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b01svbciva0rt"]
 
 [ext_resource type="Script" path="res://Castle/castle.gd" id="1_fh0d6"]
-[ext_resource type="Texture2D" uid="uid://dpl1k54lnoa8b" path="res://Textures/Castle/Age1Castle.png" id="2_xwjhg"]
+[ext_resource type="Texture2D" uid="uid://bw3s8f8qwxhyk" path="res://Textures/Castle/Age1Castle.png" id="2_xwjhg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r2lyy"]
 size = Vector2(400, 400)
@@ -32,8 +32,7 @@ script = ExtResource("1_fh0d6")
 shape = SubResource("RectangleShape2D_r2lyy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1.5, -77.75)
-scale = Vector2(2.08854, 2.1582)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_xwjhg")
 
 [node name="Towers" type="Node2D" parent="."]

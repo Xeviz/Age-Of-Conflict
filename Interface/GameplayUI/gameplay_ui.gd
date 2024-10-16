@@ -328,7 +328,7 @@ func _on_cannon_4_mouse_exited() -> void:
 func _on_spell_button_button_down() -> void:
 	if speell_cooldown<=0:
 		fire_spell_projectiles()
-		speell_cooldown = 10.0
+		speell_cooldown = 45.0
 		update_cooldown_bar()
 	
 func update_cooldown_bar():

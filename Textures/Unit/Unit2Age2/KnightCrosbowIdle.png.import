@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hxrgwvdbn7ju"
-path="res://.godot/imported/falling.png-7851a9964c635ebd447cbc170e6758aa.ctex"
+uid="uid://dxvkodt16bwlh"
+path="res://.godot/imported/KnightCrosbowIdle.png-bd1c3bbdff9202ac5c89140957b5f65e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Spell/SpellAge1/falling.png"
-dest_files=["res://.godot/imported/falling.png-7851a9964c635ebd447cbc170e6758aa.ctex"]
+source_file="res://Textures/Unit/Unit2Age2/KnightCrosbowIdle.png"
+dest_files=["res://.godot/imported/KnightCrosbowIdle.png-bd1c3bbdff9202ac5c89140957b5f65e.ctex"]
 
 [params]
 

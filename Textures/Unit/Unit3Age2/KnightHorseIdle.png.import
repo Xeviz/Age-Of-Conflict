@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3wajytm38f80"
-path="res://.godot/imported/CavemanRTangeWalk.png-97c691d3c4e83b59bdb83f3c7386dead.ctex"
+uid="uid://bgcovgu28lt4x"
+path="res://.godot/imported/KnightHorseIdle.png-d73508b07d8f10217529951d45c7a9ae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Unit/Unit2Age2/CavemanRTangeWalk.png"
-dest_files=["res://.godot/imported/CavemanRTangeWalk.png-97c691d3c4e83b59bdb83f3c7386dead.ctex"]
+source_file="res://Textures/Unit/Unit3Age2/KnightHorseIdle.png"
+dest_files=["res://.godot/imported/KnightHorseIdle.png-d73508b07d8f10217529951d45c7a9ae.ctex"]
 
 [params]
 

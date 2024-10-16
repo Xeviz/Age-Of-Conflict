@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvfqb8ituhqvy"
-path="res://.godot/imported/CavemanRTangeAttack.png-ee8a204e15ae57ed0e03c1ecc67cfdc7.ctex"
+uid="uid://vudv8v7n6uld"
+path="res://.godot/imported/KnightCrosbowAttack.png-ca4584b2aa0ee34b2be6492882a78670.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Unit/Unit2Age2/CavemanRTangeAttack.png"
-dest_files=["res://.godot/imported/CavemanRTangeAttack.png-ee8a204e15ae57ed0e03c1ecc67cfdc7.ctex"]
+source_file="res://Textures/Unit/Unit2Age2/KnightCrosbowAttack.png"
+dest_files=["res://.godot/imported/KnightCrosbowAttack.png-ca4584b2aa0ee34b2be6492882a78670.ctex"]
 
 [params]
 
