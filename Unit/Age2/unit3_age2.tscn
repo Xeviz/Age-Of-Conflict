@@ -469,7 +469,7 @@ sprite_frames = SubResource("SpriteFrames_vqi14")
 animation = &"walk"
 
 [node name="MeleeHitPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("12_raori")
+stream = ExtResource("12_3000f")
 
 [node name="ProjectileSpawner" type="Node2D" parent="."]
 position = Vector2(21, -95)

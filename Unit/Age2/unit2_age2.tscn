@@ -487,7 +487,7 @@ sprite_frames = SubResource("SpriteFrames_b00hi")
 animation = &"walk"
 
 [node name="ShootProjectilePlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("13_wor1l")
+stream = ExtResource("13_sgqog")
 
 [node name="ProjectileSpawner" type="Node2D" parent="."]
 position = Vector2(21, -95)

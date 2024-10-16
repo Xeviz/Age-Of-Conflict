@@ -13,6 +13,16 @@ var enemy_gold: int = 100
 var player_spawn_queue: float = 0.0
 var enemy_spawn_queue: float = 0.0
 
+func reset_global_data():
+	player_experience = 500000000
+	enemy_experience = 0
+	player_stage = 1
+	enemy_stage = 1
+	player_gold = 500000000
+	enemy_gold = 100
+	player_spawn_queue = 0.0
+	enemy_spawn_queue = 0.0
+
 var stages_exp_requirements = {
 	2: 4000,
 	3: 20000,
@@ -22,10 +32,10 @@ var stages_exp_requirements = {
 
 var stages_castle_health_bonus = {
 	1: 0,
-	2: 1000,
-	3: 2500,
-	4: 5000,
-	5: 9000
+	2: 2500,
+	3: 9000,
+	4: 22500,
+	5: 50000
 }
 
 var stages_units_scenes = {
