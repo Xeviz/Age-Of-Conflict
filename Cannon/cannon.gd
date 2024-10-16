@@ -6,6 +6,7 @@ class_name Cannon
 @onready var state_machine = $FiniteStateMachine
 @onready var attack_range_area = $AttackRangeArea
 @onready var projectile_scene = preload("res://Projectiles/cannon_projectile.tscn")
+@onready var canon_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 var fired_projectiles: Array = []
 var stored_projectiles: Array = []
@@ -35,6 +36,7 @@ func load_cannon_stats(recipe):
 	
 
 func shoot_projectile():
+	canon_sprite.play("fire")
 	var new_projectile
 	if stored_projectiles.is_empty():
 		new_projectile = projectile_scene.instantiate()
@@ -43,6 +45,7 @@ func shoot_projectile():
 	else:
 		new_projectile = stored_projectiles.pop_back()
 		new_projectile.bind_to_shooter(self)
+	canon_sprite.play("fire")
 	new_projectile.state_machine.on_child_transition(new_projectile.state_machine.current_state, "FiredInDirection")
 	fired_projectiles.append(new_projectile)
 	time_to_next_attack=attack_speed
@@ -78,3 +81,6 @@ func find_nearest_target():
 	else:
 		state_machine.on_child_transition(state_machine.current_state, "CannonAwaitingTarget")
 	
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if canon_sprite.animation == "fire":
+		canon_sprite.play("idle")

@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://bjk4xtsrb5n6i"]
 
-[ext_resource type="Texture2D" uid="uid://0lr82u4086gu" path="res://Textures/placeholder_projectile.png" id="1_j6wgl"]
 [ext_resource type="Script" path="res://Projectiles/cannon_projectile.gd" id="1_plsk5"]
 [ext_resource type="Script" path="res://States/finite_state_machine.gd" id="2_7q6us"]
+[ext_resource type="Texture2D" uid="uid://b86oy2ouejdys" path="res://Textures/Projectile/Age1/CavemanTurretProjectile.png" id="2_ioomi"]
 [ext_resource type="Script" path="res://States/Projectiles/projectile_stored.gd" id="3_dg5aq"]
 [ext_resource type="Script" path="res://States/Projectiles/fired_in_direction.gd" id="4_apomj"]
 
@@ -20,7 +20,8 @@ collision_mask = 3
 shape = SubResource("RectangleShape2D_56035")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_j6wgl")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_ioomi")
 
 [node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_7q6us")

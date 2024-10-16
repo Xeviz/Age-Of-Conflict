@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgt17djnfrhpp"
-path="res://.godot/imported/die.png-6a20c178cb9b8553f044eb55f51870b2.ctex"
+uid="uid://cm001b50t3i0j"
+path="res://.godot/imported/CavemanRTangeIdle.png-324f0735472cbdb4e45fdc7285af8a3a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Unit/Unit1Age1/die.png"
-dest_files=["res://.godot/imported/die.png-6a20c178cb9b8553f044eb55f51870b2.ctex"]
+source_file="res://Textures/Unit/Unit2Age2/CavemanRTangeIdle.png"
+dest_files=["res://.godot/imported/CavemanRTangeIdle.png-324f0735472cbdb4e45fdc7285af8a3a.ctex"]
 
 [params]
 

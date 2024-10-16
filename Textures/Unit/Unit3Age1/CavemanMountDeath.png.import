@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgt17djnfrhpp"
-path="res://.godot/imported/die.png-6a20c178cb9b8553f044eb55f51870b2.ctex"
+uid="uid://cwsnpp0udteww"
+path="res://.godot/imported/CavemanMountDeath.png-41011be208be9d28065e2da1cde1d750.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Unit/Unit1Age1/die.png"
-dest_files=["res://.godot/imported/die.png-6a20c178cb9b8553f044eb55f51870b2.ctex"]
+source_file="res://Textures/Unit/Unit3Age1/CavemanMountDeath.png"
+dest_files=["res://.godot/imported/CavemanMountDeath.png-41011be208be9d28065e2da1cde1d750.ctex"]
 
 [params]
 
