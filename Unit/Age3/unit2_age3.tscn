@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://cy2oiuui0pdg0"]
+[gd_scene load_steps=64 format=3 uid="uid://cy2oiuui0pdg0"]
 
 [ext_resource type="Script" path="res://Unit/ranged_unit.gd" id="1_0qtws"]
 [ext_resource type="Script" path="res://States/finite_state_machine.gd" id="3_ktu6a"]
@@ -358,22 +358,25 @@ radius = 600.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1d0g8"]
 size = Vector2(45, 183)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m2etg"]
+bg_color = Color(0, 0, 0, 0.196078)
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iuqxe"]
+bg_color = Color(1, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 1
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+
 [node name="Unit2Age3" type="CharacterBody2D"]
 script = ExtResource("1_0qtws")
-
-[node name="HealthBar" type="ProgressBar" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_top = -141.0
-offset_right = 20.0
-offset_bottom = -133.0
-grow_horizontal = 2
-max_value = 10.0
-step = 1.0
-value = 10.0
-show_percentage = false
 
 [node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_ktu6a")
@@ -406,7 +409,8 @@ unit = NodePath("../..")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -121)
 sprite_frames = SubResource("SpriteFrames_y6g7k")
-animation = &"walk"
+animation = &"idle"
+autoplay = "idle"
 
 [node name="ShootProjectilePlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_qujdp")
@@ -422,6 +426,22 @@ shape = SubResource("CircleShape2D_a88jd")
 [node name="UnitCollider" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -93.5)
 shape = SubResource("RectangleShape2D_1d0g8")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -195.0
+offset_right = 20.0
+offset_bottom = -187.0
+grow_horizontal = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_m2etg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_iuqxe")
+max_value = 10.0
+step = 1.0
+value = 5.0
+show_percentage = false
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]

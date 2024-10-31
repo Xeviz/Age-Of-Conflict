@@ -28,5 +28,4 @@ func update(delta):
 			unit.queue_free()
 	
 func exit():
-	unit.set_collision_layer_value(1, false)
 	unit.unit_sprite.modulate.a = 0.25

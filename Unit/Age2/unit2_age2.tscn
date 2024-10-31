@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://cx46w01cscc3n"]
+[gd_scene load_steps=74 format=3 uid="uid://cx46w01cscc3n"]
 
 [ext_resource type="Script" path="res://Unit/ranged_unit.gd" id="1_3b08m"]
 [ext_resource type="Script" path="res://States/finite_state_machine.gd" id="3_o3jqq"]
@@ -428,6 +428,23 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1hwb0"]
 size = Vector2(45, 183)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vjsqq"]
+bg_color = Color(0, 0, 0, 0.196078)
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a31l1"]
+bg_color = Color(1, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 1
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+
 [node name="Unit2Age2" type="CharacterBody2D"]
 script = ExtResource("1_3b08m")
 
@@ -473,7 +490,8 @@ position = Vector2(21, -95)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -121)
 sprite_frames = SubResource("SpriteFrames_b00hi")
-animation = &"die"
+animation = &"hit"
+autoplay = "idle"
 
 [node name="UnitCollider" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -93.5)
@@ -483,14 +501,16 @@ shape = SubResource("RectangleShape2D_1hwb0")
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -21.0
-offset_top = -197.0
-offset_right = 19.0
-offset_bottom = -189.0
+offset_left = -20.0
+offset_top = -195.0
+offset_right = 20.0
+offset_bottom = -187.0
 grow_horizontal = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_vjsqq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_a31l1")
 max_value = 10.0
 step = 1.0
-value = 10.0
+value = 5.0
 show_percentage = false
 
 [connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]
