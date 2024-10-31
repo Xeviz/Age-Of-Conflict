@@ -14,12 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://qgx2fqfcwf1m" path="res://Textures/Unit/Unit2Age3/Renesainse2Walk.png" id="12_fbnmj"]
 [ext_resource type="AudioStream" uid="uid://csn4ypmjf5fbg" path="res://Audio/Units/Unit2Age3.mp3" id="13_qujdp"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q7eel"]
-size = Vector2(70, 191)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_detjt"]
-radius = 600.0
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_gc0pp"]
 atlas = ExtResource("9_2mmvv")
 region = Rect2(0, 0, 192, 256)
@@ -232,7 +226,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"die",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -258,7 +252,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"hit",
-"speed": 7.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -290,7 +284,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -355,21 +349,17 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 6.0
+"speed": 12.0
 }]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a88jd"]
+radius = 600.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1d0g8"]
+size = Vector2(45, 183)
 
 [node name="Unit2Age3" type="CharacterBody2D"]
 script = ExtResource("1_0qtws")
-
-[node name="UnitCollider" type="CollisionShape2D" parent="."]
-position = Vector2(3, 14.5)
-shape = SubResource("RectangleShape2D_q7eel")
-
-[node name="EnemyDetectionArea" type="Area2D" parent="."]
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
-shape = SubResource("CircleShape2D_detjt")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 anchors_preset = 5
@@ -414,7 +404,7 @@ script = ExtResource("9_ufpip")
 unit = NodePath("../..")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1, -13)
+position = Vector2(-1, -121)
 sprite_frames = SubResource("SpriteFrames_y6g7k")
 animation = &"walk"
 
@@ -424,5 +414,14 @@ stream = ExtResource("13_qujdp")
 [node name="ProjectileSpawner" type="Node2D" parent="."]
 position = Vector2(21, -95)
 
-[connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]
+[node name="EnemyDetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
+shape = SubResource("CircleShape2D_a88jd")
+
+[node name="UnitCollider" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -93.5)
+shape = SubResource("RectangleShape2D_1d0g8")
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]

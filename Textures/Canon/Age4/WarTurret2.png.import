@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://biol5er7txvg8"
-path="res://.godot/imported/Age1Canon1.png-2526d08489f78ea0d8edda2af2b05d6e.ctex"
+uid="uid://daoviagc07lt5"
+path="res://.godot/imported/WarTurret2.png-dad7aba06ff3202fff86f633adc9bb65.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Canon/Age1Canon1.png"
-dest_files=["res://.godot/imported/Age1Canon1.png-2526d08489f78ea0d8edda2af2b05d6e.ctex"]
+source_file="res://Textures/Canon/Age4/WarTurret2.png"
+dest_files=["res://.godot/imported/WarTurret2.png-dad7aba06ff3202fff86f633adc9bb65.ctex"]
 
 [params]
 

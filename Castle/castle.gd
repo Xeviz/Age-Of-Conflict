@@ -7,8 +7,8 @@ class_name Castle
 @onready var gameplay_map = get_parent()
 @onready var castle_sprite: Sprite2D = $Sprite2D
 
-var max_health: int = 750
-var current_health: int = 750
+var max_health: int = 751
+var current_health: int = 751
 
 var is_alive: bool = true
 var belongs_to_player: bool = true

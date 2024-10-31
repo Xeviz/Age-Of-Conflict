@@ -5,7 +5,6 @@ class_name UnitSpawning
 
 func enter():
 	unit.set_collision_layer_value(1, false)
-	unit.hide()
 	if unit.belongs_to_player:
 		global_data.player_spawn_queue += unit.time_to_spawn
 	else:
@@ -24,6 +23,7 @@ func update(delta):
 		
 func exit():
 	unit.is_targetable=true
+	unit.unit_sprite.modulate.a = 1.0
 	if unit.belongs_to_player:
 		unit.set_collision_layer_value(1, true)
 		unit.set_collision_layer_value(2, false)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bm11irmow1smm"
-path="res://.godot/imported/Age1Canon1Attack.png-e80b25686ada1fdc100b63b950ce08c9.ctex"
+uid="uid://db6kq7ghf20k2"
+path="res://.godot/imported/RenesainseTurret1Attack.png-07ef4ccdf312a716aeaeae9c39586f67.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Canon/Age1Canon1Attack.png"
-dest_files=["res://.godot/imported/Age1Canon1Attack.png-e80b25686ada1fdc100b63b950ce08c9.ctex"]
+source_file="res://Textures/Canon/Age3/RenesainseTurret1Attack.png"
+dest_files=["res://.godot/imported/RenesainseTurret1Attack.png-07ef4ccdf312a716aeaeae9c39586f67.ctex"]
 
 [params]
 

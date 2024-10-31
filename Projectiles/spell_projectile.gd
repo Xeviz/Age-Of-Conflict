@@ -14,6 +14,7 @@ var current_age: int = 1
 var sprites_updated: bool = true
 var current_falling_animation: String = "FallingAge1"
 var current_explosion_animation: String = "ExplosionAge1"
+	
 
 func _ready() -> void:
 	randomize_values()
@@ -21,6 +22,7 @@ func _ready() -> void:
 
 func randomize_values():
 	explosion_height = randi_range(650, 850)
+	z_index = explosion_height+52
 	falling_delay = randf_range(0.75, 5.5)
 	global_position = Vector2(randi_range(600, 2600), -100)
 	
