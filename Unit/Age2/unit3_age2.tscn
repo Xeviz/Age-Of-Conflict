@@ -413,10 +413,11 @@ size = Vector2(205, 220)
 script = ExtResource("1_wpigb")
 
 [node name="UnitCollider" type="CollisionShape2D" parent="."]
-position = Vector2(1, -3)
+position = Vector2(1, -64)
 shape = SubResource("RectangleShape2D_kvqkj")
 
 [node name="EnemyDetectionArea" type="Area2D" parent="."]
+position = Vector2(0, -64)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
 shape = SubResource("CircleShape2D_t4ufg")
@@ -446,7 +447,7 @@ script = ExtResource("8_po6xx")
 unit = NodePath("../..")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -64)
+position = Vector2(0, -128)
 sprite_frames = SubResource("SpriteFrames_vqi14")
 animation = &"walk"
 
@@ -457,6 +458,7 @@ stream = ExtResource("12_3000f")
 position = Vector2(21, -95)
 
 [node name="AttackRangeArea" type="Area2D" parent="."]
+position = Vector2(0, -64)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRangeArea"]
 position = Vector2(0.5, -40)

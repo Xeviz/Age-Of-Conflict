@@ -33,6 +33,8 @@ var unit_name: String
 var time_to_death: float = 1.5
 
 
+func _process(delta):
+	z_index = int(global_position.y)
 
 func lock_on_target(target):
 	current_target = target

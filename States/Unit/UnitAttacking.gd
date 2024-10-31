@@ -5,7 +5,6 @@ class_name UnitAttacking
 
 func enter():
 	unit.velocity = Vector2.ZERO
-	unit.time_to_next_attack = 0.0
 
 func update(delta):
 	unit.time_to_next_attack-=delta

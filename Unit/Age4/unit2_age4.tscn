@@ -12,13 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://ckoqx0nq4d3gh" path="res://Textures/Unit/Unit2Age4/SoliderRangeAttack.png" id="10_edwgc"]
 [ext_resource type="Texture2D" uid="uid://dbjt7w2mlav3k" path="res://Textures/Unit/Unit2Age4/SoliderRangeIddle.png" id="11_6wak2"]
 [ext_resource type="Texture2D" uid="uid://cj6rr7rnuh6w6" path="res://Textures/Unit/Unit2Age4/SoliderRangeWalk.png" id="12_s2p44"]
-[ext_resource type="AudioStream" uid="uid://dfvx2fgb6qiao" path="res://Audio/Units/Unit2Age1.mp3" id="13_h5tej"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qeqbq"]
-size = Vector2(77, 205)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_p26x8"]
-radius = 600.0
+[ext_resource type="AudioStream" uid="uid://dhgw8la2tkvep" path="res://Audio/Units/Unit3Age3.mp3" id="13_wdtbo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8tgi7"]
 atlas = ExtResource("9_ix4vf")
@@ -200,7 +194,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"die",
-"speed": 13.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -232,7 +226,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"hit",
-"speed": 9.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -261,7 +255,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 13.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -299,21 +293,17 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 17.0
+"speed": 12.0
 }]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j0na2"]
+radius = 600.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_48hqy"]
+size = Vector2(45, 183)
 
 [node name="Unit2Age4" type="CharacterBody2D"]
 script = ExtResource("1_1v55i")
-
-[node name="UnitCollider" type="CollisionShape2D" parent="."]
-position = Vector2(-2.5, -38.5)
-shape = SubResource("RectangleShape2D_qeqbq")
-
-[node name="EnemyDetectionArea" type="Area2D" parent="."]
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
-shape = SubResource("CircleShape2D_p26x8")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 anchors_preset = 5
@@ -358,15 +348,24 @@ script = ExtResource("9_kxqvy")
 unit = NodePath("../..")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -64)
+position = Vector2(0, -121)
 sprite_frames = SubResource("SpriteFrames_sgmhe")
-animation = &"walk"
+animation = &"idle"
 
 [node name="ShootProjectilePlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("13_h5tej")
+stream = ExtResource("13_wdtbo")
 
 [node name="ProjectileSpawner" type="Node2D" parent="."]
 position = Vector2(21, -95)
 
-[connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]
+[node name="EnemyDetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
+shape = SubResource("CircleShape2D_j0na2")
+
+[node name="UnitCollider" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -93.5)
+shape = SubResource("RectangleShape2D_48hqy")
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]

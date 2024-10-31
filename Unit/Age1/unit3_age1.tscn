@@ -16,9 +16,6 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_i4kxk"]
 radius = 180.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xalja"]
-size = Vector2(184, 130)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_kbt0v"]
 atlas = ExtResource("8_rvuem")
 region = Rect2(0, 0, 192, 256)
@@ -423,6 +420,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7cdxv"]
 size = Vector2(201, 182)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xalja"]
+size = Vector2(184, 130)
+
 [node name="Unit3Age1" type="CharacterBody2D"]
 collision_mask = 0
 script = ExtResource("1_u8kwy")
@@ -434,10 +434,6 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
 shape = SubResource("CircleShape2D_i4kxk")
-
-[node name="UnitCollider" type="CollisionShape2D" parent="."]
-position = Vector2(-2, -64)
-shape = SubResource("RectangleShape2D_xalja")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 anchors_preset = 5
@@ -494,6 +490,10 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRangeArea"]
 position = Vector2(-0.5, -13)
 shape = SubResource("RectangleShape2D_7cdxv")
+
+[node name="UnitCollider" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -64)
+shape = SubResource("RectangleShape2D_xalja")
 
 [connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

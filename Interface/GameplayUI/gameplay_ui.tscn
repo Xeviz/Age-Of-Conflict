@@ -17,7 +17,7 @@ bg_color = Color(1, 1, 1, 0)
 bg_color = Color(0.180392, 0.180392, 0.180392, 0.705882)
 
 [node name="GameplayUI" type="Control"]
-z_index = 5
+z_index = 2000
 custom_minimum_size = Vector2(1600, 900)
 layout_direction = 2
 layout_mode = 3

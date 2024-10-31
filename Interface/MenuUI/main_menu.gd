@@ -14,7 +14,6 @@ func _on_play_button_button_down():
 	global_data.reset_global_data()
 	get_tree().change_scene_to_file("res://GameplayMap/gameplay_map.tscn")
 	
-	
 
 func _on_exit_button_button_down():
 	get_tree().quit()
