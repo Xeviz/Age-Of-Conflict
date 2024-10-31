@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://ch0ddbxlmxt85"]
+[gd_scene load_steps=53 format=3 uid="uid://ch0ddbxlmxt85"]
 
 [ext_resource type="Script" path="res://Unit/unit.gd" id="1_yo7tt"]
 [ext_resource type="Script" path="res://States/finite_state_machine.gd" id="3_kumrp"]
@@ -283,22 +283,25 @@ size = Vector2(201, 182)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i080n"]
 size = Vector2(184, 130)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pjuhg"]
+bg_color = Color(0, 0, 0, 0.196078)
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dw8lu"]
+bg_color = Color(1, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 1
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+
 [node name="Unit3Age4" type="CharacterBody2D"]
 script = ExtResource("1_yo7tt")
-
-[node name="HealthBar" type="ProgressBar" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_top = -141.0
-offset_right = 20.0
-offset_bottom = -133.0
-grow_horizontal = 2
-max_value = 10.0
-step = 1.0
-value = 10.0
-show_percentage = false
 
 [node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_kumrp")
@@ -353,6 +356,22 @@ shape = SubResource("RectangleShape2D_hxaop")
 [node name="UnitCollider" type="CollisionShape2D" parent="."]
 position = Vector2(-2, -64)
 shape = SubResource("RectangleShape2D_i080n")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -16.0
+offset_top = -145.0
+offset_right = 24.0
+offset_bottom = -137.0
+grow_horizontal = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_pjuhg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_dw8lu")
+max_value = 10.0
+step = 1.0
+value = 5.0
+show_percentage = false
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]

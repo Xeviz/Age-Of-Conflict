@@ -9,6 +9,7 @@ class_name Unit
 @onready var state_machine: FiniteStateMachine = $FiniteStateMachine
 @onready var unit_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var melee_hit_player: AudioStreamPlayer2D = $MeleeHitPlayer
+var damage_displayer_scene: PackedScene = load("res://damage_displayer.tscn")
 
 
 var speed: float = 35.0
@@ -88,6 +89,16 @@ func load_unit_stats(recipe):
 func receive_damage(damage_amount):
 	current_health-=damage_amount
 	health_bar.value = current_health
+	var new_damage_label: Label = damage_displayer_scene.instantiate()
+	new_damage_label.text = str(damage_amount)
+	new_damage_label.position = health_bar.position
+	new_damage_label.position.x -= 40
+	new_damage_label.position.y -= 10
+	add_child(new_damage_label)
+	if not belongs_to_player:
+		new_damage_label.scale.x *= -1
+		new_damage_label.position.x += 120
+	
 	if current_health<=0 and is_alive:
 		is_alive = false
 		is_targetable = false

@@ -31,6 +31,7 @@ var cannons_stats: Array
 var amount_of_towers = 0
 var current_stage = 1
 
+
 var spell_projectiles: Array[CharacterBody2D]
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://1ma6ksnnudb3"]
+[gd_scene load_steps=75 format=3 uid="uid://1ma6ksnnudb3"]
 
 [ext_resource type="Script" path="res://Unit/unit.gd" id="1_fyr4y"]
 [ext_resource type="Script" path="res://States/finite_state_machine.gd" id="3_uqfdg"]
@@ -437,7 +437,26 @@ size = Vector2(87, 196)
 [sub_resource type="CircleShape2D" id="CircleShape2D_vpy2g"]
 radius = 160.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7suwg"]
+bg_color = Color(0, 0, 0, 0.196078)
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lfsxv"]
+bg_color = Color(1, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 1
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+
 [node name="Unit1Age2" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 8
 script = ExtResource("1_fyr4y")
 
 [node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
@@ -467,7 +486,8 @@ unit = NodePath("../..")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -120)
 sprite_frames = SubResource("SpriteFrames_we2o0")
-animation = &"hit"
+animation = &"idle"
+autoplay = "idle"
 
 [node name="MeleeHitPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_36lw0")
@@ -492,14 +512,16 @@ shape = SubResource("CircleShape2D_vpy2g")
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -19.0
-offset_top = -207.0
-offset_right = 21.0
-offset_bottom = -199.0
+offset_left = -20.0
+offset_top = -195.0
+offset_right = 20.0
+offset_bottom = -187.0
 grow_horizontal = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_7suwg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_lfsxv")
 max_value = 10.0
 step = 1.0
-value = 10.0
+value = 5.0
 show_percentage = false
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
