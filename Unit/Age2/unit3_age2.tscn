@@ -409,15 +409,15 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vnecj"]
 size = Vector2(205, 220)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2tgqr"]
-bg_color = Color(0, 0, 0, 0.196078)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mgkqs"]
+bg_color = Color(0, 0, 0, 0.756863)
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0, 0, 0, 1)
 border_blend = true
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xm2g3"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oktsg"]
 bg_color = Color(1, 0, 0, 1)
 border_width_left = 2
 border_width_top = 2
@@ -427,6 +427,8 @@ border_color = Color(0, 0, 0, 1)
 border_blend = true
 
 [node name="Unit3Age2" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 0
 script = ExtResource("1_wpigb")
 
 [node name="UnitCollider" type="CollisionShape2D" parent="."]
@@ -491,8 +493,8 @@ offset_top = -256.0
 offset_right = 21.0
 offset_bottom = -248.0
 grow_horizontal = 2
-theme_override_styles/background = SubResource("StyleBoxFlat_2tgqr")
-theme_override_styles/fill = SubResource("StyleBoxFlat_xm2g3")
+theme_override_styles/background = SubResource("StyleBoxFlat_mgkqs")
+theme_override_styles/fill = SubResource("StyleBoxFlat_oktsg")
 max_value = 10.0
 step = 1.0
 value = 5.0

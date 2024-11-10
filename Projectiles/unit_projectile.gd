@@ -5,6 +5,7 @@ class_name UnitProjectile
 @onready var projectile_area: Area2D = $ProjectileArea
 @onready var starting_position = position
 @onready var state_machine = $FiniteStateMachine
+@onready var sprite: Sprite2D = $Sprite2D
 
 var speed : float = 450.0
 var damage : int = 10
@@ -13,9 +14,12 @@ var direction
 var is_fired = true
 var latest_target_position: Vector2
 
+
+
 func bind_to_shooter(shooter):
 	damage = shooter.damage
 	target = shooter.current_target
+	sprite.texture = load("res://Textures/Projectile/Age" + str(shooter.age) + "Projectile.png")
 
 func _on_projectile_area_body_entered(body):
 	if body == target:

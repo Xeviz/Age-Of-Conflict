@@ -23,7 +23,7 @@ var available_cannons_scenes: Array
 
 var units_costs: Array
 var cannons_costs: Array
-var tower_costs: Array = [15,15,15,15]
+var tower_costs: Array = [500,1000,3000,10000]
 
 var units_stats: Array
 var cannons_stats: Array
@@ -277,8 +277,9 @@ func _on_sell_cannon_button_mouse_exited() -> void:
 	
 func _on_advance_age_button_mouse_entered() -> void:
 	$PurchasesContainer/AdvanceAgeButton.modulate.a = 0.75
-	cost_info.text = "ADVANCE AGE"
-	cost_info.show()
+	if current_stage<5:
+		cost_info.text = "ADVANCE AGE: " + str(global_data.stages_exp_requirements[current_stage+1]) + "EXP"
+		cost_info.show()
 
 func _on_advance_age_button_mouse_exited() -> void:
 	$PurchasesContainer/AdvanceAgeButton.modulate.a = 1.0

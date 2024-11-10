@@ -13,7 +13,7 @@ var next_cannon_to_buy: int = 0
 
 var units_costs: Array
 var cannons_costs: Array
-var tower_costs: Array = [1,1,1,1]
+var tower_costs: Array = [500,1000,3000,10000]
 var available_cannon_spots: Array = [false, false, false, false]
 
 var units_stats: Array

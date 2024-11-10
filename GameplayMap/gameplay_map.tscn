@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cog643r4m4c1p"]
+[gd_scene load_steps=7 format=3 uid="uid://cog643r4m4c1p"]
 
 [ext_resource type="PackedScene" uid="uid://biamp6v4ql1tg" path="res://Interface/GameplayUI/gameplay_ui.tscn" id="1_1bf4r"]
 [ext_resource type="Script" path="res://GameplayMap/gameplay_map.gd" id="1_f8w7p"]
 [ext_resource type="PackedScene" uid="uid://b01svbciva0rt" path="res://Castle/castle.tscn" id="4_fru5x"]
 [ext_resource type="PackedScene" uid="uid://ltcn3fhyfxeb" path="res://EnemyAI/enemy_ai.tscn" id="4_pfb8a"]
+[ext_resource type="Texture2D" uid="uid://thnxlw6q53yr" path="res://Textures/Map/Map.png" id="5_i4m18"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cetnj"]
 size = Vector2(1200, 300)
@@ -42,3 +43,15 @@ position = Vector2(3000, 700)
 scale = Vector2(-1, 1)
 
 [node name="EnemyAI" parent="." instance=ExtResource("4_pfb8a")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(1603, 450)
+texture = ExtResource("5_i4m18")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_top = 600.0
+offset_right = 1599.0
+offset_bottom = 900.0
+color = Color(1, 0.117647, 1, 0.27451)

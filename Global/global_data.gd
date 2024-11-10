@@ -1,24 +1,24 @@
 extends Node
 
 
-var player_experience: int = 5000000
+var player_experience: int = 0
 var enemy_experience: int = 0
 
 var player_stage: int = 1
 var enemy_stage: int = 1
 
-var player_gold: int = 500000000
+var player_gold: int = 100
 var enemy_gold: int = 100
 
 var player_spawn_queue: float = 0.0
 var enemy_spawn_queue: float = 0.0
 
 func reset_global_data():
-	player_experience = 500000000
+	player_experience = 0
 	enemy_experience = 0
 	player_stage = 1
 	enemy_stage = 1
-	player_gold = 500000000
+	player_gold = 100
 	enemy_gold = 100
 	player_spawn_queue = 0.0
 	enemy_spawn_queue = 0.0
@@ -80,7 +80,8 @@ var stages_units_stats = {
 		"exp_to_slayer": 50,
 		"gold_on_death": 30,
 		"time_to_spawn": 1.5,
-		"speed": 45
+		"speed": 45,
+		"age": 1
 	}, {
 		"cost": 30,
 		"health": 6,
@@ -90,7 +91,8 @@ var stages_units_stats = {
 		"exp_to_slayer": 70,
 		"gold_on_death": 35,
 		"time_to_spawn": 2.0,
-		"speed": 35
+		"speed": 35,
+		"age": 1
 	}, {
 		"cost": 100,
 		"health": 35,
@@ -100,7 +102,8 @@ var stages_units_stats = {
 		"exp_to_slayer": 150,
 		"gold_on_death": 150,
 		"time_to_spawn": 5.0,
-		"speed": 50
+		"speed": 50,
+		"age": 1
 	}],
 	2: [{
 		"cost": 125,
@@ -111,7 +114,8 @@ var stages_units_stats = {
 		"exp_to_slayer": 250,
 		"gold_on_death": 150,
 		"time_to_spawn": 1.5,
-		"speed": 45
+		"speed": 45,
+		"age": 2
 	}, {
 		"cost": 150,
 		"health": 30,
@@ -121,7 +125,8 @@ var stages_units_stats = {
 		"exp_to_slayer": 350,
 		"gold_on_death": 175,
 		"time_to_spawn": 2.0,
-		"speed": 35
+		"speed": 35,
+		"age": 2
 	}, {
 		"cost": 500,
 		"health": 175,
@@ -131,7 +136,8 @@ var stages_units_stats = {
 		"exp_to_slayer": 750,
 		"gold_on_death": 750,
 		"time_to_spawn": 5.0,
-		"speed": 50
+		"speed": 50,
+		"age": 2
 	}],
 	3: [{
 		"cost": 625,
@@ -142,7 +148,8 @@ var stages_units_stats = {
 		"exp_to_slayer": 1250,
 		"gold_on_death": 750,
 		"time_to_spawn": 1.5,
-		"speed": 45
+		"speed": 45,
+		"age": 3
 	}, {
 		"cost": 750,
 		"health": 180,
@@ -152,7 +159,8 @@ var stages_units_stats = {
 		"exp_to_slayer": 1750,
 		"gold_on_death": 875,
 		"time_to_spawn": 2.0,
-		"speed": 35
+		"speed": 35,
+		"age": 3
 	}, {
 		"cost": 2500,
 		"health": 875,
@@ -162,7 +170,8 @@ var stages_units_stats = {
 		"exp_to_slayer": 3750,
 		"gold_on_death": 3750,
 		"time_to_spawn": 5.0,
-		"speed": 50
+		"speed": 50,
+		"age": 3
 	}],
 	4: [{
 		"cost": 3125,
@@ -173,7 +182,8 @@ var stages_units_stats = {
 		"exp_to_slayer": 6250,
 		"gold_on_death": 3750,
 		"time_to_spawn": 1.5,
-		"speed": 45
+		"speed": 45,
+		"age": 4
 	}, {
 		"cost": 3750,
 		"health": 900,
@@ -183,7 +193,8 @@ var stages_units_stats = {
 		"exp_to_slayer": 8750,
 		"gold_on_death": 4375,
 		"time_to_spawn": 2.0,
-		"speed": 35
+		"speed": 35,
+		"age": 4
 	}, {
 		"cost": 12500,
 		"health": 4375,
@@ -193,7 +204,8 @@ var stages_units_stats = {
 		"exp_to_slayer": 18750,
 		"gold_on_death": 18750,
 		"time_to_spawn": 5.0,
-		"speed": 50
+		"speed": 50,
+		"age": 4
 	}],
 	5: [{
 		"cost": 15000,
@@ -204,7 +216,8 @@ var stages_units_stats = {
 		"exp_to_slayer": 31250,
 		"gold_on_death": 18750,
 		"time_to_spawn": 1.5,
-		"speed": 45
+		"speed": 45,
+		"age": 5
 	}, {
 		"cost": 19000,
 		"health": 4500,
@@ -214,7 +227,8 @@ var stages_units_stats = {
 		"exp_to_slayer": 43750,
 		"gold_on_death": 22000,
 		"time_to_spawn": 2.0,
-		"speed": 35
+		"speed": 35,
+		"age": 5
 	}, {
 		"cost": 65000,
 		"health": 22500,
@@ -224,7 +238,8 @@ var stages_units_stats = {
 		"exp_to_slayer": 65000,
 		"gold_on_death": 75000,
 		"time_to_spawn": 5.0,
-		"speed": 50
+		"speed": 50,
+		"age": 5
 	},
 	{
 		"cost": 150000,
@@ -235,7 +250,8 @@ var stages_units_stats = {
 		"exp_to_slayer": 65000,
 		"gold_on_death": 75000,
 		"time_to_spawn": 8.0,
-		"speed": 65
+		"speed": 65,
+		"age": 5
 	}
 	],
 }
@@ -245,87 +261,103 @@ var stages_cannons_stats = {
 		"damage": 3,
 		"attack_speed": 2.0,
 		"cost": 250,
-		"sell_value": 100
+		"sell_value": 100,
+		"age": 1
 	}, {
 		"damage": 3,
 		"attack_speed": 1.5,
 		"cost": 750,
-		"sell_value": 300
+		"sell_value": 300,
+		"age": 1
 	}, {
 		"damage": 4,
 		"attack_speed": 1.3,
 		"cost": 1500,
-		"sell_value": 600
+		"sell_value": 600,
+		"age": 1
 	}],
 	2: [{
 		"damage": 12,
 		"attack_speed": 2.0,
 		"cost": 1250,
-		"sell_value": 500
+		"sell_value": 500,
+		"age": 2
 	}, {
 		"damage": 12,
 		"attack_speed": 1.5,
 		"cost": 3750,
-		"sell_value": 1500
+		"sell_value": 1500,
+		"age": 2
 	}, {
 		"damage": 16,
 		"attack_speed": 1.3,
 		"cost": 7500,
-		"sell_value": 3000
+		"sell_value": 3000,
+		"age": 2
 	}],
 	3: [{
 		"damage": 48,
 		"attack_speed": 1.8,
 		"cost": 6250,
-		"sell_value": 2500
+		"sell_value": 2500,
+		"age": 3
 	}, {
 		"damage": 48,
 		"attack_speed": 1.6,
 		"cost": 18750,
-		"sell_value": 7500
+		"sell_value": 7500,
+		"age": 3
 	}, {
 		"damage": 64,
 		"attack_speed": 1.4,
 		"cost": 37500,
-		"sell_value": 15000
+		"sell_value": 15000,
+		"age": 3
 	}],
 	4: [{
 		"damage": 192,
 		"attack_speed": 1.8,
 		"cost": 31250,
-		"sell_value": 12500
+		"sell_value": 12500,
+		"age": 4
 	}, {
 		"damage": 192,
 		"attack_speed": 1.6,
 		"cost": 95000,
-		"sell_value": 37500
+		"sell_value": 37500,
+		"age": 4
 	}, {
 		"damage": 256,
 		"attack_speed": 1.4,
 		"cost": 190000,
-		"sell_value": 75000
+		"sell_value": 75000,
+		"age": 4
 	}],
 	5: [{
 		"damage": 768,
 		"attack_speed": 1.8,
 		"cost": 150000,
-		"sell_value": 60000
+		"sell_value": 60000,
+		"age": 5
 	}, {
 		"damage": 768,
 		"attack_speed": 1.6,
 		"cost": 450000,
-		"sell_value": 180000
+		"sell_value": 180000,
+		"age": 5
 	}, {
 		"damage": 1024,
 		"attack_speed": 1.4,
 		"cost": 900000,
-		"sell_value": 360000
+		"sell_value": 360000,
+		"age": 5
 	},
 	{
 		"damage": 1200,
 		"attack_speed": 1.1,
 		"cost": 2500000,
-		"sell_value": 1000000
+		"sell_value": 1000000,
+		"age": 5
 	}
 	]
 }

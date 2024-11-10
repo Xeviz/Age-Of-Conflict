@@ -11,7 +11,6 @@ var direction: Vector2 = Vector2.DOWN
 var falling_speed: float = 250.0
 
 var current_age: int = 1
-var sprites_updated: bool = true
 var current_falling_animation: String = "FallingAge1"
 var current_explosion_animation: String = "ExplosionAge1"
 	
@@ -28,10 +27,10 @@ func randomize_values():
 	
 func advance_age():
 	current_age+=1
-	sprites_updated=false
+	if state_machine.current_state != FallingDown:
+		update_sprites()
 
 func update_sprites():
-	sprites_updated=true
 	current_falling_animation = "FallingAge" + str(current_age)
 	current_explosion_animation = "ExplosionAge" + str(current_age)
 	

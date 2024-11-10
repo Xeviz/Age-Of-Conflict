@@ -437,15 +437,15 @@ size = Vector2(87, 196)
 [sub_resource type="CircleShape2D" id="CircleShape2D_vpy2g"]
 radius = 160.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7suwg"]
-bg_color = Color(0, 0, 0, 0.196078)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cwba8"]
+bg_color = Color(0, 0, 0, 0.756863)
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0, 0, 0, 1)
 border_blend = true
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lfsxv"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k7pi2"]
 bg_color = Color(1, 0, 0, 1)
 border_width_left = 2
 border_width_top = 2
@@ -455,7 +455,7 @@ border_color = Color(0, 0, 0, 1)
 border_blend = true
 
 [node name="Unit1Age2" type="CharacterBody2D"]
-collision_layer = 8
+collision_layer = 0
 collision_mask = 8
 script = ExtResource("1_fyr4y")
 
@@ -512,13 +512,13 @@ shape = SubResource("CircleShape2D_vpy2g")
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_top = -195.0
-offset_right = 20.0
-offset_bottom = -187.0
+offset_left = -23.0
+offset_top = -197.0
+offset_right = 17.0
+offset_bottom = -189.0
 grow_horizontal = 2
-theme_override_styles/background = SubResource("StyleBoxFlat_7suwg")
-theme_override_styles/fill = SubResource("StyleBoxFlat_lfsxv")
+theme_override_styles/background = SubResource("StyleBoxFlat_cwba8")
+theme_override_styles/fill = SubResource("StyleBoxFlat_k7pi2")
 max_value = 10.0
 step = 1.0
 value = 5.0

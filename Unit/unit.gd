@@ -32,6 +32,7 @@ var direction = Vector2.RIGHT
 var current_target: Node2D
 var unit_name: String
 var time_to_death: float = 1.5
+var age: int = 1
 
 
 func _process(delta):
@@ -59,8 +60,6 @@ func attack_target():
 		time_to_next_attack=attack_speed
 	else:
 		unit_sprite.play("hit")
-		melee_hit_player.play()
-		current_target.receive_damage(damage)
 		time_to_next_attack=attack_speed
 		if current_target.current_health<=0:
 			current_target = null
@@ -80,6 +79,7 @@ func load_unit_stats(recipe):
 	gold_on_death = recipe["gold_on_death"]
 	time_to_spawn = recipe["time_to_spawn"]
 	speed = recipe["speed"]
+	age = recipe["age"]
 	
 	health_bar.max_value = max_health
 	health_bar.value = max_health
@@ -118,12 +118,12 @@ func die():
 		global_data.player_experience += exp_to_owner
 		global_data.enemy_experience += exp_to_slayer
 		global_data.enemy_gold += gold_on_death
-		global_data.player_gold += int(cost/2)
+		global_data.player_gold += int(cost/5)
 	else:
 		global_data.player_experience += exp_to_slayer
 		global_data.enemy_experience += exp_to_owner
 		global_data.player_gold += gold_on_death
-		global_data.enemy_gold += int(cost/2)
+		global_data.enemy_gold += int(cost/5)
 		
 	state_machine.on_child_transition(state_machine.current_state, "UnitDying")
 	
@@ -149,6 +149,9 @@ func find_nearest_target():
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if unit_sprite.animation == "hit":
+		melee_hit_player.play()
+		if current_target and current_target.is_targetable:
+			current_target.receive_damage(damage)
 		unit_sprite.play("idle")
 	if unit_sprite.animation == "die":
 		queue_free()

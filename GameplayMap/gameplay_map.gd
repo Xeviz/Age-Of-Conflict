@@ -7,9 +7,32 @@ extends Node2D
 @onready var main_menu_scene = preload("res://Interface/MenuUI/main_menu.tscn")
 
 var targeted_tower: Tower = null
+var player_previewing_unit: bool = false
+var game_seconds: float = 0.0
+var current_gold_bonus = 100
 
 
 func _process(delta: float) -> void:
+	if player_previewing_unit:
+		$ColorRect.show()
+	else:
+		$ColorRect.hide()
+	
+	update_time(delta)
+	update_spawn_queue(delta)
+		
+func update_time(delta: float) -> void:
+	game_seconds+=delta
+	if game_seconds>=60:
+		game_seconds-=60
+		give_enemy_gold()
+		
+func give_enemy_gold() -> void:
+	global_data.enemy_gold += current_gold_bonus
+	current_gold_bonus = current_gold_bonus * 2
+
+
+func update_spawn_queue(delta: float) -> void:
 	if global_data.player_spawn_queue>0:
 		global_data.player_spawn_queue-=delta
 	else:
@@ -18,10 +41,6 @@ func _process(delta: float) -> void:
 		global_data.enemy_spawn_queue-=delta
 	else:
 		global_data.enemy_spawn_queue = 0
-		
-
-
-
 	
 
 func enable_tower_highlighters():

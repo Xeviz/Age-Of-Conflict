@@ -283,15 +283,15 @@ size = Vector2(201, 182)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i080n"]
 size = Vector2(184, 130)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pjuhg"]
-bg_color = Color(0, 0, 0, 0.196078)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yftgb"]
+bg_color = Color(0, 0, 0, 0.756863)
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0, 0, 0, 1)
 border_blend = true
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dw8lu"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i0eoc"]
 bg_color = Color(1, 0, 0, 1)
 border_width_left = 2
 border_width_top = 2
@@ -301,6 +301,8 @@ border_color = Color(0, 0, 0, 1)
 border_blend = true
 
 [node name="Unit3Age4" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 0
 script = ExtResource("1_yo7tt")
 
 [node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
@@ -361,13 +363,13 @@ shape = SubResource("RectangleShape2D_i080n")
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -16.0
-offset_top = -145.0
-offset_right = 24.0
-offset_bottom = -137.0
+offset_left = -17.0
+offset_top = -146.0
+offset_right = 23.0
+offset_bottom = -138.0
 grow_horizontal = 2
-theme_override_styles/background = SubResource("StyleBoxFlat_pjuhg")
-theme_override_styles/fill = SubResource("StyleBoxFlat_dw8lu")
+theme_override_styles/background = SubResource("StyleBoxFlat_yftgb")
+theme_override_styles/fill = SubResource("StyleBoxFlat_i0eoc")
 max_value = 10.0
 step = 1.0
 value = 5.0

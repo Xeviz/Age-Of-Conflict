@@ -2,7 +2,7 @@ extends Control
 
 @onready var gameplay_scene = preload("res://GameplayMap/gameplay_map.tscn")
 @onready var result_label: Label = $Label
-@onready var play_button: Button = $VBoxContainer/PlayButton
+@onready var play_button: TextureButton = $VBoxContainer/PlayButton
 var result = false
 var score = true
 

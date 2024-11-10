@@ -3,7 +3,6 @@ class_name ProjectileIdle
 
 @export var projectile: SpellProjectile
 
-
-func update(delta):
-	if not projectile.sprites_updated and projectile.displayed_animation.animation != projectile.current_explosion_animation:
+func enter():
+	if projectile.current_falling_animation != "FallingAge" + str(projectile.current_age):
 		projectile.update_sprites()

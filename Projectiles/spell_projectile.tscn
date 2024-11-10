@@ -262,7 +262,7 @@ shape = SubResource("CircleShape2D_dvo7c")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kltgs")
-animation = &"ExplosionAge5"
+animation = &"ExplosionAge1"
 
 [node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_6xrbe")

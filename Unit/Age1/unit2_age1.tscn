@@ -413,15 +413,15 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_28tog"]
 size = Vector2(41, 176)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g8kma"]
-bg_color = Color(0, 0, 0, 0.196078)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4q8r"]
+bg_color = Color(0, 0, 0, 0.756863)
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0, 0, 0, 1)
 border_blend = true
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bn2m3"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5rk66"]
 bg_color = Color(1, 0, 0, 1)
 border_width_left = 2
 border_width_top = 2
@@ -431,6 +431,7 @@ border_color = Color(0, 0, 0, 1)
 border_blend = true
 
 [node name="Unit2Age1" type="CharacterBody2D"]
+collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_git8d")
 metadata/_edit_horizontal_guides_ = [-316.0]
@@ -487,13 +488,13 @@ shape = SubResource("RectangleShape2D_28tog")
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_top = -190.0
-offset_right = 20.0
-offset_bottom = -182.0
+offset_left = -21.0
+offset_top = -194.0
+offset_right = 19.0
+offset_bottom = -186.0
 grow_horizontal = 2
-theme_override_styles/background = SubResource("StyleBoxFlat_g8kma")
-theme_override_styles/fill = SubResource("StyleBoxFlat_bn2m3")
+theme_override_styles/background = SubResource("StyleBoxFlat_x4q8r")
+theme_override_styles/fill = SubResource("StyleBoxFlat_5rk66")
 max_value = 10.0
 step = 1.0
 value = 5.0
